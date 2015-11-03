@@ -11,8 +11,8 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
         // route for the home page
         .state('home', {
             url: '/',
-            templateUrl : 'views/home.html',
-            controller  : 'MainController'
+            templateUrl : 'views/commandcenter.html',
+            controller  : 'CommandCenterController'
         })
 
         // route for the about page
