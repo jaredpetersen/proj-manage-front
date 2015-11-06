@@ -1,34 +1,40 @@
 <div class="row">
     <!--  Tasks -->
     <!-- Backlog -->
-    <div class="col-md-3 col-sm-3 col-xs-12" ng-model='backlog'>
+    <div class="col-md-3 col-sm-3 col-xs-12">
         <h3>Backlog</h3>
-        <div class="panel panel-default" ng-repeat="task in backlog">
-            <div class="panel-body">
-                <h4>{{task.title}}</h4>
-                <p><i class="fa fa-sticky-note-o"></i> {{task.project}} &nbsp;&nbsp;<i class="fa fa-calendar"></i> {{task.due}}</p>
+        <div id="Backlog" class="kanban" ng-model='backlog' ui-sortable="sortableOptions">
+            <div class="panel panel-default" ng-repeat="task in backlog">
+                <div class="panel-body">
+                    <h4><a ui-sref="task({id: task.id})">{{task.title}}</a></h4>
+                    <p><i class="fa fa-sticky-note-o"></i> {{task.project}} &nbsp;&nbsp;<i class="fa fa-calendar"></i> {{task.due}}</p>
+                </div>
             </div>
         </div>
     </div>
 
     <!-- In-Progress -->
-    <div class="col-md-3 col-sm-3 col-xs-12" ng-model='inprogress'>
+    <div class="col-md-3 col-sm-3 col-xs-12">
         <h3>In-Progress</h3>
-        <div class="panel panel-default" ng-repeat="task in inprogress">
-            <div class="panel-body">
-                <h4>{{task.title}}</h4>
-                <p><i class="fa fa-sticky-note-o"></i> {{task.project}} &nbsp;&nbsp;<i class="fa fa-calendar"></i> {{task.due}}</p>
+        <div id="In-Progress" class="kanban" ng-model='inprogress' ui-sortable="sortableOptions">
+            <div class="panel panel-default" ng-repeat="task in inprogress">
+                <div class="panel-body">
+                    <h4><a ui-sref="task({id: task.id})">{{task.title}}</a></h4>
+                    <p><i class="fa fa-sticky-note-o"></i> {{task.project}} &nbsp;&nbsp;<i class="fa fa-calendar"></i> {{task.due}}</p>
+                </div>
             </div>
         </div>
     </div>
 
     <!-- Complete -->
-    <div class="col-md-3 col-sm-3 col-xs-12" ng-model='complete'>
+    <div class="col-md-3 col-sm-3 col-xs-12">
         <h3>Complete</h3>
-        <div class="panel panel-default" ng-repeat="task in complete">
-            <div class="panel-body">
-                <h4>{{task.title}}</h4>
-                <p><i class="fa fa-sticky-note-o"></i> {{task.project}} &nbsp;&nbsp;<i class="fa fa-calendar"></i> {{task.due}}</p>
+        <div id="Complete" class="kanban" ng-model='complete' ui-sortable="sortableOptions">
+            <div class="panel panel-default" ng-repeat="task in complete">
+                <div class="panel-body">
+                    <h4><a ui-sref="task({id: task.id})">{{task.title}}</a></h4>
+                    <p><i class="fa fa-sticky-note-o"></i> {{task.project}} &nbsp;&nbsp;<i class="fa fa-calendar"></i> {{task.due}}</p>
+                </div>
             </div>
         </div>
     </div>

@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('tangram', ['ui.router']);
+var app = angular.module('tangram', ['ui.router', 'ui.sortable']);
 
 // configure our routes
 app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
@@ -15,11 +15,11 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
             controller  : 'CommandCenterController'
         })
 
-        // route for the about page
-        .state('about', {
-            url: '/about',
-            templateUrl : 'views/about.html',
-            controller  : 'AboutController'
+        // route for the individual task page
+        .state('task', {
+            url: '/task/:id',
+            templateUrl : 'views/task.html',
+            controller  : 'TaskController'
         })
 
         // route for the contact page
