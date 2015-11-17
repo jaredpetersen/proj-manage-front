@@ -29,11 +29,11 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
             controller  : 'TaskController'
         })
 
-        // route for the contact page
-        .state('contact', {
-            url: '/contact',
-            templateUrl : 'views/contact.html',
-            controller  : 'ContactController'
+        // route for the user page
+        .state('user', {
+            url: '/user',
+            templateUrl : 'views/user.html',
+            controller  : 'UserController'
         });
 
     // Removes the # from the URL
