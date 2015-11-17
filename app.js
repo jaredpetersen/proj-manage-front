@@ -15,6 +15,13 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
             controller  : 'CommandCenterController'
         })
 
+        // route for the individual project page
+        .state('project', {
+            url: '/project/:id',
+            templateUrl : 'views/project.html',
+            controller  : 'ProjectController'
+        })
+
         // route for the individual task page
         .state('task', {
             url: '/task/:id',

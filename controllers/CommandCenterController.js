@@ -1,22 +1,10 @@
 'use strict';
 
-angular.module('tangram').controller('CommandCenterController', function($scope) {
-    // Kanban lists
-    $scope.backlog = [
-        {id: 1, title: "Task Title 1", project: "Project A", due: "11/13/2015"},
-        {id: 2, title: "Task Title 2", project: "Project B", due: "11/14/2015"},
-        {id: 3, title: "Task Title 3", project: "Project C", due: "11/17/2015"},
-        {id: 4, title: "Task Title 4", project: "Project B", due: "11/20/2015"}
-    ];
-
-    $scope.inprogress = [
-        {id: 5, title: "Task Title 5", project: "Project A", due: "11/11/2015"}
-    ];
-
-    $scope.complete = [
-        {id: 6, title: "Task Title 6", project: "Project A", due: "11/10/2015"},
-        {id: 7, title: "Task Title 7", project: "Project B", due: "11/05/2015"}
-    ];
+angular.module('tangram').controller('CommandCenterController', function($scope, $http) {
+    // Kanban Board
+    $scope.backlog = [];
+    $scope.inprogress = [];
+    $scope.complete = [];
 
     // Activity list
     $scope.activities = [
@@ -34,7 +22,42 @@ angular.module('tangram').controller('CommandCenterController', function($scope)
         {title: "More . . ."},
     ];
 
-    // Connect the drag and drop lists
+    function getTasks() {
+        // Grab all tasks
+        var tasks = [];    // Task without project data
+
+        $http.get("http://api.tangr.am/tasks")
+        .then(function(taskResponse) {
+            var tasks = taskResponse.data;
+
+            // Loop over all of the tasks and grab the project name for each one
+            // (Application-level join)
+            angular.forEach(tasks, function(task, key) {
+                $http.get("http://api.tangr.am/projects/" + task.project)
+                .then(function(projectResponse) {
+                    task.projectName = projectResponse.data.name;
+                    // TODO Perform sorting based on task status
+                    if (task.description == 'Task 1 Description') {
+                        $scope.backlog.push(task);
+                    }
+                    else {
+                        $scope.inprogress.push(task);
+                    }
+
+                });
+            });
+        });
+    }
+
+    // Get the tasks from the api
+    if ($scope.backlog.length == 0) {
+        getTasks();
+    }
+    else {
+        console.log("bad news");
+    }
+
+    // Connect/enable the drag and drop lists
     $scope.sortableOptions = {
         connectWith: '.kanban',
         stop: function(e, ui) {
