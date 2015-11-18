@@ -8,30 +8,30 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 
     $stateProvider
 
-        // route for the home page
+        // route for the home/commandcenter
         .state('home', {
             url: '/',
-            templateUrl : 'views/commandcenter.html',
-            controller  : 'CommandCenterController'
+            templateUrl : 'views/launchpad.html',
+            controller  : 'LaunchPadController'
         })
 
         // route for the individual project page
         .state('project', {
-            url: '/project/:id',
+            url: '/projects/:id',
             templateUrl : 'views/project.html',
             controller  : 'ProjectController'
         })
 
         // route for the individual task page
         .state('task', {
-            url: '/task/:id',
+            url: '/tasks/:id',
             templateUrl : 'views/task.html',
             controller  : 'TaskController'
         })
 
         // route for the user page
         .state('user', {
-            url: '/user',
+            url: '/settings',
             templateUrl : 'views/user.html',
             controller  : 'UserController'
         });

@@ -1,36 +1,45 @@
-<!DOCTYPE html>
-<html ng-app="tangram">
-<head>
-    <meta charset="utf-8">
-    <base href="/">
-    <!-- Bootstrap and FontAwesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
-</head>
-<body style="padding-top: 70px;">
 
-    <!-- Header and NavBar -->
-    <header>
-        <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="container">
+<!DOCTYPE html>
+<html lang="en" ng-app="tangram">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <base href="/">
+        <meta name="description" content="">
+        <meta name="author" content="Tangram">
+
+        <title>Tangram</title>
+
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+    </head>
+
+    <body>
+        <!-- Navigation Bar -->
+        <nav class="navbar navbar-default navbar-static-top">
+            <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="/">tangram</a>
+                    <a class="navbar-brand" ui-sref="home"><img alt="Brand" src="https://sites.google.com/site/stoyneff/_/rsrc/1256596028398/exterior/b3b4-passat-color-codes/TitaniumGray-LB7U.png"></a>
                 </div>
-                <p class="navbar-text navbar-right"><a ui-sref="user"><i class="fa fa-user"></i> Username</a></p></li>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a ui-sref="home" title="Launch Pad"><i class="fa fa-rocket"></i></a></li>
+                    <li><a ui-sref="home" title="Projects"><i class="fa fa-sticky-note"></i></a></li>
+                    <li><a ui-sref="user" title="Settings"><i class="fa fa-cog"></i></a></li>
+                </ul>
             </div>
         </nav>
-    </header>
 
-    <!-- Content -->
-    <div ui-view class="container"></div>
+        <!-- Content -->
+        <div ui-view class="container-fluid"></div>
 
-    <!-- AngularJS Stuffs -->
-    <script src="https://cdn.jsdelivr.net/g/jquery@2.1.4,jquery.ui@1.11.4,angularjs@1.4.7,angular.ui-sortable@0.13.4,angular.ui-router@0.2.15"></script>
-    <script src="app.js"></script>
-    <script src="controllers/CommandCenterController.js"></script>
-    <script src="controllers/ProjectController.js"></script>
-    <script src="controllers/TaskController.js"></script>
-    <script src="controllers/UserController.js"></script>
-
-</body>
+        <!-- AngularJS Stuffs -->
+        <script src="https://cdn.jsdelivr.net/g/jquery@2.1.4,jquery.ui@1.11.4,angularjs@1.4.7,angular.ui-sortable@0.13.4,angular.ui-router@0.2.15"></script>
+        <script src="app.js"></script>
+        <script src="controllers/LaunchPadController.js"></script>
+        <script src="controllers/ProjectController.js"></script>
+        <script src="controllers/TaskController.js"></script>
+        <script src="controllers/UserController.js"></script>
+  </body>
 </html>

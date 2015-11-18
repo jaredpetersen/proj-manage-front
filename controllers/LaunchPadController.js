@@ -1,25 +1,20 @@
 'use strict';
 
-angular.module('tangram').controller('CommandCenterController', function($scope, $http) {
+angular.module('tangram').controller('LaunchPadController', function($scope, $http) {
     // Kanban Board
     $scope.backlog = [];
     $scope.inprogress = [];
     $scope.complete = [];
 
-    // Activity list
-    $scope.activities = [
-        {title: "Sally added a new task"},
-        {title: "Task Title marked as complete"},
-        {title: "Task Title due date changed"},
-        {title: "More . . ."},
-    ]
-
     // Projects list
     $scope.projects = [
-        {title: "Project A"},
-        {title: "Project B"},
-        {title: "Project C"},
-        {title: "More . . ."},
+        {_id: "user", title: "Project 1"},
+        {_id: "user", title: "Project 2"},
+        {_id: "user", title: "Project 3"},
+        {_id: "user", title: "Project 4"},
+        {_id: "user", title: "Project 5"},
+        {_id: "user", title: "Project 6"},
+        {_id: "user", title: "Project 7"}
     ];
 
     function getTasks() {

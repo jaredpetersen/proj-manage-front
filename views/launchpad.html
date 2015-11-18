@@ -1,4 +1,13 @@
 <div class="row">
+    <!-- Right column used for minor things -->
+    <div class="col-md-3 col-sm-3 col-xs-12" ng-model="projects">
+        <h3>Projects</h3>
+        <div class="list-group">
+            <a ui-sref="{{project._id}}" class="list-group-item" ng-repeat="project in projects">{{project.title}}</a>
+            <a ui-sref="user" class="list-group-item">More . . .</a>
+        </div>
+    </div>
+
     <!--  Tasks -->
     <!-- Backlog -->
     <div class="col-md-3 col-sm-3 col-xs-12">
@@ -10,8 +19,8 @@
                     <p>
                         <!-- Will need to fix overflow with CSS later with this:
                              http://stackoverflow.com/questions/22978990/bootstrap-3-table-overflow-out-of-panel -->
-                        <i class="fa fa-sticky-note-o"></i>&nbsp;<a ui-sref="project({id: task.project})">{{task.projectName}}</a>
-                        <br />
+                        <i class="fa fa-sticky-note-o"></i> <a ui-sref="project({id: task.project})">{{task.projectName}}</a>
+                        &nbsp;&nbsp;
                         <i class="fa fa-calendar"></i> {{task.created | date:'MM/dd/yy'}}
                     </p>
                 </div>
@@ -29,8 +38,8 @@
                     <p>
                         <!-- Will need to fix overflow with CSS later with this:
                              http://stackoverflow.com/questions/22978990/bootstrap-3-table-overflow-out-of-panel -->
-                        <i class="fa fa-sticky-note-o"></i>&nbsp;<a ui-sref="project({id: task.project})">{{task.projectName}}</a>
-                        <br />
+                        <i class="fa fa-sticky-note-o"></i> <a ui-sref="project({id: task.project})">{{task.projectName}}</a>
+                        &nbsp;&nbsp;
                         <i class="fa fa-calendar"></i> {{task.created | date:'MM/dd/yy'}}
                     </p>
                 </div>
@@ -48,38 +57,11 @@
                     <p>
                         <!-- Will need to fix overflow with CSS later with this:
                              http://stackoverflow.com/questions/22978990/bootstrap-3-table-overflow-out-of-panel -->
-                        <i class="fa fa-sticky-note-o"></i>&nbsp;<a ui-sref="project({id: task.project})">{{task.projectName}}</a>
-                        <br />
+                        <i class="fa fa-sticky-note-o"></i> <a ui-sref="project({id: task.project})">{{task.projectName}}</a>
+                        &nbsp;&nbsp;
                         <i class="fa fa-calendar"></i> {{task.created | date:'MM/dd/yy'}}
                     </p>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Left column used for minor things -->
-    <div class="col-md-3 col-sm-3 col-xs-12">
-
-        <!-- Recent Activity -->
-        <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12" ng-model="activity">
-                <h3>Activity</h3>
-                <div class="list-group">
-                  <li class="list-group-item" ng-repeat="activity in activities">{{activity.title}}</li>
-                </div>
-            </div>
-        </div>
-
-        <!-- Projects -->
-        <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12" ng-model="projects">
-                <h3>Projects</h3>
-                <div class="list-group">
-                    <a href="#" class="list-group-item" ng-repeat="project in projects">{{project.title}}</a>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-</div>
