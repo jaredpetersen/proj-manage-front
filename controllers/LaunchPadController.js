@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('tangram').controller('LaunchPadController', function($scope, $http) {
+angular.module('tangram').controller('LaunchPadController', function($scope, $http, ApiFactory) {
     // Kanban Board
     $scope.backlog = [];
     $scope.inprogress = [];
@@ -47,6 +47,7 @@ angular.module('tangram').controller('LaunchPadController', function($scope, $ht
     // Get the tasks from the api
     if ($scope.backlog.length == 0) {
         getTasks();
+        ApiFactory.getTest();
     }
     else {
         console.log("bad news");
