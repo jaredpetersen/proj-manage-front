@@ -7,47 +7,16 @@ angular.module('tangram').controller('LaunchPadController', function($scope, $ht
     $scope.complete = [];
 
     // Projects list
-    $scope.projects = [
-        {_id: "user", title: "Project 1"},
-        {_id: "user", title: "Project 2"},
-        {_id: "user", title: "Project 3"},
-        {_id: "user", title: "Project 4"},
-        {_id: "user", title: "Project 5"},
-        {_id: "user", title: "Project 6"},
-        {_id: "user", title: "Project 7"}
-    ];
+    $scope.projects = [];
 
-    function getTasks() {
-        // Grab all tasks
-        var tasks = [];    // Task without project data
-
-        $http.get("http://api.tangr.am/tasks")
-        .then(function(taskResponse) {
-            var tasks = taskResponse.data;
-
-            // Loop over all of the tasks and grab the project name for each one
-            // (Application-level join)
-            angular.forEach(tasks, function(task, key) {
-                $http.get("http://api.tangr.am/projects/" + task.project)
-                .then(function(projectResponse) {
-                    task.projectName = projectResponse.data.name;
-                    // TODO Perform sorting based on task status
-                    if (task.description == 'Task 1 Description') {
-                        $scope.backlog.push(task);
-                    }
-                    else {
-                        $scope.inprogress.push(task);
-                    }
-
-                });
-            });
-        });
-    }
-
-    // Get the tasks from the api
+    // Get the tasks and projects from the API
     if ($scope.backlog.length == 0) {
-        getTasks();
-        ApiFactory.getTest();
+        var kanban = ApiFactory.getTasks();
+        $scope.backlog = kanban.backlog;
+        $scope.inprogress = kanban.inprogress;
+        $scope.complete = kanban.complete;
+
+        $scope.projects = ApiFactory.getProjects();
     }
     else {
         console.log("bad news");

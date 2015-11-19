@@ -2,7 +2,7 @@
 
 var app = angular.module('tangram', ['ui.router', 'ui.sortable']);
 
-// configure our routes
+// Configure our routes
 app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
     $urlRouterProvider.otherwise('/');
 
