@@ -1,26 +1,42 @@
 'use strict';
 
-angular.module('tangram').controller('LaunchPadController', function($scope, $http, ApiFactory) {
-    // Kanban Board
-    $scope.backlog = [];
-    $scope.inprogress = [];
-    $scope.complete = [];
+angular.module('tangram').controller('LaunchPadController', function($scope, $http, ApiService) {
 
-    // Projects list
-    $scope.projects = [];
+    var loadData = function() {
+        // Kanban Board
+        $scope.backlog = [];
+        $scope.inprogress = [];
+        $scope.complete = [];
 
-    // Get the tasks and projects from the API
-    if ($scope.backlog.length == 0) {
-        var kanban = ApiFactory.getTasks();
-        $scope.backlog = kanban.backlog;
-        $scope.inprogress = kanban.inprogress;
-        $scope.complete = kanban.complete;
+        // Projects list
+        $scope.projects = [];
 
-        $scope.projects = ApiFactory.getProjects();
+        ApiService.getTasks().then(function(taskResponse) {
+            var tasks = taskResponse.data;
+
+            // Perform an application-level join to get the name of the project
+            angular.forEach(tasks, function(task, key) {
+                ApiService.getSingleProject(task.project).then(function(projectResponse) {
+                    task.projectName = projectResponse.data.name;
+                    console.log(projectResponse);
+
+                    // TODO Better column filtering
+                    if (task.description == 'Task 1 Description') {
+                        $scope.backlog.push(task);
+                    }
+                    else {
+                        $scope.inprogress.push(task);
+                    }
+                });
+            });
+        });
+
+        ApiService.getProjects().then(function(response) {
+            $scope.projects = response.data;
+        });
     }
-    else {
-        console.log("bad news");
-    }
+
+    loadData();
 
     // Connect/enable the drag and drop lists
     $scope.sortableOptions = {
