@@ -8,32 +8,48 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 
     $stateProvider
 
+        .state('common', {
+            templateUrl: 'views/common.html',
+            abstract: true,
+        })
+
+        // route for the login
+        .state('login', {
+            url: '/',
+            templateUrl : 'views/login.html',
+            controller  : 'LoginController'
+        })
+
         // route for the home/commandcenter
         .state('home', {
-            url: '/',
+            url: '/launchpad',
             templateUrl : 'views/launchpad.html',
-            controller  : 'LaunchPadController'
+            controller  : 'LaunchPadController',
+            parent: 'common'
         })
 
         // route for the individual project page
         .state('project', {
             url: '/projects/:id',
             templateUrl : 'views/project.html',
-            controller  : 'ProjectController'
+            controller  : 'ProjectController',
+            parent: 'common'
         })
 
         // route for the individual task page
         .state('task', {
             url: '/tasks/:id',
             templateUrl : 'views/task.html',
-            controller  : 'TaskController'
+            controller  : 'TaskController',
+            parent: 'common'
         })
 
         // route for the user page
         .state('user', {
             url: '/settings',
             templateUrl : 'views/user.html',
-            controller  : 'UserController'
+            controller  : 'UserController',
+            parent: 'common'
         });
 
     // Removes the # from the URL
