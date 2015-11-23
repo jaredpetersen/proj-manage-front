@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('tangram').controller('LaunchPadController', function($scope, $http, ApiService) {
+angular.module('tangram').controller('LaunchPadController', function($scope, ApiService) {
 
     var loadData = function() {
         // Kanban Board

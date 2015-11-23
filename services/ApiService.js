@@ -19,5 +19,9 @@ angular.module('tangram').factory('ApiService', function($http, $q) {
         return $http.get(baseURL + '/projects/' + id);
     }
 
+    apiFactory.login = function(email, password) {
+        return $http.post(baseURL + '/authenticate', {'email': email, 'password': password})
+    }
+
     return apiFactory;
 });

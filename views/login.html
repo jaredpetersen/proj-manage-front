@@ -1,19 +1,20 @@
 <div class="container-fluid">
     <br />
-    <div class="jumbotron text-center">
-        <h2>tangram</h2>
-        <br />
-        <form>
-            <div class="form-group">
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-            </div>
-            <div class="form-group">
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-            </div>
-            <button type="submit" class="btn btn-default">Login</button>
-        </form>
-
-        <br />
-        <a ui-sref="home">Test</a>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <h2>tangram</h2>
+            <br />
+            <p ng-show="badLogin" style="color: red;">Wrong username/password combination</p>
+            <form>
+                <div class="form-group">
+                    <input type="email" class="form-control" id="email" placeholder="Email" ng-model="user.email">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" id="password" placeholder="Password" ng-model="user.password">
+                </div>
+                <button type="submit" class="btn btn-default" ng-click="login()">Login</button>
+            </form>
+            <br />
+        </div>
     </div>
 </div>
