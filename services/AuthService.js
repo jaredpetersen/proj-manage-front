@@ -19,5 +19,10 @@ angular.module('tangram').factory('AuthService', function($state) {
         $state.go('login', {}, {reload: true});
     }
 
+    // Logout
+    authFactory.clearToken = function() {
+        jsonWebToken = null;
+    }
+
     return authFactory;
 });

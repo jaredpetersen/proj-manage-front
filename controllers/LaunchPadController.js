@@ -18,7 +18,6 @@ angular.module('tangram').controller('LaunchPadController', function($scope, $st
             angular.forEach(tasks, function(task, key) {
                 ApiService.getSingleProject(task.project).then(function(projectResponse) {
                     task.projectName = projectResponse.data.name;
-                    console.log(projectResponse);
 
                     // TODO Better column filtering
                     if (task.description == 'Task 1 Description') {
@@ -37,7 +36,8 @@ angular.module('tangram').controller('LaunchPadController', function($scope, $st
     }
 
     // Run on page load
-    if (AuthService.getToken == null) {
+    console.log(AuthService.getToken() == null);
+    if (AuthService.getToken() == null) {
         AuthService.redirect();
     }
     else {
