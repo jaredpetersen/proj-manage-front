@@ -28,33 +28,65 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
         // route for the home/commandcenter
         .state('home', {
             url: '/launchpad',
-            templateUrl : 'views/launchpad.html',
-            controller  : 'LaunchPadController',
-            parent: 'common'
+            parent: 'common',
+            views: {
+                'navbar': {
+                    templateUrl : 'views/navbar.html',
+                    controller  : 'NavbarController',
+                },
+                'content': {
+                    templateUrl : 'views/launchpad.html',
+                    controller  : 'LaunchPadController'
+                }
+            }
         })
 
         // route for the individual project page
         .state('project', {
             url: '/projects/:id',
-            templateUrl : 'views/project.html',
-            controller  : 'ProjectController',
-            parent: 'common'
+            parent: 'common',
+            views: {
+                'navbar': {
+                    templateUrl : 'views/navbar.html',
+                    controller  : 'NavbarController',
+                },
+                'content': {
+                    templateUrl : 'views/project.html',
+                    controller  : 'ProjectController'
+                }
+            }
         })
 
         // route for the individual task page
         .state('task', {
             url: '/tasks/:id',
-            templateUrl : 'views/task.html',
-            controller  : 'TaskController',
-            parent: 'common'
+            parent: 'common',
+            views: {
+                'navbar': {
+                    templateUrl : 'views/navbar.html',
+                    controller  : 'NavbarController',
+                },
+                'content': {
+                    templateUrl : 'views/task.html',
+                    controller  : 'TaskController'
+                }
+            }
         })
 
         // route for the user page
         .state('user', {
             url: '/settings',
-            templateUrl : 'views/user.html',
-            controller  : 'UserController',
-            parent: 'common'
+            parent: 'common',
+            views: {
+                'navbar': {
+                    templateUrl : 'views/navbar.html',
+                    controller  : 'NavbarController',
+                },
+                'content': {
+                    templateUrl : 'views/user.html',
+                    controller  : 'UserController'
+                }
+            }
         });
 
     $urlRouterProvider.otherwise('/');
