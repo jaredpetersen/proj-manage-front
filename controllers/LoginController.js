@@ -3,6 +3,7 @@
 angular.module('tangram').controller('LoginController', function($scope, $state, ApiService, AuthService) {
     $scope.user = {};
     $scope.badLogin;
+    $scope.checkRegister = false;
 
     $scope.login = function() {
         $scope.badLogin = false;
@@ -19,6 +20,10 @@ angular.module('tangram').controller('LoginController', function($scope, $state,
                 $scope.badLogin = true;
             }
         );
+    }
+
+    $scope.switchView = function() {
+        $scope.checkRegister = !$scope.checkRegister;
     }
 
 });
