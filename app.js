@@ -4,7 +4,12 @@ var app = angular.module('tangram', ['ui.router', 'ui.sortable']);
 
 // Configure our routes
 app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
-    $urlRouterProvider.otherwise('/');
+    // Removes the # from the URL
+    // Leaving this commented out for development since the Python SimpleHTTPServer
+    // is taking over the routing when it shouldn't be:
+    // http://stackoverflow.com/questions/24087188/ui-routers-urlrouterprovider-otherwise-with-html5-mode
+    // http://stackoverflow.com/a/22362994
+    //$locationProvider.html5Mode(true);
 
     $stateProvider
 
@@ -52,6 +57,5 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
             parent: 'common'
         });
 
-    // Removes the # from the URL
-    $locationProvider.html5Mode(true);
+    $urlRouterProvider.otherwise('/');
 });
