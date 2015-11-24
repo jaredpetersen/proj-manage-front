@@ -20,9 +20,16 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 
         // route for the login
         .state('login', {
-            url: '/',
+            url: '/login',
             templateUrl : 'views/login.html',
             controller  : 'LoginController'
+        })
+
+        // route for the registration
+        .state('register', {
+            url: '/register',
+            templateUrl : 'views/register.html',
+            controller  : 'RegisterController'
         })
 
         // route for the home/commandcenter
@@ -89,5 +96,5 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
             }
         });
 
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/launchpad');
 });
