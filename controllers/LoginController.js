@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('tangram').controller('LoginController', function($scope, $state, ApiService) {
+angular.module('tangram').controller('LoginController', function($scope, $state, ApiService, AuthService) {
     $scope.user = {};
     $scope.badLogin;
 
@@ -9,6 +9,9 @@ angular.module('tangram').controller('LoginController', function($scope, $state,
         ApiService.login($scope.user.email, $scope.user.password)
         .then(
             function success(response) {
+                // Store the JSONWebToken in the AuthenticationService for later use
+                AuthService.storeToken(response.data.token);
+                // Send the user to the launchpad
                 $state.go('home', {}, {reload: true});
             },
             function error(response) {

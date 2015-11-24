@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('tangram').controller('LaunchPadController', function($scope, ApiService) {
+angular.module('tangram').controller('LaunchPadController', function($scope, $state, ApiService, AuthService) {
 
     var loadData = function() {
         // Kanban Board
@@ -36,7 +36,13 @@ angular.module('tangram').controller('LaunchPadController', function($scope, Api
         });
     }
 
-    loadData();
+    // Run on page load
+    if (AuthService.getToken == null) {
+        AuthService.redirect();
+    }
+    else {
+        loadData();
+    }
 
     // Connect/enable the drag and drop lists
     $scope.sortableOptions = {
