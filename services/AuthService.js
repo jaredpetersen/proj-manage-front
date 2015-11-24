@@ -1,17 +1,16 @@
 'use strict';
 
-angular.module('tangram').factory('AuthService', function($state) {
-    var jsonWebToken;
+angular.module('tangram').factory('AuthService', function($state, $cookies) {
     var authFactory = {};
 
     // Store the token
-    authFactory.storeToken = function(token) {
-        jsonWebToken = token;
+    authFactory.addToken = function(token) {
+        $cookies.put('tangram', token);
     }
 
     // Return the token
     authFactory.getToken = function() {
-        return jsonWebToken;
+        return $cookies.get('tangram');
     }
 
     // Redirect back to login page
@@ -21,7 +20,7 @@ angular.module('tangram').factory('AuthService', function($state) {
 
     // Logout
     authFactory.clearToken = function() {
-        jsonWebToken = null;
+        $cookies.remove('tangram');
     }
 
     return authFactory;

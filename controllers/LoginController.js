@@ -10,7 +10,7 @@ angular.module('tangram').controller('LoginController', function($scope, $state,
         .then(
             function success(response) {
                 // Store the JSONWebToken in the AuthenticationService for later use
-                AuthService.storeToken(response.data.token);
+                AuthService.addToken(response.data.token);
                 // Send the user to the launchpad
                 $state.go('home', {}, {reload: true});
             },
