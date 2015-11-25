@@ -11,7 +11,11 @@ angular.module('tangram').controller('LaunchPadController', function($scope, $st
         // Projects list
         $scope.projects = [];
 
-        ApiService.getTasks().then(function(taskResponse) {
+        // API JSONWebToken
+        var token = AuthService.getToken();
+        //console.log(token);
+
+        ApiService.getTasks(token).then(function(taskResponse) {
             var tasks = taskResponse.data;
 
             // Perform an application-level join to get the name of the project
@@ -30,7 +34,7 @@ angular.module('tangram').controller('LaunchPadController', function($scope, $st
             });
         });
 
-        ApiService.getProjects().then(function(response) {
+        ApiService.getProjects(token).then(function(response) {
             $scope.projects = response.data;
         });
     }
