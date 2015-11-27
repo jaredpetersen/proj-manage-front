@@ -21,7 +21,12 @@ angular.module('tangram').factory('ApiService', function($http, $q) {
 
     // Authenticate and get a JSONWebToken
     apiFactory.login = function(email, password) {
-        return $http.post(baseURL + '/authenticate', {'email': email, 'password': password})
+        return $http.post(baseURL + '/authenticate', {'email': email, 'password': password});
+    }
+
+    // Register an account
+    apiFactory.register = function(firstname, lastname, email, password) {
+        return $http.post(baseURL + '/users', {'first_name': firstname, 'last_name': lastname, 'email': email, 'password': password});
     }
 
     return apiFactory;
