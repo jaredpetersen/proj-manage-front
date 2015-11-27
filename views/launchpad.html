@@ -3,7 +3,7 @@
     <div class="col-md-3 col-sm-3 col-xs-12" ng-model="projects">
         <h3>Projects</h3>
         <div class="list-group">
-            <a ui-sref="{{project._id}}" class="list-group-item" ng-repeat="project in projects">{{project.name}}</a>
+            <a href="" ui-sref="project({id: project._id})" class="list-group-item" ng-repeat="project in projects">{{project.name}}</a>
             <a ui-sref="user" class="list-group-item">More . . .</a>
         </div>
     </div>

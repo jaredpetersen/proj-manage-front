@@ -24,11 +24,14 @@ angular.module('tangram').controller('LaunchPadController', function($scope, $st
                     task.projectName = projectResponse.data.name;
 
                     // TODO Better column filtering
-                    if (task.description == 'Task 1 Description') {
+                    if (task.status == 'backlog') {
                         $scope.backlog.push(task);
                     }
-                    else {
+                    else if (task.status == 'inprogress') {
                         $scope.inprogress.push(task);
+                    }
+                    else {
+                        $scope.complete.push(task);
                     }
                 });
             });
