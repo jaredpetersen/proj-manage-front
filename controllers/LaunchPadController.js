@@ -13,7 +13,6 @@ angular.module('tangram').controller('LaunchPadController', function($scope, $st
 
         // API JSONWebToken
         var token = AuthService.getToken();
-        //console.log(token);
 
         ApiService.getTasks(token).then(function(taskResponse) {
             var tasks = taskResponse.data;
