@@ -58,8 +58,8 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
                     controller  : 'NavbarController',
                 },
                 'content': {
-                    templateUrl : 'views/project.html',
-                    controller  : 'ProjectController'
+                    templateUrl : 'views/singleProject.html',
+                    controller  : 'SingleProjectController'
                 }
             }
         })
