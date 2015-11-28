@@ -19,7 +19,7 @@ angular.module('tangram').controller('LaunchPadController', function($scope, $st
 
             // Perform an application-level join to get the name of the project
             angular.forEach(tasks, function(task, key) {
-                ApiService.getSingleProject(task.project).then(function(projectResponse) {
+                ApiService.getSingleProject(token, task.project).then(function(projectResponse) {
                     task.projectName = projectResponse.data.name;
 
                     // TODO Better column filtering
