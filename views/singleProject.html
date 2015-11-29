@@ -1,7 +1,6 @@
 <div class="row">
   <div class="col-md-12">
-      <h3>{{project.name}}</h3>
-      <h5>{{project.description}}</h5>
+      <h3>{{project.name}} <span style="font-size: .6em">{{project.description}}</span></h3>
   </div>
 </div>
 <div class="row">
@@ -9,21 +8,22 @@
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <h3>Progress</h3>
-                <div style="width: 100%; height: 240px; border: 1px solid #CCCCCC;"></div>
+                <div style="width: 100%; height: 200px; border: 1px solid #CCCCCC;"></div>
+                <br />
             </div>
         </div>
         <div class="row">
             <div class="col-md-3 col-sm-3 col-xs-12">
-                <h3>Backlog <p style="font-size: 4em;">{{backlogCount}}</p></h3>
+                <h3>Backlog <p style="font-size: 3em;">{{backlogCount}}</p></h3>
             </div>
             <div class="col-md-3 col-sm-3 col-xs-12">
-                <h3>In-Progress <p style="font-size: 4em;">{{inprogressCount}}</p></h3>
+                <h3>In-Progress <p style="font-size: 3em;">{{inprogressCount}}</p></h3>
             </div>
             <div class="col-md-3 col-sm-3 col-xs-12">
-                <h3>Complete <p style="font-size: 4em;">{{completeCount}}</p></h3>
+                <h3>Complete <p style="font-size: 3em;">{{completeCount}}</p></h3>
             </div>
             <div class="col-md-3 col-sm-3 col-xs-12">
-                <h3>Status <p><span style="font-size: 4em; color: #CE4844;">{{completeCount}}</span><span style="font-size: 1em; color: #CE4844;">%</span></p></h3>
+                <h3>Status <p><span style="font-size: 3em; color: #CE4844;">{{completeCount}}</span><span style="font-size: .75em; color: #CE4844;">%</span></p></h3>
             </div>
         </div>
     </div>
@@ -34,5 +34,6 @@
         </ul>
         <br />
         <button type="button" class="btn btn-default btn-lg btn-block">View Project Tasks</button>
+        <br />
     </div>
 </div>
