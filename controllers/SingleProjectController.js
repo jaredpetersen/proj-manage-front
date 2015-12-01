@@ -7,8 +7,7 @@ angular.module('tangram').controller('SingleProjectController', function($scope,
     $scope.completeCount;
     $scope.percentComplete;
     $scope.project;
-
-    var id = $stateParams.id;
+    $scope.projectId = $stateParams.id;
 
     var calculatePercentComplete = function(backlog, inprogress, complete) {
         var total = backlog + inprogress + complete;
@@ -22,7 +21,7 @@ angular.module('tangram').controller('SingleProjectController', function($scope,
         // API JSONWebToken
         var token = AuthService.getToken();
 
-        ApiService.getSingleProject(token, id)
+        ApiService.getSingleProject(token, $scope.projectId)
         .then(
             function success(projectResponse) {
                 var project = projectResponse.data;
@@ -47,7 +46,7 @@ angular.module('tangram').controller('SingleProjectController', function($scope,
             }
         );
 
-        ApiService.getProjectTasks(token,id)
+        ApiService.getProjectTasks(token,$scope.projectId)
         .then(
             function success(response) {
                 var backlogCount = 0;
