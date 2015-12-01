@@ -15,11 +15,6 @@ angular.module('tangram').factory('ApiService', function($http, $q) {
     }
 
     // Get all projects
-    apiFactory.getProjectTasks = function(token, id) {
-        return $http.get(baseURL + '/tasks', {headers: {'x-access-token': token}});
-    }
-
-    // Get all projects
     apiFactory.getProjects = function(token) {
         return $http.get(baseURL + '/projects', {headers: {'x-access-token': token}});
     }
