@@ -80,6 +80,22 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
             }
         })
 
+        // route for the multiple project page
+        .state('projects', {
+            url: '/projects/',
+            parent: 'common',
+            views: {
+                'navbar': {
+                    templateUrl : 'views/navbar.html',
+                    controller  : 'NavbarController',
+                },
+                'content': {
+                    templateUrl : 'views/multipleProject.html',
+                    controller  : 'MultipleProjectController'
+                }
+            }
+        })
+
         // route for the individual task page
         .state('task', {
             url: '/tasks/:id',
