@@ -13,7 +13,7 @@ angular.module('tangram').controller('ProjectTasksController', function($scope, 
         // Project ID
         var id = $stateParams.id;
 
-        ApiService.getProjectTasks(token, $scope.id).then(function(taskResponse) {
+        ApiService.getProjectTasks(token, id).then(function(taskResponse) {
             var tasks = taskResponse.data;
 
             angular.forEach(tasks, function(task, key) {
