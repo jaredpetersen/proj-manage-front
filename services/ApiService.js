@@ -24,6 +24,11 @@ angular.module('tangram').factory('ApiService', function($http, $q) {
         return $http.get(baseURL + '/projects/' + id);
     }
 
+    // Create new project
+    apiFactory.createProject = function(token, name, description) {
+        return $http.post(baseURL + '/projects');
+    }
+
     // Get a single user
     apiFactory.getUser = function(token, id) {
         return $http.get(baseURL + '/users/' + id);

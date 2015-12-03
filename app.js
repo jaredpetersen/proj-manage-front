@@ -64,6 +64,22 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
             }
         })
 
+        // route for the multiple project page
+        .state('newProject', {
+            url: '/projects/new',
+            parent: 'common',
+            views: {
+                'navbar': {
+                    templateUrl : 'views/navbar.html',
+                    controller  : 'NavbarController',
+                },
+                'content': {
+                    templateUrl : 'views/newProject.html',
+                    controller  : 'NewProjectController'
+                }
+            }
+        })
+
         // route for the individual project page
         .state('project', {
             url: '/projects/:id',
