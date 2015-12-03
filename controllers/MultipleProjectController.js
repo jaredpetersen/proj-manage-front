@@ -13,7 +13,6 @@ angular.module('tangram').controller('MultipleProjectController', function($scop
         .then(
             function success(response) {
                 $scope.projects = response.data;
-
             },
             function error(error) {
                 console.log(error);
