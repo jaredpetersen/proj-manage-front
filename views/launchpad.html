@@ -1,10 +1,10 @@
 <div class="row">
     <!-- Right column used for minor things -->
-    <div class="col-md-3 col-sm-3 col-xs-12" ng-model="projects">
+    <div class="col-md-3 col-sm-3 col-xs-12">
         <h3>Projects</h3>
         <div class="list-group">
-            <a href="" ui-sref="project({id: project._id})" class="list-group-item" ng-repeat="project in projects">{{project.name}}</a>
-            <a ui-sref="user" class="list-group-item">More . . .</a>
+            <a href="" ui-sref="project({id: project._id})" class="list-group-item" ng-repeat="project in projects" title="{{project.name}}">{{project.name}}</a>
+            <a ui-sref="projects" class="list-group-item" title="See More">See More</a>
         </div>
     </div>
 

@@ -48,6 +48,22 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
             }
         })
 
+        // route for the multiple project page
+        .state('projects', {
+            url: '/projects',
+            parent: 'common',
+            views: {
+                'navbar': {
+                    templateUrl : 'views/navbar.html',
+                    controller  : 'NavbarController',
+                },
+                'content': {
+                    templateUrl : 'views/multipleProject.html',
+                    controller  : 'MultipleProjectController'
+                }
+            }
+        })
+
         // route for the individual project page
         .state('project', {
             url: '/projects/:id',
@@ -76,22 +92,6 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
                 'content': {
                     templateUrl : 'views/projectTasks.html',
                     controller  : 'ProjectTasksController'
-                }
-            }
-        })
-
-        // route for the multiple project page
-        .state('projects', {
-            url: '/projects/',
-            parent: 'common',
-            views: {
-                'navbar': {
-                    templateUrl : 'views/navbar.html',
-                    controller  : 'NavbarController',
-                },
-                'content': {
-                    templateUrl : 'views/multipleProject.html',
-                    controller  : 'MultipleProjectController'
                 }
             }
         })
