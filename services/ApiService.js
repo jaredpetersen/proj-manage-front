@@ -26,7 +26,9 @@ angular.module('tangram').factory('ApiService', function($http, $q) {
 
     // Create new project
     apiFactory.createProject = function(token, name, description) {
-        return $http.post(baseURL + '/projects');
+        var request = $http.post(baseURL + '/projects', {'name': name, 'description': description}, {headers: {'x-access-token': token}});
+        console.log(request);
+        return request;
     }
 
     // Get a single user

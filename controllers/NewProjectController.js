@@ -1,15 +1,15 @@
 'use strict';
 
-angular.module('tangram').controller('NewProjectController', function($scope, ApiService, AuthService) {
+angular.module('tangram').controller('NewProjectController', function($scope, $state, ApiService, AuthService) {
 
-    var createProject = function(project) {
+    $scope.createProject = function(project) {
         // API JSONWebToken
         var token = AuthService.getToken();
 
-        ApiService.createProject(token)
+        ApiService.createProject(token, project.name, project.description)
         .then(
             function success(response) {
-                $scope.projects = response.data;
+                $state.go('projects');
             },
             function error(error) {
                 console.log(error);
