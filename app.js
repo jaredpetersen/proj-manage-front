@@ -82,7 +82,7 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 
         // route for the individual project page
         .state('project', {
-            url: '/projects/:id',
+            url: '/projects/:id/metrics',
             parent: 'common',
             views: {
                 'navbar': {
