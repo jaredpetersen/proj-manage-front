@@ -2,6 +2,8 @@
 
 angular.module('tangram').controller('ProjectTasksController', function($scope, $stateParams, ApiService, AuthService) {
 
+    $scope.newTaskState = false;
+
     var loadData = function() {
         // Kanban Board
         $scope.backlog = [];
@@ -30,13 +32,33 @@ angular.module('tangram').controller('ProjectTasksController', function($scope, 
         });
     }
 
+    $scope.switchNewTaskState = function() {
+        if ($scope.newTaskState == true) $scope.newTaskState = false;
+        else $scope.newTaskState = true;
+    }
+
+    $scope.addTask = function(newTask) {
+        var token = AuthService.getToken();
+
+        ApiService.createTask(token, newTask.name, newTask.description, $stateParams.id)
+        .then(
+            function success(response) {
+                console.log(response);
+                loadData();
+                $scope.switchNewTaskState();
+            },
+            function error(error) {
+                console.log(error);
+            }
+        );
+    }
+
     // Run on page load
     console.log(AuthService.getToken() == null);
     if (AuthService.getToken() == null) {
         AuthService.redirect();
     }
     else {
-        $scope.project = {'name': 'test name'};
         loadData();
     }
 

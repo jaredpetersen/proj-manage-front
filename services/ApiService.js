@@ -9,9 +9,14 @@ angular.module('tangram').factory('ApiService', function($http, $q) {
         return $http.get(baseURL + '/tasks', {headers: {'x-access-token': token}});
     }
 
-    // Get all projects
+    // Get all tasks for a project
     apiFactory.getProjectTasks = function(token, id) {
         return $http.get(baseURL + '/projects/' + id + '/tasks', {headers: {'x-access-token': token}});
+    }
+
+    // Add new task
+    apiFactory.createTask = function(token, name, description, project) {
+        return $http.post(baseURL + '/tasks', {'name': name, 'description': description, 'project': project}, {headers: {'x-access-token': token}});
     }
 
     // Get all projects
@@ -24,11 +29,9 @@ angular.module('tangram').factory('ApiService', function($http, $q) {
         return $http.get(baseURL + '/projects/' + id, {headers: {'x-access-token': token}});
     }
 
-    // Create new project
+    // Add new project
     apiFactory.createProject = function(token, name, description) {
-        var request = $http.post(baseURL + '/projects', {'name': name, 'description': description}, {headers: {'x-access-token': token}});
-        console.log(request);
-        return request;
+        return $http.post(baseURL + '/projects', {'name': name, 'description': description}, {headers: {'x-access-token': token}});
     }
 
     // Get a single user
