@@ -8,9 +8,6 @@ angular.module('tangram').controller('LaunchPadController', function($scope, $st
         $scope.inprogress = [];
         $scope.complete = [];
 
-        // Projects list
-        $scope.projects = [];
-
         // API JSONWebToken
         var token = AuthService.getToken();
 
@@ -34,10 +31,6 @@ angular.module('tangram').controller('LaunchPadController', function($scope, $st
                     }
                 });
             });
-        });
-
-        ApiService.getProjects(token).then(function(response) {
-            $scope.projects = response.data;
         });
     }
 

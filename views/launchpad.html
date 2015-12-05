@@ -1,16 +1,7 @@
 <div class="row">
-    <!-- Right column used for minor things -->
-    <div class="col-md-3 col-sm-3 col-xs-12">
-        <h3>Projects</h3>
-        <div class="list-group">
-            <a href="" ui-sref="project({id: project._id})" class="list-group-item" ng-repeat="project in projects" title="{{project.name}}">{{project.name}}</a>
-            <a ui-sref="projects" class="list-group-item" title="See More">See More</a>
-        </div>
-    </div>
-
     <!--  Tasks -->
     <!-- Backlog -->
-    <div class="col-md-3 col-sm-3 col-xs-12">
+    <div class="col-md-4 col-sm-4 col-xs-12">
         <h3>Backlog</h3>
         <div id="Backlog" class="kanban" ng-model='backlog' ui-sortable="sortableOptions">
             <div class="panel panel-default" ng-repeat="task in backlog">
@@ -29,7 +20,7 @@
     </div>
 
     <!-- In-Progress -->
-    <div class="col-md-3 col-sm-3 col-xs-12">
+    <div class="col-md-4 col-sm-4 col-xs-12">
         <h3>In-Progress</h3>
         <div id="In-Progress" class="kanban" ng-model='inprogress' ui-sortable="sortableOptions">
             <div class="panel panel-default" ng-repeat="task in inprogress">
@@ -48,7 +39,7 @@
     </div>
 
     <!-- Complete -->
-    <div class="col-md-3 col-sm-3 col-xs-12">
+    <div class="col-md-4 col-sm-4 col-xs-12">
         <h3>Complete</h3>
         <div id="Complete" class="kanban" ng-model='complete' ui-sortable="sortableOptions">
             <div class="panel panel-default" ng-repeat="task in complete">
