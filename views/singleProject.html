@@ -1,34 +1,40 @@
-<div class="row">
+<div class="row row-top">
   <div class="col-md-12">
-      <h3>{{project.name}} <span style="font-size: .6em">{{project.description}}</span></h3>
+      <h4 class="heading-background-black-o">{{project.name}}</h4>
+      <h5 ng-show="project.description">{{project.description}}</h5>
+      <br />
   </div>
 </div>
 <div class="row">
     <div class="col-md-9 col-sm-9 col-xs-12">
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
-                <h3>Progress</h3>
+                <h4 class="heading-background-black-o">progress</h4>
                 <div style="width: 100%; height: 200px; border: 1px solid #CCCCCC;"></div>
                 <br />
             </div>
         </div>
         <div class="row">
             <div class="col-md-3 col-sm-3 col-xs-12">
-                <h3>Backlog <p style="font-size: 3em;">{{backlogCount}}</p></h3>
+                <h4 class="heading-background-red">backlog</h4>
+                <h4 style="font-size: 3em;">{{backlogCount}}</h4>
             </div>
             <div class="col-md-3 col-sm-3 col-xs-12">
-                <h3>In-Progress <p style="font-size: 3em;">{{inprogressCount}}</p></h3>
+                <h4 class="heading-background-yellow">in-progress</h4>
+                <h4 style="font-size: 3em;">{{inprogressCount}}</h4>
             </div>
             <div class="col-md-3 col-sm-3 col-xs-12">
-                <h3>Complete <p style="font-size: 3em;">{{completeCount}}</p></h3>
+                <h4 class="heading-background-blue">complete</h4>
+                <h4 style="font-size: 3em;">{{completeCount}}</h4>
             </div>
             <div class="col-md-3 col-sm-3 col-xs-12">
-                <h3>Status <p><span style="font-size: 3em; color: #CE4844;">{{completeCount}}</span><span style="font-size: .75em; color: #CE4844;">%</span></p></h3>
+                <h4 class="heading-background-black">status</h4>
+                <h4 style="font-size: 3em;">{{completeCount}}<span style="font-size: .75em;">%</span></h4>
             </div>
         </div>
     </div>
     <div class="col-md-3 col-sm-3 col-xs-12">
-        <h3>Members</h3>
+        <h4 class="heading-background-black-o">members</h4>
         <ul class="list-group" ng-model='project'>
             <li class="list-group-item" ng-repeat="member in project.members">{{member.first_name}} {{member.last_name}}</li>
         </ul>

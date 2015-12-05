@@ -8,6 +8,10 @@ h3 {
 }
 h4 {
   font-weight: 600;
+  font-size: 18px;
+}
+h5 {
+  font-weight: 600;
 }
 p {
   font-weight: 600;
@@ -103,4 +107,26 @@ a.blue:hover {
     font-size: 1.5em;
     color: white;
     margin-top: 0px;
+}
+
+.heading-background-black {
+    background-color: #000;
+    margin-bottom: 10px;
+    padding: 5px;
+    font-size: 1.5em;
+    color: white;
+    margin-top: 0px;
+}
+
+.heading-background-black-o {
+    background-color: #fff;
+    border: 1px solid black;
+    margin-bottom: 10px;
+    padding: 5px;
+    font-size: 1.5em;
+    margin-top: 0px;
+}
+
+.row-top {
+    margin-top: 10px;
 }
