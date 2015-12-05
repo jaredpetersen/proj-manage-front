@@ -1,8 +1,10 @@
-<div class="row">
+<div class="row" style="margin-top: 10px;">
     <!--  Tasks -->
     <!-- Backlog -->
     <div class="col-md-4 col-sm-4 col-xs-12">
-        <h3>Backlog</h3>
+        <div style="background-color: #EA4335; margin-bottom: 10px; padding: 5px;">
+            <h4 style="font-size: 1.5em; color: white; margin: 0px;">backlog</h4>
+        </div>
         <div id="Backlog" class="kanban" ng-model='backlog' ui-sortable="sortableOptions">
             <div class="panel panel-default" ng-repeat="task in backlog">
                 <div class="panel-body">
@@ -36,7 +38,9 @@
 
     <!-- In-Progress -->
     <div class="col-md-4 col-sm-4 col-xs-12">
-        <h3>In-Progress</h3>
+        <div style="background-color: #FBBC05; margin-bottom: 10px; padding: 5px;">
+            <h4 style="font-size: 1.5em; color: white; margin: 0px;">in-progress</h4>
+        </div>
         <div id="In-Progress" class="kanban" ng-model='inprogress' ui-sortable="sortableOptions">
             <div class="panel panel-default" ng-repeat="task in inprogress">
                 <div class="panel-body">
@@ -55,7 +59,9 @@
 
     <!-- Complete -->
     <div class="col-md-4 col-sm-4 col-xs-12">
-        <h3>Complete</h3>
+        <div style="background-color: #4285F4; margin-bottom: 10px; padding: 5px;">
+            <h4 style="font-size: 1.5em; color: white; margin: 0px;">complete</h4>
+        </div>
         <div id="Complete" class="kanban" ng-model='complete' ui-sortable="sortableOptions">
             <div class="panel panel-default" ng-repeat="task in complete">
                 <div class="panel-body">

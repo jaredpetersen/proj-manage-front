@@ -20,6 +20,10 @@ angular.module('tangram').controller('MultipleProjectController', function($scop
         );
     }
 
+    $scope.log = function() {
+        console.log('log');
+    }
+
     // Run on page load
     console.log(AuthService.getToken() == null);
     if (AuthService.getToken() == null) {
