@@ -35,14 +35,14 @@ angular.module('tangram').controller('SingleProjectController', function($scope,
                         function success(userResponse) {
                             $scope.project.members.push(userResponse.data);
                         },
-                        function error(error) {
-                            console.log(error);
+                        function error(response) {
+                            console.log(response);
                         }
                     );
                 });
             },
-            function error(error) {
-                console.log(error);
+            function error(response) {
+                console.log(response);
             }
         );
 
@@ -70,8 +70,8 @@ angular.module('tangram').controller('SingleProjectController', function($scope,
                 $scope.inprogressCount = inprogressCount;
                 $scope.completeCount = completeCount;
             },
-            function error(error) {
-                console.log(error);
+            function error(response) {
+                console.log(response);
             }
         );
     }

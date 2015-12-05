@@ -47,8 +47,8 @@ angular.module('tangram').controller('ProjectTasksController', function($scope, 
                 loadData();
                 $scope.switchNewTaskState();
             },
-            function error(error) {
-                console.log(error);
+            function error(response) {
+                console.log(response);
             }
         );
     }

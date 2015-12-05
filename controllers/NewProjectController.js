@@ -11,8 +11,8 @@ angular.module('tangram').controller('NewProjectController', function($scope, $s
             function success(response) {
                 $state.go('projects');
             },
-            function error(error) {
-                console.log(error);
+            function error(response) {
+                console.log(response);
             }
         );
     }
