@@ -2,78 +2,64 @@
     <!--  Tasks -->
     <!-- Backlog -->
     <div class="col-md-4 col-sm-4 col-xs-12">
-        <div style="background-color: #EA4335; margin-bottom: 10px; padding: 5px;">
-            <h4 style="font-size: 1.5em; color: white; margin: 0px;">backlog</h4>
-        </div>
+        <h4 class="heading-background-red">backlog</h4>
         <div id="Backlog" class="kanban" ng-model='backlog' ui-sortable="sortableOptions">
-            <div class="panel panel-default" ng-repeat="task in backlog">
-                <div class="panel-body">
-                    <h4><a ui-sref="task({id: task._id})">{{task.name}}</a></h4>
-                    <p>
-                        <!-- Will need to fix overflow with CSS later with this:
-                             http://stackoverflow.com/questions/22978990/bootstrap-3-table-overflow-out-of-panel -->
-                        <i class="fa fa-calendar"></i> {{task.created | date:'MM/dd/yy'}}
-                    </p>
-                </div>
+            <div class="card" ng-repeat="task in backlog">
+                <h4><a ui-sref="task({id: task._id})">{{task.name}}</a></h4>
+                <p>
+                    <!-- Will need to fix overflow with CSS later with this:
+                         http://stackoverflow.com/questions/22978990/bootstrap-3-table-overflow-out-of-panel -->
+                    <i class="fa fa-calendar"></i> {{task.created | date:'MM/dd/yy'}}
+                </p>
             </div>
         </div>
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <a href="" ng-hide="newTaskState"ng-click="switchNewTaskState()"><h4><i class="fa fa-plus"></i> New Task</h4></a>
-                <div ng-show="newTaskState">
-                    <h4 ng-hide="newTask">New Task</h4>
-                    <form>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="name" placeholder="Name" ng-model="newTask.name">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="description" placeholder="Description (Optional)" ng-model="newTask.description">
-                        </div>
-                        <button type="button" class="btn btn-default" ng-click="addTask(newTask);">Add Task</button>&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-default" ng-click="switchNewTaskState()">Cancel</button>
-                    </form>
-                </div>
+        <div class="card">
+            <a href="" ng-hide="newTaskState"ng-click="switchNewTaskState()"><h4><i class="fa fa-plus"></i> New Task</h4></a>
+            <div ng-show="newTaskState">
+                <h4 ng-hide="newTask">New Task</h4>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="name" placeholder="Name" ng-model="newTask.name">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="description" placeholder="Description (Optional)" ng-model="newTask.description">
+                    </div>
+                    <button type="button" class="btn btn-default" ng-click="addTask(newTask);">Add Task</button>&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-default" ng-click="switchNewTaskState()">Cancel</button>
+                </form>
             </div>
         </div>
     </div>
 
     <!-- In-Progress -->
     <div class="col-md-4 col-sm-4 col-xs-12">
-        <div style="background-color: #FBBC05; margin-bottom: 10px; padding: 5px;">
-            <h4 style="font-size: 1.5em; color: white; margin: 0px;">in-progress</h4>
-        </div>
+        <h4 class="heading-background-yellow">in-progress</h4>
         <div id="In-Progress" class="kanban" ng-model='inprogress' ui-sortable="sortableOptions">
-            <div class="panel panel-default" ng-repeat="task in inprogress">
-                <div class="panel-body">
-                    <h4><a ui-sref="task({id: task._id})">{{task.name}}</a></h4>
-                    <p>
-                        <!-- Will need to fix overflow with CSS later with this:
-                             http://stackoverflow.com/questions/22978990/bootstrap-3-table-overflow-out-of-panel -->
-                        <i class="fa fa-sticky-note-o"></i> <a ui-sref="project({id: task.project})">{{task.projectName}}</a>
-                        &nbsp;&nbsp;
-                        <i class="fa fa-calendar"></i> {{task.created | date:'MM/dd/yy'}}
-                    </p>
-                </div>
+            <div class="card" ng-repeat="task in inprogress">
+                <h4><a ui-sref="task({id: task._id})">{{task.name}}</a></h4>
+                <p>
+                    <!-- Will need to fix overflow with CSS later with this:
+                         http://stackoverflow.com/questions/22978990/bootstrap-3-table-overflow-out-of-panel -->
+                    <i class="fa fa-sticky-note-o"></i> <a ui-sref="project({id: task.project})">{{task.projectName}}</a>
+                    &nbsp;&nbsp;
+                    <i class="fa fa-calendar"></i> {{task.created | date:'MM/dd/yy'}}
+                </p>
             </div>
         </div>
     </div>
 
     <!-- Complete -->
     <div class="col-md-4 col-sm-4 col-xs-12">
-        <div style="background-color: #4285F4; margin-bottom: 10px; padding: 5px;">
-            <h4 style="font-size: 1.5em; color: white; margin: 0px;">complete</h4>
-        </div>
+        <h4 class="heading-background-blue">complete</h4>
         <div id="Complete" class="kanban" ng-model='complete' ui-sortable="sortableOptions">
-            <div class="panel panel-default" ng-repeat="task in complete">
-                <div class="panel-body">
-                    <h4><a ui-sref="task({id: task._id})">{{task.name}}</a></h4>
-                    <p>
-                        <!-- Will need to fix overflow with CSS later with this:
-                             http://stackoverflow.com/questions/22978990/bootstrap-3-table-overflow-out-of-panel -->
-                        <i class="fa fa-sticky-note-o"></i> <a ui-sref="project({id: task.project})">{{task.projectName}}</a>
-                        &nbsp;&nbsp;
-                        <i class="fa fa-calendar"></i> {{task.created | date:'MM/dd/yy'}}
-                    </p>
-                </div>
+            <div class="card" ng-repeat="task in complete">
+                <h4><a ui-sref="task({id: task._id})">{{task.name}}</a></h4>
+                <p>
+                    <!-- Will need to fix overflow with CSS later with this:
+                         http://stackoverflow.com/questions/22978990/bootstrap-3-table-overflow-out-of-panel -->
+                    <i class="fa fa-sticky-note-o"></i> <a ui-sref="project({id: task.project})">{{task.projectName}}</a>
+                    &nbsp;&nbsp;
+                    <i class="fa fa-calendar"></i> {{task.created | date:'MM/dd/yy'}}
+                </p>
             </div>
         </div>
     </div>

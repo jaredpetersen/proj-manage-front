@@ -3,63 +3,51 @@
     <!--  Tasks -->
     <!-- Backlog -->
     <div class="col-md-4 col-sm-4 col-xs-12">
-        <div style="background-color: #EA4335; margin-bottom: 10px; padding: 5px;">
-            <h4 style="font-size: 1.5em; color: white; margin: 0px;">backlog</h4>
-        </div>
+        <h4 class="heading-background-red">backlog</h4>
         <div id="Backlog" class="kanban" ng-model='backlog' ui-sortable="sortableOptions">
-            <div class="panel panel-default" ng-repeat="task in backlog">
-                <div class="panel-body">
-                    <h4><a ui-sref="task({id: task._id})">{{task.name}}</a></h4>
+            <div class="card" ng-repeat="task in backlog">
+                    <h4><a class="red" ui-sref="task({id: task._id})">{{task.name}}</a></h4>
                     <p>
                         <!-- Will need to fix overflow with CSS later with this:
                              http://stackoverflow.com/questions/22978990/bootstrap-3-table-overflow-out-of-panel -->
-                        <i class="fa fa-sticky-note-o"></i> <a ui-sref="project({id: task.project})" style="font-color: black;">{{task.projectName}}</a>
+                        <i class="fa fa-sticky-note-o"></i> <a class="red" ui-sref="project({id: task.project})" style="font-color: black;">{{task.projectName}}</a>
                         &nbsp;&nbsp;
                         <i class="fa fa-calendar"></i> {{task.created | date:'MM/dd/yy'}}
                     </p>
-                </div>
             </div>
         </div>
     </div>
 
     <!-- In-Progress -->
     <div class="col-md-4 col-sm-4 col-xs-12">
-        <div style="background-color: #FBBC05; margin-bottom: 10px; padding: 5px;">
-            <h4 style="font-size: 1.5em; color: white; margin: 0px;">in-progress</h4>
-        </div>
+        <h4 class="heading-background-yellow">in-progress</h4>
         <div id="In-Progress" class="kanban" ng-model='inprogress' ui-sortable="sortableOptions">
-            <div class="panel panel-default" ng-repeat="task in inprogress">
-                <div class="panel-body">
-                    <h4><a ui-sref="task({id: task._id})">{{task.name}}</a></h4>
-                    <p>
-                        <!-- Will need to fix overflow with CSS later with this:
-                             http://stackoverflow.com/questions/22978990/bootstrap-3-table-overflow-out-of-panel -->
-                        <i class="fa fa-sticky-note-o"></i> <a ui-sref="project({id: task.project})">{{task.projectName}}</a>
-                        &nbsp;&nbsp;
-                        <i class="fa fa-calendar"></i> {{task.created | date:'MM/dd/yy'}}
-                    </p>
-                </div>
+            <div class="card" ng-repeat="task in inprogress">
+                <h4><a class="yellow" ui-sref="task({id: task._id})">{{task.name}}</a></h4>
+                <p>
+                    <!-- Will need to fix overflow with CSS later with this:
+                         http://stackoverflow.com/questions/22978990/bootstrap-3-table-overflow-out-of-panel -->
+                    <i class="fa fa-sticky-note-o"></i> <a class="yellow" ui-sref="project({id: task.project})">{{task.projectName}}</a>
+                    &nbsp;&nbsp;
+                    <i class="fa fa-calendar"></i> {{task.created | date:'MM/dd/yy'}}
+                </p>
             </div>
         </div>
     </div>
 
     <!-- Complete -->
     <div class="col-md-4 col-sm-4 col-xs-12">
-        <div style="background-color: #4285F4; margin-bottom: 10px; padding: 5px;">
-            <h4 style="font-size: 1.5em; color: white; margin: 0px;">complete</h4>
-        </div>
+        <h4 class="heading-background-blue">complete</h4>
         <div id="Complete" class="kanban" ng-model='complete' ui-sortable="sortableOptions">
-            <div class="panel panel-default" ng-repeat="task in complete">
-                <div class="panel-body">
-                    <h4><a ui-sref="task({id: task._id})">{{task.name}}</a></h4>
-                    <p>
-                        <!-- Will need to fix overflow with CSS later with this:
-                             http://stackoverflow.com/questions/22978990/bootstrap-3-table-overflow-out-of-panel -->
-                        <i class="fa fa-sticky-note-o"></i> <a ui-sref="project({id: task.project})">{{task.projectName}}</a>
-                        &nbsp;&nbsp;
-                        <i class="fa fa-calendar"></i> {{task.created | date:'MM/dd/yy'}}
-                    </p>
-                </div>
+            <div class="card" ng-repeat="task in complete">
+                <h4><a class="blue" ui-sref="task({id: task._id})">{{task.name}}</a></h4>
+                <p>
+                    <!-- Will need to fix overflow with CSS later with this:
+                         http://stackoverflow.com/questions/22978990/bootstrap-3-table-overflow-out-of-panel -->
+                    <i class="fa fa-sticky-note-o"></i> <a class="blue" ui-sref="project({id: task.project})">{{task.projectName}}</a>
+                    &nbsp;&nbsp;
+                    <i class="fa fa-calendar"></i> {{task.created | date:'MM/dd/yy'}}
+                </p>
             </div>
         </div>
     </div>

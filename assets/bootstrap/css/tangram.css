@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:700,800,900,600,500,400');
+
 body {
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 h3 {
   font-weight: 700;
@@ -11,19 +12,26 @@ h4 {
 p {
   font-weight: 600;
 }
-.panel {
-    border-radius: 4px;
-    border: 1px solid black;
-}
 
+/* Restyles links */
 a {
-    color: black;
+    color: #000;
+    text-decoration: underline;
 }
 a:hover {
-    color: black;
+    color: #000;
+}
+a.red:hover {
+    color: #EA4335;
+}
+a.yellow:hover {
+    color: #FBBC05;
+}
+a.blue:hover {
+    color: #4285F4;
 }
 
-
+/* Temporary logo */
 #square {
 	width: 1.5em;
 	height: 1.5em;
@@ -38,14 +46,61 @@ a:hover {
 .navbar-right {
     float: left !important;
 }
-
-
 @media (min-width: 443px) {
     .navbar-right {
         float: right !important;
     }
 }
 
+/* Removes all rounded edges from bootstrap */
 * {
   border-radius: 0 !important;
+}
+
+/* Kanban Cards */
+.card {
+    background-color: #FFF;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 0px;
+    margin-bottom: 20px;
+}
+.card>h4 {
+    margin: 0px;
+}
+.card>p {
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+/* Kanban columns */
+.kanban {
+    min-height: 70px;
+}
+
+.heading-background-red {
+    background-color: #EA4335;
+    margin-bottom: 10px;
+    padding: 5px;
+    font-size: 1.5em;
+    color: white;
+    margin-top: 0px;
+}
+
+.heading-background-yellow {
+    background-color: #FBBC05;
+    margin-bottom: 10px;
+    padding: 5px;
+    font-size: 1.5em;
+    color: white;
+    margin-top: 0px;
+}
+
+.heading-background-blue {
+    background-color: #4285F4;
+    margin-bottom: 10px;
+    padding: 5px;
+    font-size: 1.5em;
+    color: white;
+    margin-top: 0px;
 }
