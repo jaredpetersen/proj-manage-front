@@ -127,6 +127,13 @@ a.blue:hover {
     margin-top: 0px;
 }
 
+.heading-underline-black {
+    border-bottom: 1px solid black;
+    margin: 0px 0px 10px 0px;
+    padding: 0px 0px 5px 0px;
+    font-size: 1.5em;
+}
+
 .row-top {
     margin-top: 10px;
 }
