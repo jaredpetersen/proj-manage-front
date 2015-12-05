@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('tangram').controller('NavbarController', function($scope, $state, AuthService, NavCommService) {
+angular.module('tangram').controller('NavbarController', function($scope, $state, AuthService) {
     // create a message to display in our view
     $scope.logout = function() {
         AuthService.clearToken();
