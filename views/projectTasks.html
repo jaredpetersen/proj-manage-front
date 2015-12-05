@@ -1,4 +1,9 @@
 <div class="row row-top">
+  <div class="col-md-12">
+      <h4 class="heading-underline-black">project kanban</h4>
+  </div>
+</div>
+<div class="row">
     <!--  Tasks -->
     <!-- Backlog -->
     <div class="col-md-4 col-sm-4 col-xs-12">
@@ -13,20 +18,18 @@
                 </p>
             </div>
         </div>
-        <div class="card">
-            <a href="" ng-hide="newTaskState"ng-click="switchNewTaskState()"><h4><i class="fa fa-plus"></i> New Task</h4></a>
-            <div ng-show="newTaskState">
-                <h4 ng-hide="newTask">New Task</h4>
-                <form>
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="name" placeholder="Name" ng-model="newTask.name">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="description" placeholder="Description (Optional)" ng-model="newTask.description">
-                    </div>
-                    <button type="button" class="btn btn-default" ng-click="addTask(newTask);">Add Task</button>&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-default" ng-click="switchNewTaskState()">Cancel</button>
-                </form>
-            </div>
+        <button type="button" ng-hide="newTaskState" ng-click="switchNewTaskState()" class="btn btn-default btn-lg btn-block"><i class="fa fa-plus"></i> New Task</button>
+        <div class="card" ng-show="newTaskState">
+            <h4>New Task</h4>
+            <form style="margin-top: 10px;">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="name" placeholder="Name" ng-model="newTask.name">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="description" placeholder="Description (Optional)" ng-model="newTask.description">
+                </div>
+                <button type="button" class="btn btn-default" ng-click="addTask(newTask);">Add Task</button>&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-default" ng-click="switchNewTaskState()">Cancel</button>
+            </form>
         </div>
     </div>
 

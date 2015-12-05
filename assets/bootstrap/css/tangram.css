@@ -34,11 +34,15 @@ a.yellow:hover {
 a.blue:hover {
     color: #4285F4;
 }
+.navbar-brand>a {
+    color: #000;
+    text-decoration: none;
+}
 
 /* Temporary logo */
 #square {
-	width: 1.5em;
-	height: 1.5em;
+	width: 20px;
+	height: 20px;
     border: 1px solid black;
     float: left;
 }
@@ -50,7 +54,7 @@ a.blue:hover {
 .navbar-right {
     float: left !important;
 }
-@media (min-width: 443px) {
+@media (min-width: 331px) {
     .navbar-right {
         float: right !important;
     }

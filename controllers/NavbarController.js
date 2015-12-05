@@ -6,12 +6,4 @@ angular.module('tangram').controller('NavbarController', function($scope, $state
         AuthService.clearToken();
         AuthService.redirect();
     }
-
-    // Set page title based on state
-    if (typeof $state.current.data == 'undefined') {
-        $scope.pageTitle = 'tangram'
-    }
-    else {
-        $scope.pageTitle = $state.current.data.pageTitle;
-    }
 });

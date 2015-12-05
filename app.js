@@ -45,9 +45,6 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
                     templateUrl : 'views/launchpad.html',
                     controller  : 'LaunchPadController'
                 }
-            },
-            data: {
-                pageTitle: 'personal kanban'
             }
         })
 
@@ -64,9 +61,6 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
                     templateUrl : 'views/multipleProject.html',
                     controller  : 'MultipleProjectController'
                 }
-            },
-            data: {
-                pageTitle: 'projects'
             }
         })
 
@@ -83,9 +77,6 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
                     templateUrl : 'views/newProject.html',
                     controller  : 'NewProjectController'
                 }
-            },
-            data: {
-                pageTitle: 'projects'
             }
         })
 
@@ -102,9 +93,6 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
                     templateUrl : 'views/singleProject.html',
                     controller  : 'SingleProjectController'
                 }
-            },
-            data: {
-                pageTitle: 'project metrics'
             }
         })
 
@@ -121,9 +109,6 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
                     templateUrl : 'views/projectTasks.html',
                     controller  : 'ProjectTasksController'
                 }
-            },
-            data: {
-                pageTitle: 'project kanban'
             }
         })
 
@@ -156,9 +141,6 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
                     templateUrl : 'views/user.html',
                     controller  : 'UserController'
                 }
-            },
-            data: {
-                pageTitle: 'user settings'
             }
         });
 
