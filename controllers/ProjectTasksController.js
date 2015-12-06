@@ -32,7 +32,7 @@ angular.module('tangram').controller('ProjectTasksController', function($scope, 
         });
     }
 
-    $scope.switchNewTaskState = function() {
+    $scope.switchNewTaskState = function(status) {
         if ($scope.newTaskState == true) $scope.newTaskState = false;
         else $scope.newTaskState = true;
     }

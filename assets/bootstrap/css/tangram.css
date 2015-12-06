@@ -1,5 +1,5 @@
+/* Font Restyling */
 @import url('https://fonts.googleapis.com/css?family=Raleway:700,800,900,600,500,400');
-
 body {
   font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
@@ -86,6 +86,7 @@ a.blue:hover {
     min-height: 70px;
 }
 
+/* Block Heading */
 .heading-background-red {
     background-color: #EA4335;
     margin-bottom: 10px;
@@ -94,7 +95,6 @@ a.blue:hover {
     color: white;
     margin-top: 0px;
 }
-
 .heading-background-yellow {
     background-color: #FBBC05;
     margin-bottom: 10px;
@@ -103,7 +103,6 @@ a.blue:hover {
     color: white;
     margin-top: 0px;
 }
-
 .heading-background-blue {
     background-color: #4285F4;
     margin-bottom: 10px;
@@ -112,7 +111,6 @@ a.blue:hover {
     color: white;
     margin-top: 0px;
 }
-
 .heading-background-black {
     background-color: #000;
     margin-bottom: 10px;
@@ -121,7 +119,6 @@ a.blue:hover {
     color: white;
     margin-top: 0px;
 }
-
 .heading-background-black-o {
     background-color: #fff;
     border: 1px solid black;
@@ -130,7 +127,6 @@ a.blue:hover {
     font-size: 1.5em;
     margin-top: 0px;
 }
-
 .heading-underline-black {
     border-bottom: 1px solid black;
     margin: 0px 0px 10px 0px;
@@ -138,6 +134,7 @@ a.blue:hover {
     font-size: 1.5em;
 }
 
-.row-top {
-    margin-top: 10px;
+/* Restyling Forms */
+.button {
+    border: 1px solid #000;
 }

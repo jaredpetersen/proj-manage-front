@@ -5,8 +5,8 @@
  */
 
 /*!
- * Generated using the Bootstrap Customizer (http://getbootstrap.com/customize/?id=9dbe3978d2398570bc08)
- * Config saved to config.json and https://gist.github.com/9dbe3978d2398570bc08
+ * Generated using the Bootstrap Customizer (http://getbootstrap.com/customize/?id=252640bddfe46ec6ee96)
+ * Config saved to config.json and https://gist.github.com/252640bddfe46ec6ee96
  */
 /*!
  * Bootstrap v3.3.6 (http://getbootstrap.com)
@@ -1391,7 +1391,7 @@ output {
   color: #555555;
   background-color: #ffffff;
   background-image: none;
-  border: 1px solid #cccccc;
+  border: 1px solid #000000;
   border-radius: 4px;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
@@ -1869,7 +1869,7 @@ select[multiple].input-lg {
 .btn:hover,
 .btn:focus,
 .btn.focus {
-  color: #333333;
+  color: #000000;
   text-decoration: none;
 }
 .btn:active,
@@ -1893,27 +1893,27 @@ fieldset[disabled] a.btn {
   pointer-events: none;
 }
 .btn-default {
-  color: #333333;
+  color: #000000;
   background-color: #ffffff;
-  border-color: #cccccc;
+  border-color: #000000;
 }
 .btn-default:focus,
 .btn-default.focus {
-  color: #333333;
+  color: #000000;
   background-color: #e6e6e6;
-  border-color: #8c8c8c;
+  border-color: #000000;
 }
 .btn-default:hover {
-  color: #333333;
+  color: #000000;
   background-color: #e6e6e6;
-  border-color: #adadad;
+  border-color: #000000;
 }
 .btn-default:active,
 .btn-default.active,
 .open > .dropdown-toggle.btn-default {
-  color: #333333;
+  color: #000000;
   background-color: #e6e6e6;
-  border-color: #adadad;
+  border-color: #000000;
 }
 .btn-default:active:hover,
 .btn-default.active:hover,
@@ -1924,9 +1924,9 @@ fieldset[disabled] a.btn {
 .btn-default:active.focus,
 .btn-default.active.focus,
 .open > .dropdown-toggle.btn-default.focus {
-  color: #333333;
+  color: #000000;
   background-color: #d4d4d4;
-  border-color: #8c8c8c;
+  border-color: #000000;
 }
 .btn-default:active,
 .btn-default.active,
@@ -1943,11 +1943,11 @@ fieldset[disabled] .btn-default:focus,
 .btn-default[disabled].focus,
 fieldset[disabled] .btn-default.focus {
   background-color: #ffffff;
-  border-color: #cccccc;
+  border-color: #000000;
 }
 .btn-default .badge {
   color: #ffffff;
-  background-color: #333333;
+  background-color: #000000;
 }
 .btn-primary {
   color: #ffffff;
@@ -2739,7 +2739,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   color: #555555;
   text-align: center;
   background-color: #eeeeee;
-  border: 1px solid #cccccc;
+  border: 1px solid #000000;
   border-radius: 4px;
 }
 .input-group-addon.input-sm {
