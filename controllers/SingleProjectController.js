@@ -57,7 +57,7 @@ angular.module('tangram').controller('SingleProjectController', function($scope,
                     if (task.status == 'backlog') {
                         backlogCount++;
                     }
-                    else if (task.status == 'inprogress') {
+                    else if (task.status == 'in-progress') {
                         inprogressCount++;
                     }
                     else {

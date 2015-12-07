@@ -3,6 +3,8 @@
 angular.module('tangram').controller('ProjectTasksController', function($scope, $stateParams, ApiService, AuthService) {
 
     $scope.newTaskState = false;
+    // API JSONWebToken
+    var token = AuthService.getToken();
 
     var loadData = function() {
         // Kanban Board
@@ -22,7 +24,7 @@ angular.module('tangram').controller('ProjectTasksController', function($scope, 
                 if (task.status == 'backlog') {
                     $scope.backlog.push(task);
                 }
-                else if (task.status == 'inprogress') {
+                else if (task.status == 'in-progress') {
                     $scope.inprogress.push(task);
                 }
                 else {
@@ -53,6 +55,16 @@ angular.module('tangram').controller('ProjectTasksController', function($scope, 
         );
     }
 
+    var changeStatus = function(task, newStatus) {
+        ApiService.updateTaskStatus(token, task._id, newStatus)
+        .then (
+            function success(response) {},
+            function error(response) {
+                console.log(response);
+            }
+        );
+    }
+
     // Run on page load
     console.log(AuthService.getToken() == null);
     if (AuthService.getToken() == null) {
@@ -72,8 +84,8 @@ angular.module('tangram').controller('ProjectTasksController', function($scope, 
             if (ui.item.sortable.droptarget != undefined) {
                 // Task was moved
                 var dropTarget = ui.item.sortable.droptarget[0].id;
-                console.log(item, fromIndex, toIndex, dropTarget);
-                // TODO: Update the task with the new location in the list and new status
+                //console.log(item, fromIndex, toIndex, dropTarget);
+                changeStatus(item, dropTarget);
             }
         }
     };

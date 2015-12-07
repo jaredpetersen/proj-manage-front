@@ -8,7 +8,7 @@
     <!-- Backlog -->
     <div class="col-md-4 col-sm-4 col-xs-12">
         <h4 class="heading-background-red">backlog</h4>
-        <div id="Backlog" class="kanban" ng-model='backlog' ui-sortable="sortableOptions">
+        <div id="backlog" class="kanban" ng-model='backlog' ui-sortable="sortableOptions">
             <div class="card" ng-repeat="task in backlog">
                     <h4><a class="red" ui-sref="task({id: task._id})">{{task.name}}</a></h4>
                     <p>
@@ -25,7 +25,7 @@
     <!-- In-Progress -->
     <div class="col-md-4 col-sm-4 col-xs-12">
         <h4 class="heading-background-yellow">in-progress</h4>
-        <div id="In-Progress" class="kanban" ng-model='inprogress' ui-sortable="sortableOptions">
+        <div id="in-progress" class="kanban" ng-model='inprogress' ui-sortable="sortableOptions">
             <div class="card" ng-repeat="task in inprogress">
                 <h4><a class="yellow" ui-sref="task({id: task._id})">{{task.name}}</a></h4>
                 <p>
@@ -42,7 +42,7 @@
     <!-- Complete -->
     <div class="col-md-4 col-sm-4 col-xs-12">
         <h4 class="heading-background-blue">complete</h4>
-        <div id="Complete" class="kanban" ng-model='complete' ui-sortable="sortableOptions">
+        <div id="complete" class="kanban" ng-model='complete' ui-sortable="sortableOptions">
             <div class="card" ng-repeat="task in complete">
                 <h4><a class="blue" ui-sref="task({id: task._id})">{{task.name}}</a></h4>
                 <p>

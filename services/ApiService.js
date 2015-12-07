@@ -19,6 +19,16 @@ angular.module('tangram').factory('ApiService', function($http, $q) {
         return $http.post(baseURL + '/tasks', {'name': name, 'description': description, 'project': project}, {headers: {'x-access-token': token}});
     }
 
+    // Update task -- has to pass all of the data
+    apiFactory.updateTask = function(token, id, name, description, owner, project, status) {
+        return $http.put(baseURL + '/tasks/' + id, {'name': name, 'description': description, 'owner': owner, 'project': project, 'status': status}, {headers: {'x-access-token': token}});
+    }
+
+    // Update task (just status)
+    apiFactory.updateTaskStatus = function(token, id, status) {
+        return $http.put(baseURL + '/tasks/' + id, {'status': status}, {headers: {'x-access-token': token}});
+    }
+
     // Get all projects
     apiFactory.getProjects = function(token) {
         return $http.get(baseURL + '/projects', {headers: {'x-access-token': token}});
