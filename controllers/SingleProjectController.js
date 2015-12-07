@@ -11,7 +11,7 @@ angular.module('tangram').controller('SingleProjectController', function($scope,
 
     var calculatePercentComplete = function(backlog, inprogress, complete) {
         var total = backlog + inprogress + complete;
-        return Math.round(complete/total);
+        return Math.round((complete/total) * 100);
     }
 
     var loadData = function() {
