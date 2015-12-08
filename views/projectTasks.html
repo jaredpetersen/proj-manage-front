@@ -22,7 +22,7 @@
         </div>
         <div id="Backlog" class="kanban" ng-model='backlog' ui-sortable="sortableOptions">
             <div class="card" ng-repeat="task in backlog">
-                <h4><a ui-sref="task({id: task._id})">{{task.name}}</a></h4>
+                <h4><a class="red" ui-sref="task({id: task._id})">{{task.name}}</a><a class="red pull-right" title="delete task" href=""><i class="fa fa-caret-down"></i></a></h4>
                 <p>
                     <!-- Will need to fix overflow with CSS later with this:
                          http://stackoverflow.com/questions/22978990/bootstrap-3-table-overflow-out-of-panel -->
@@ -37,7 +37,7 @@
         <h4 class="heading-background-yellow">in-progress</h4>
         <div id="In-Progress" class="kanban" ng-model='inprogress' ui-sortable="sortableOptions">
             <div class="card" ng-repeat="task in inprogress">
-                <h4><a ui-sref="task({id: task._id})">{{task.name}}</a></h4>
+                <h4><a class="yellow" ui-sref="task({id: task._id})">{{task.name}}</a><a class="yellow pull-right" title="delete task" href=""><i class="fa fa-caret-down"></i></a></h4>
                 <p>
                     <!-- Will need to fix overflow with CSS later with this:
                          http://stackoverflow.com/questions/22978990/bootstrap-3-table-overflow-out-of-panel -->
@@ -52,7 +52,7 @@
         <h4 class="heading-background-blue">complete</h4>
         <div id="Complete" class="kanban" ng-model='complete' ui-sortable="sortableOptions">
             <div class="card" ng-repeat="task in complete">
-                <h4><a ui-sref="task({id: task._id})">{{task.name}}</a></h4>
+                <h4><a class="blue" ui-sref="task({id: task._id})">{{task.name}}</a><a class="blue pull-right" title="delete task" href=""><i class="fa fa-caret-down"></i></a></h4>
                 <p>
                     <!-- Will need to fix overflow with CSS later with this:
                          http://stackoverflow.com/questions/22978990/bootstrap-3-table-overflow-out-of-panel -->

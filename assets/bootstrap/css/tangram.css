@@ -34,6 +34,7 @@ a.yellow:hover {
 a.blue:hover {
     color: #4285F4;
 }
+/* Makes it so the big tangram link doesn't have underline */
 .navbar-brand>a {
     color: #000;
     text-decoration: none;
