@@ -44,6 +44,21 @@ angular.module('tangram').controller('LaunchPadController', function($scope, $st
         );
     }
 
+    $scope.deleteTask = function(taskID) {
+        ApiService.deleteTask(token, taskID)
+        .then (
+            function success(response) {
+                // TODO remove the task from the column instead of reloading
+                // all of the data all over again
+                loadData();
+            },
+            function error(response) {
+                console.log(response);
+            }
+        );
+
+    }
+
     // Run on page load
     console.log(AuthService.getToken() == null);
     if (AuthService.getToken() == null) {

@@ -10,7 +10,10 @@
         <h4 class="heading-background-red">backlog</h4>
         <div id="backlog" class="kanban" ng-model='backlog' ui-sortable="sortableOptions">
             <div class="card" ng-repeat="task in backlog">
-                    <h4><a class="red" ui-sref="task({id: task._id})">{{task.name}}</a></h4>
+                    <h4>
+                        <a class="red" ui-sref="task({id: task._id})">{{task.name}}</a>
+                        <a class="red pull-right" title="delete task" href="" ng-click="deleteTask(task._id)"><i class="fa fa-close"></i></a>
+                    </h4>
                     <p>
                         <!-- Will need to fix overflow with CSS later with this:
                              http://stackoverflow.com/questions/22978990/bootstrap-3-table-overflow-out-of-panel -->
@@ -27,7 +30,10 @@
         <h4 class="heading-background-yellow">in-progress</h4>
         <div id="in-progress" class="kanban" ng-model='inprogress' ui-sortable="sortableOptions">
             <div class="card" ng-repeat="task in inprogress">
-                <h4><a class="yellow" ui-sref="task({id: task._id})">{{task.name}}</a></h4>
+                <h4>
+                    <a class="yellow" ui-sref="task({id: task._id})">{{task.name}}</a>
+                    <a class="yellow pull-right" title="delete task" href="" ng-click="deleteTask(task._id)"><i class="fa fa-close"></i></a>
+                </h4>
                 <p>
                     <!-- Will need to fix overflow with CSS later with this:
                          http://stackoverflow.com/questions/22978990/bootstrap-3-table-overflow-out-of-panel -->
@@ -44,7 +50,10 @@
         <h4 class="heading-background-blue">complete</h4>
         <div id="complete" class="kanban" ng-model='complete' ui-sortable="sortableOptions">
             <div class="card" ng-repeat="task in complete">
-                <h4><a class="blue" ui-sref="task({id: task._id})">{{task.name}}</a></h4>
+                <h4>
+                    <a class="blue" ui-sref="task({id: task._id})">{{task.name}}</a>
+                    <a class="blue pull-right" title="delete task" href="" ng-click="deleteTask(task._id)"><i class="fa fa-close"></i></a>
+                </h4>
                 <p>
                     <!-- Will need to fix overflow with CSS later with this:
                          http://stackoverflow.com/questions/22978990/bootstrap-3-table-overflow-out-of-panel -->

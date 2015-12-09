@@ -46,6 +46,7 @@ angular.module('tangram').controller('ProjectTasksController', function($scope, 
         .then(
             function success(response) {
                 console.log(response);
+                // Need the task ID in order to avoid entire data reload
                 loadData();
                 $scope.switchNewTaskState();
             },
@@ -63,6 +64,21 @@ angular.module('tangram').controller('ProjectTasksController', function($scope, 
                 console.log(response);
             }
         );
+    }
+
+    $scope.deleteTask = function(taskID) {
+        ApiService.deleteTask(token, taskID)
+        .then (
+            function success(response) {
+                // TODO remove the task from the column instead of reloading
+                // all of the data all over again
+                loadData();
+            },
+            function error(response) {
+                console.log(response);
+            }
+        );
+
     }
 
     // Run on page load
