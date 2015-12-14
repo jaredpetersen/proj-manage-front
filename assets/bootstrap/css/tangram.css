@@ -113,7 +113,7 @@ a.blue:hover {
 /* Kanban Cards */
 .card {
   background-color: #FFF;
-  border: 2px solid #CCC;
+  border: 1px solid #333;
   padding: 7px;
   margin-bottom: 10px;
 }
@@ -130,12 +130,7 @@ a.blue:hover {
 
 /* Column Styling */
 .kanban {
-  height: 100%;
   min-height: 100px;
-}
-.kanban-column {
-  min-height: 100px;
-  margin-bottom: 15px;
 }
 .column {
   margin-bottom: 25px;
