@@ -1,64 +1,27 @@
 /* Font Restyling */
-@import url('https://fonts.googleapis.com/css?family=Raleway:700,800,900,600,500,400');
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
 body {
-  font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #333;
 }
-h3 {
-  font-weight: 700;
+h1 {
+  font-size: 20px;
 }
-h4 {
-  font-weight: 600;
+h2 {
   font-size: 18px;
 }
+h3 {
+  font-size: 16px;
+  margin-top: 0px;
+}
+h4 {
+  font-size: 14px;
+}
 h5 {
-  font-weight: 600;
+  font-size: 12px;
 }
 p {
-  font-weight: 600;
-}
-
-/* Restyles links */
-a {
-    color: #000;
-    text-decoration: underline;
-}
-a:hover {
-    color: #000;
-}
-a.red:hover {
-    color: #EA4335;
-}
-a.yellow:hover {
-    color: #FBBC05;
-}
-a.blue:hover {
-    color: #4285F4;
-}
-/* Makes it so the big tangram link doesn't have underline */
-.navbar-brand>a {
-    color: #000;
-    text-decoration: none;
-}
-
-/* Temporary logo */
-#square {
-	width: 20px;
-	height: 20px;
-    border: 1px solid black;
-    float: left;
-}
-
-/* Prevents Bootstrap Nav Collapse */
-.navbar-nav>li, .navbar-nav {
-    float: left !important;
-}
-.navbar-right {
-    float: left !important;
-}
-@media (min-width: 331px) {
-    .navbar-right {
-        float: right !important;
-    }
+  font-size: 12px;
 }
 
 /* Removes all rounded edges from bootstrap */
@@ -66,76 +29,222 @@ a.blue:hover {
   border-radius: 0 !important;
 }
 
-/* Kanban Cards */
-.card {
-    background-color: #FFF;
-    border: 1px solid black;
-    padding: 10px;
-    margin: 0px;
+/* Restyles Buttons */
+.btn {
+    border: 1px solid #333;
+    color: #333;
+    margin-bottom: 10px;
+}
+.btn-lg {
+    font-size: 16px;
+}
+.btn-warn {
+    color: #EA4335;
+}
+.btn-warn:hover {
+    color: #FFF;
+    background-color: #EA4335;
+}
+.btn-project {
     margin-bottom: 20px;
 }
+
+/* Restyles links */
+a {
+  color: #333;
+  text-decoration: none;
+}
+a.black-underline {
+  color: #333;
+  text-decoration: underline;
+}
+a.black-underline:hover {
+  color: #EA4335;
+  text-decoration: underline;
+}
+a:hover {
+  color: #333;
+  text-decoration: none;
+}
+a.red:hover {
+  color: #EA4335;
+  text-decoration: none;
+}
+a.yellow:hover {
+  color: #FBBC05;
+  text-decoration: none;
+}
+a.blue:hover {
+  color: #4285F4;
+  text-decoration: none;
+}
+
+/* Temporary logo */
+#square {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #333;
+  float: left;
+  background-color: #333;
+}
+
+#square-big {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #333;
+  float: left;
+  background-color: #333;
+}
+
+/* Prevents Bootstrap Nav Collapse */
+.navbar-nav>li, .navbar-nav {
+  float: left !important;
+  display: block;
+}
+.navbar-right {
+  float: left !important;
+}
+@media (min-width: 317px) {
+  .navbar-right {
+    float: right !important;
+  }
+}
+
+/* Kanban Cards */
+.card {
+  background-color: #FFF;
+  border: 2px solid #CCC;
+  padding: 7px;
+  margin-bottom: 10px;
+}
+.card-black {
+  border: 2px solid #333;
+}
 .card>h4 {
-    margin: 0px;
+  margin: 0px;
 }
 .card>p {
-    margin-top: 10px;
-    margin-bottom: 0px;
+  margin-top: 5px;
+  margin-bottom: 0px;
 }
 
-/* Kanban columns */
+/* Column Styling */
 .kanban {
-    min-height: 70px;
+  height: 100%;
+  min-height: 100px;
+}
+.kanban-column {
+  min-height: 100px;
+  margin-bottom: 15px;
+}
+.column {
+  margin-bottom: 25px;
+}
+.column-heading {
+  margin-bottom: 10px;
+  margin-top: 0px;
+  color: #333;
+}
+.column-heading-red {
+  background-color: #EA4335;
+  margin-bottom: 10px;
+  padding: 5px;
+  color: white;
+  margin-top: 0px;
+}
+.column-heading-yellow {
+  background-color: #FBBC05;
+  margin-bottom: 10px;
+  padding: 5px;
+  color: white;
+  margin-top: 0px;
+}
+.column-heading-blue {
+  background-color: #4285F4;
+  margin-bottom: 10px;
+  padding: 5px 5px 5px 5px;
+  color: white;
+  margin-top: 0px;
+}
+.column-heading-black {
+  background-color: #333;
+  margin-bottom: 10px;
+  padding: 5px;
+  color: #000;
+  margin-top: 0px;
+}
+.big-number>h4 {
+    font-size: 60px;
+    margin: 0px;
+    text-align: center;
+}
+.big-number>h3 {
+    margin: 0px;
+    text-align: center;
 }
 
-/* Block Heading */
-.heading-background-red {
-    background-color: #EA4335;
-    margin-bottom: 10px;
-    padding: 5px;
-    font-size: 1.5em;
-    color: white;
-    margin-top: 0px;
+/* Navbar */
+.nav-links {
+  float: left;
+  text-align: left;
+  margin-top: 10px;
+  font-size: 16px;
+  margin-bottom: 10px;
 }
-.heading-background-yellow {
-    background-color: #FBBC05;
-    margin-bottom: 10px;
-    padding: 5px;
-    font-size: 1.5em;
-    color: white;
-    margin-top: 0px;
+.nav-logo {
+  float: left;
+  margin-top: 10px;
+  margin-right: 10px;
+  display: block
 }
-.heading-background-blue {
-    background-color: #4285F4;
-    margin-bottom: 10px;
-    padding: 5px;
-    font-size: 1.5em;
-    color: white;
-    margin-top: 0px;
+.nav-title {
+  float: left;
+  margin: 10px 0px 0px 0px;
 }
-.heading-background-black {
-    background-color: #000;
-    margin-bottom: 10px;
-    padding: 5px;
-    font-size: 1.5em;
-    color: white;
-    margin-top: 0px;
-}
-.heading-background-black-o {
-    background-color: #fff;
-    border: 1px solid black;
-    margin-bottom: 10px;
-    padding: 5px;
-    font-size: 1.5em;
-    margin-top: 0px;
-}
-.heading-underline-black {
-    border-bottom: 1px solid black;
-    margin: 0px 0px 10px 0px;
-    padding: 0px 0px 5px 0px;
-    font-size: 1.5em;
+@media (min-width: 768px) {
+  .nav-links {
+    float: right;
+    text-align: right;
+    margin-bottom: 0px;
+  }
+  .nav-logo {
+    float: left;
+    margin-right: 10px
+  }
+  .nav-title {
+    float: left;
+    margin: 10px 0px;
+  }
 }
 
-/* Restyling Forms */
-.button {
-    border: 1px solid #000;
+/* Chart styling */
+.ct-series-a .ct-line {
+  /* Set the colour of this series line */
+  stroke: #EA4335;
+  /* Control the thikness of your lines */
+  stroke-width: 5px;
+}
+.ct-series-a .ct-point {
+  /* Colour of your points */
+  stroke: #EA4335;
+}
+.ct-series-b .ct-line {
+  /* Set the colour of this series line */
+  stroke: #FBBC05;
+  /* Control the thikness of your lines */
+  stroke-width: 5px;
+}
+.ct-series-b .ct-point {
+  /* Colour of your points */
+  stroke: #FBBC05;
+}
+.ct-series-c .ct-line {
+  /* Set the colour of this series line */
+  stroke: #4285F4;
+  /* Control the thikness of your lines */
+  stroke-width: 5px;
+}
+.ct-series-c .ct-point {
+  /* Colour of your points */
+  stroke: #4285F4;
 }

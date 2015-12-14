@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('tangram').controller('LaunchPadController', function($scope, $state, ApiService, AuthService) {
+angular.module('tangram').controller('LaunchPadController', function($scope, $rootScope, $state, ApiService, AuthService) {
 
     // API JSONWebToken
     var token = AuthService.getToken();
@@ -65,6 +65,7 @@ angular.module('tangram').controller('LaunchPadController', function($scope, $st
         AuthService.redirect();
     }
     else {
+        $rootScope.pageTitle = 'personal kanban';
         loadData();
     }
 

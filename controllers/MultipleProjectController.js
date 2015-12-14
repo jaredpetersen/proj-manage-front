@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('tangram').controller('MultipleProjectController', function($scope, ApiService, AuthService) {
+angular.module('tangram').controller('MultipleProjectController', function($scope, $rootScope, ApiService, AuthService) {
     // create a message to display in our view
     $scope.message = 'This is the project page. Controlled by the MultipleProjectController';
     $scope.projects = [];
@@ -30,6 +30,7 @@ angular.module('tangram').controller('MultipleProjectController', function($scop
         AuthService.redirect();
     }
     else {
+        $rootScope.pageTitle = 'projects';
         loadData();
     }
 });

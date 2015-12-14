@@ -1,45 +1,63 @@
 <div class="row">
-  <div class="col-md-12">
-      <h4 class="heading-underline-black">{{project.name}}</h4>
-      <h5 ng-show="project.description">{{project.description}}</h5>
-      <br />
-  </div>
-</div>
-<div class="row">
-    <div class="col-md-9 col-sm-9 col-xs-12">
+    <div class="col-md-9 col-sm-12 col-xs-12">
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
-                <h4 class="heading-underline-black">progress</h4>
-                <div style="width: 100%; height: 200px; border: 1px solid #CCCCCC;"></div>
-                <br />
+                <div class="column">
+                    <h2 class="column-heading">task metrics</h2>
+                    <chartist class="ct-chart" chartist-data="lineData" chartist-chart-options="lineOptions" chartist-chart-type="Line"></chartist>
+                </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-3 col-sm-3 col-xs-12">
-                <h4 class="heading-background-red">backlog</h4>
-                <h4 style="font-size: 3em;">{{backlogCount}}</h4>
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="column">
+                    <div class="column-heading-red big-number">
+                        <h4>{{backlogCount}}</h4>
+                        <h3>backlog</h3>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-3 col-sm-3 col-xs-12">
-                <h4 class="heading-background-yellow">in-progress</h4>
-                <h4 style="font-size: 3em;">{{inprogressCount}}</h4>
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="column">
+                    <div class="column-heading-yellow big-number">
+                        <h4>{{inprogressCount}}</h4>
+                        <h3>in-progress</h3>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-3 col-sm-3 col-xs-12">
-                <h4 class="heading-background-blue">complete</h4>
-                <h4 style="font-size: 3em;">{{completeCount}}</h4>
-            </div>
-            <div class="col-md-3 col-sm-3 col-xs-12">
-                <h4 class="heading-background-black">status</h4>
-                <h4 style="font-size: 3em;">{{percentComplete}}<span style="font-size: .75em;">%</span></h4>
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="column">
+                    <div class="column-heading-blue big-number">
+                        <h4>{{completeCount}}</h4>
+                        <h3>complete</h3>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="col-md-3 col-sm-3 col-xs-12">
-        <h4 class="heading-underline-black">members</h4>
-        <ul class="list-group" ng-model='project'>
-            <li class="list-group-item" style="border: none; padding: 0px;" ng-repeat="member in project.members">{{member.first_name}} {{member.last_name}}</li>
-        </ul>
-        <br />
-        <button type="button" ui-sref="projectTasks({id: projectId})" class="btn btn-default btn-lg btn-block">Project Kanban</button>
-        <br />
+    <div class="col-md-3 col-sm-12 col-xs-12">
+        <div class="row">
+            <div class="col-md-12 col-sm-6 col-xs-12">
+                <div class="column">
+                    <h2 class="column-heading">billboard</h2>
+                    <h4>{{project.description || 'None'}}</h4>
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-6 col-xs-12">
+                <div class="column">
+                    <h2 class="column-heading">members</h2>
+                    <ul class="list-group" ng-model='project' style="margin-top: 0px;">
+                        <li class="list-group-item" style="margin-top: 0px; border: none; padding: 0px;" ng-repeat="member in project.members">{{member.first_name}} {{member.last_name}}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="column">
+                    <h2 class="column-heading">actions</h2>
+                    <button type="button" ui-sref="projectTasks({id: projectId})" class="btn btn-default btn-lg btn-block">view tasks</button>
+                    <button type="button" class="btn btn-default btn-lg btn-block btn-warn">close project</button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('tangram', ['ui.router', 'ui.sortable', 'ngCookies']);
+var app = angular.module('tangram', ['ui.router', 'ui.sortable', 'ngCookies', 'angular-chartist']);
 
 // Configure our routes
 app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {

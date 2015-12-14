@@ -1,20 +1,20 @@
 <div class="container-fluid">
     <br />
-    <div class="card">
-        <h2>tangram - login</h2>
-        <br />
-        <p ng-show="badLogin" style="color: red;">Wrong username/password combination</p>
+    <div class="card card-black">
+        <div><div id="square-big" style="margin-right: 10px;" /><h1 style="font-weight: 700; display: block; font-size: 30px;">tangram</h1></div>
+        <div ng-hide="badLogin"><br /></div>
+        <div ng-show="badLogin"><h4 style="color: red;">Wrong email/password combination</h4></div>
         <form>
             <div class="form-group">
-                <input type="email" class="form-control" id="email" placeholder="Email" ng-model="user.email">
+                <input type="email" spellcheck="false" class="form-control" id="email" placeholder="email" ng-model="user.email">
             </div>
             <div class="form-group">
-                <input type="password" class="form-control" id="password" placeholder="Password" ng-model="user.password">
+                <input type="password" class="form-control" id="password" placeholder="password" ng-model="user.password">
             </div>
-            <button type="submit" class="btn btn-default" ng-click="login()">Log In</button>
+            <button type="submit" class="btn btn-default" ng-click="login()">log in</button>
         </form>
         <br />
-        <p>Don't have an account? <a ui-sref="register">Create one.</a></p>
-        </div>
+        <h4>Don't have an account? <a class="black-underline" ui-sref="register">Create one.</a></h4>
+        <br />
     </div>
 </div>

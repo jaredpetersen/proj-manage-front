@@ -1,27 +1,28 @@
 <div class="container-fluid">
     <br />
-    <div class="card">
-        <h2>tangram - register</h2>
+    <div class="card card-black">
+        <div><div id="square-big" style="margin-right: 10px;" /><h1 style="font-weight: 700; display: block; font-size: 30px;">tangram</h1></div>
         <br />
         <form>
             <div class="form-group">
-                <input type="text" class="form-control" id="firstName" placeholder="First Name" ng-model="user.firstName">
+                <input type="text" class="form-control" id="firstName" placeholder="first name" ng-model="user.firstName">
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" id="lastName" placeholder="Last Name" ng-model="user.lastName">
+                <input type="text" class="form-control" id="lastName" placeholder="last name" ng-model="user.lastName">
             </div>
             <div class="form-group">
-                <input type="email" class="form-control" id="email" placeholder="Email" ng-model="user.email">
+                <input type="email" class="form-control" id="email" placeholder="email" ng-model="user.email">
             </div>
             <div class="form-group">
-                <input type="password" class="form-control" id="password1" placeholder="Password" ng-model="user.password1">
+                <input type="password" class="form-control" id="password1" placeholder="password" ng-model="user.password1">
             </div>
             <div class="form-group">
-                <input type="password" class="form-control" id="password2" placeholder="Confirm Password" ng-model="user.password2">
+                <input type="password" class="form-control" id="password2" placeholder="confirm password" ng-model="user.password2">
             </div>
-            <button type="submit" class="btn btn-default" ng-click="register(user);">Create Account</button>
+            <button type="submit" class="btn btn-default" ng-click="register(user);">create account</button>
         </form>
         <br />
-        <p>Already have an account? <a ui-sref="login">Log in.</a></p>
+        <h4>Already have an account? <a class="black-underline" ui-sref="login">Log in.</a></h4>
+        <br />
     </div>
 </div>

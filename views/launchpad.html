@@ -1,66 +1,70 @@
-<div class="row">
-  <div class="col-md-12">
-      <h4 class="heading-underline-black">personal kanban</h4>
-  </div>
-</div>
+
 <div class="row">
     <!--  Tasks -->
     <!-- Backlog -->
     <div class="col-md-4 col-sm-4 col-xs-12">
-        <h4 class="heading-background-red">backlog</h4>
-        <div id="backlog" class="kanban" ng-model='backlog' ui-sortable="sortableOptions">
-            <div class="card" ng-repeat="task in backlog">
-                    <h4>
+        <div class="column">
+            <h2 class="column-heading-red">backlog</h2>
+            <div id="backlog" class="kanban" ng-model='backlog' ui-sortable="sortableOptions">
+                <div class="card" ng-repeat="task in backlog">
+                    <h3>
                         <a class="red" ui-sref="task({id: task._id})">{{task.name}}</a>
                         <a class="red pull-right" title="delete task" href="" ng-click="deleteTask(task._id)"><i class="fa fa-close"></i></a>
-                    </h4>
+                    </h3>
                     <p>
                         <!-- Will need to fix overflow with CSS later with this:
                              http://stackoverflow.com/questions/22978990/bootstrap-3-table-overflow-out-of-panel -->
-                        <i class="fa fa-sticky-note-o"></i> <a class="red" ui-sref="project({id: task.project})" style="font-color: black;">{{task.projectName}}</a>
+                        <i class="fa fa-sticky-note-o"></i> <a class="red" ui-sref="project({id: task.project})">{{task.projectName}}</a>
                         &nbsp;&nbsp;
                         <i class="fa fa-calendar"></i> {{task.created | date:'MM/dd/yy'}}
                     </p>
+                </div>
             </div>
         </div>
     </div>
 
     <!-- In-Progress -->
     <div class="col-md-4 col-sm-4 col-xs-12">
-        <h4 class="heading-background-yellow">in-progress</h4>
-        <div id="in-progress" class="kanban" ng-model='inprogress' ui-sortable="sortableOptions">
-            <div class="card" ng-repeat="task in inprogress">
-                <h4>
-                    <a class="yellow" ui-sref="task({id: task._id})">{{task.name}}</a>
-                    <a class="yellow pull-right" title="delete task" href="" ng-click="deleteTask(task._id)"><i class="fa fa-close"></i></a>
-                </h4>
-                <p>
-                    <!-- Will need to fix overflow with CSS later with this:
-                         http://stackoverflow.com/questions/22978990/bootstrap-3-table-overflow-out-of-panel -->
-                    <i class="fa fa-sticky-note-o"></i> <a class="yellow" ui-sref="project({id: task.project})">{{task.projectName}}</a>
-                    &nbsp;&nbsp;
-                    <i class="fa fa-calendar"></i> {{task.created | date:'MM/dd/yy'}}
-                </p>
+        <div class="column">
+            <h2 class="column-heading-yellow">in-progress</h2>
+            <div id="in-progress" class="kanban" ng-model='inprogress' ui-sortable="sortableOptions">
+                <div class="card" ng-repeat="task in inprogress">
+                    <h3>
+                        <a class="yellow" ui-sref="task({id: task._id})">{{task.name}}</a>
+                        <a class="yellow pull-right" title="delete task" href="" ng-click="deleteTask(task._id)"><i class="fa fa-close"></i></a>
+                    </h3>
+                    <p>
+                        <!-- Will need to fix overflow with CSS later with this:
+                             http://stackoverflow.com/questions/22978990/bootstrap-3-table-overflow-out-of-panel -->
+                        <i class="fa fa-sticky-note-o"></i> <a class="yellow" ui-sref="project({id: task.project})">{{task.projectName}}</a>
+                        &nbsp;&nbsp;
+                        <i class="fa fa-calendar"></i> {{task.created | date:'MM/dd/yy'}}
+                    </p>
+                </div>
             </div>
         </div>
     </div>
 
     <!-- Complete -->
     <div class="col-md-4 col-sm-4 col-xs-12">
-        <h4 class="heading-background-blue">complete</h4>
-        <div id="complete" class="kanban" ng-model='complete' ui-sortable="sortableOptions">
-            <div class="card" ng-repeat="task in complete">
-                <h4>
-                    <a class="blue" ui-sref="task({id: task._id})">{{task.name}}</a>
-                    <a class="blue pull-right" title="delete task" href="" ng-click="deleteTask(task._id)"><i class="fa fa-close"></i></a>
-                </h4>
-                <p>
-                    <!-- Will need to fix overflow with CSS later with this:
-                         http://stackoverflow.com/questions/22978990/bootstrap-3-table-overflow-out-of-panel -->
-                    <i class="fa fa-sticky-note-o"></i> <a class="blue" ui-sref="project({id: task.project})">{{task.projectName}}</a>
-                    &nbsp;&nbsp;
-                    <i class="fa fa-calendar"></i> {{task.created | date:'MM/dd/yy'}}
-                </p>
+        <div class="column">
+            <h2 class="column-heading-blue">complete</h2>
+            <div id="complete" class="kanban" ng-model='complete' ui-sortable="sortableOptions">
+                <div class="card" ng-repeat="task in complete">
+                    <h3>
+                        <a class="blue" ui-sref="task({id: task._id})">{{task.name}}</a>
+                        <a class="blue pull-right" title="delete task" href="" ng-click="deleteTask(task._id)"><i class="fa fa-close"></i></a>
+                    </h3>
+                    <p>
+                        <!-- Will need to fix overflow with CSS later with this:
+                             http://stackoverflow.com/questions/22978990/bootstrap-3-table-overflow-out-of-panel -->
+                        <i class="fa fa-sticky-note-o"></i> <a class="blue" ui-sref="project({id: task.project})">{{task.projectName}}</a>
+                        &nbsp;&nbsp;
+                        <i class="fa fa-calendar"></i> {{task.created | date:'MM/dd/yy'}}
+                    </p>
+                </div>
             </div>
         </div>
     </div>
+
+</div>

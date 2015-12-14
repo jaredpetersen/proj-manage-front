@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('tangram').controller('ProjectTasksController', function($scope, $stateParams, ApiService, AuthService) {
+angular.module('tangram').controller('ProjectTasksController', function($scope, $rootScope, $stateParams, ApiService, AuthService) {
 
     $scope.newTaskState = false;
     // API JSONWebToken
@@ -87,6 +87,7 @@ angular.module('tangram').controller('ProjectTasksController', function($scope, 
         AuthService.redirect();
     }
     else {
+        $rootScope.pageTitle = 'project kanban'
         loadData();
     }
 

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('tangram').controller('SingleProjectController', function($scope, $stateParams, ApiService, AuthService) {
+angular.module('tangram').controller('SingleProjectController', function($scope, $rootScope, $stateParams, ApiService, AuthService) {
     // create a message to display in our view
     $scope.backlogCount;
     $scope.inprogressCount;
@@ -8,6 +8,37 @@ angular.module('tangram').controller('SingleProjectController', function($scope,
     $scope.percentComplete;
     $scope.project;
     $scope.projectId = $stateParams.id;
+    $scope.lineData = {
+        labels: ['12/01', '12/02', '12/03', '12/04', '12/05', '12/06', '12/07'],
+        series: [
+            [7, 4, 10, 6, 10, 5, 12],
+            [10, 1, 4, 3, 5, 0, 1],
+            [0, 5, 6, 9, 11, 13, 15]
+        ]
+    };
+    $scope.lineOptions = {
+        fullWidth: true,
+        height: 380,
+        chartPadding: {
+            left: 0,
+            right: 11
+        },
+        axisY: {
+            onlyInteger: true,
+            offset: 20,
+            labelOffset: {
+                x: 0,
+                y: 4
+           }
+        },
+        axisX: {
+            labelOffset: {
+                x: -10,
+                y: 0
+           }
+       },
+       lineSmooth: false
+   };
 
     var calculatePercentComplete = function(backlog, inprogress, complete) {
         var total = backlog + inprogress + complete;
@@ -28,6 +59,7 @@ angular.module('tangram').controller('SingleProjectController', function($scope,
                 var members = projectResponse.data.members;
                 project.members = [];
                 $scope.project = project;
+                $rootScope.pageTitle = project.name;
 
                 angular.forEach(members, function(user, key) {
                     ApiService.getUser(token, user)
