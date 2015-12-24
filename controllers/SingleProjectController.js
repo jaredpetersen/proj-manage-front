@@ -1,13 +1,20 @@
 'use strict';
 
 angular.module('tangram').controller('SingleProjectController', function($scope, $rootScope, $stateParams, ApiService, AuthService) {
-    // create a message to display in our view
-    $scope.backlogCount;
-    $scope.inprogressCount;
-    $scope.completeCount;
-    $scope.percentComplete;
+
+    // Authorization token
+    var token = AuthService.getToken();
+
+    // Task Information
+    $scope.backlog = [];
+    $scope.inprogress = [];
+    $scope.complete = [];
+
+    // Project Information
     $scope.project;
     $scope.projectId = $stateParams.id;
+
+    // Giant line chart
     $scope.lineData = {
         labels: ['12/01', '12/02', '12/03', '12/04', '12/05', '12/06', '12/07'],
         series: [
@@ -18,7 +25,7 @@ angular.module('tangram').controller('SingleProjectController', function($scope,
     };
     $scope.lineOptions = {
         fullWidth: true,
-        height: 380,
+        height: 275,
         chartPadding: {
             left: 0,
             right: 11
@@ -38,74 +45,61 @@ angular.module('tangram').controller('SingleProjectController', function($scope,
            }
        },
        lineSmooth: false
-   };
+    };
 
-    var calculatePercentComplete = function(backlog, inprogress, complete) {
-        var total = backlog + inprogress + complete;
-        return Math.round((complete/total) * 100);
-    }
-
+    // Grab data from the API to populate the view
     var loadData = function() {
-        // Projects list
+        // Project information
         $scope.project = {};
 
-        // API JSONWebToken
-        var token = AuthService.getToken();
-
+        // Grab information about the project
         ApiService.getSingleProject(token, $scope.projectId)
         .then(
             function success(projectResponse) {
-                var project = projectResponse.data;
-                var members = projectResponse.data.members;
-                project.members = [];
-                $scope.project = project;
+                $scope.project = projectResponse.data;
                 $rootScope.pageTitle = project.name;
-
-                angular.forEach(members, function(user, key) {
-                    ApiService.getUser(token, user)
-                    .then(
-                        function success(userResponse) {
-                            $scope.project.members.push(userResponse.data);
-                        },
-                        function error(response) {
-                            console.log(response);
-                        }
-                    );
-                });
             },
             function error(response) {
                 console.log(response);
             }
         );
 
+        // Grab all the project tasks
         ApiService.getProjectTasks(token,$scope.projectId)
         .then(
             function success(response) {
-                var backlogCount = 0;
-                var inprogressCount = 0;
-                var completeCount = 0;
-
+                // Iterate over the tasks
                 angular.forEach(response.data, function(task, key) {
                     if (task.status == 'backlog') {
-                        backlogCount++;
+                        $scope.backlog.push(task);
                     }
                     else if (task.status == 'in-progress') {
-                        inprogressCount++;
+                        $scope.inprogress.push(task);
                     }
                     else {
-                        completeCount++;
+                        $scope.complete.push(task);
                     }
                 });
-
-                $scope.percentComplete = calculatePercentComplete(backlogCount, inprogressCount, completeCount);
-                $scope.backlogCount = backlogCount;
-                $scope.inprogressCount = inprogressCount;
-                $scope.completeCount = completeCount;
             },
             function error(response) {
                 console.log(response);
             }
         );
+    }
+
+    var changeStatus = function(task, newStatus) {
+        ApiService.updateTaskStatus(token, task._id, newStatus)
+        .then (
+            function success(response) {},
+            function error(response) {
+                console.log(response);
+            }
+        );
+    }
+
+    $scope.switchNewTaskState = function(status) {
+        if ($scope.newTaskState == true) $scope.newTaskState = false;
+        else $scope.newTaskState = true;
     }
 
     // Run on page load
@@ -116,4 +110,21 @@ angular.module('tangram').controller('SingleProjectController', function($scope,
     else {
         loadData();
     }
+
+    // Connect/enable the drag and drop lists
+    $scope.sortableOptions = {
+        connectWith: '.kanban',
+        stop: function(e, ui) {
+            var item = ui.item.sortable.model;
+            var fromIndex = ui.item.sortable.index;
+            var toIndex = ui.item.sortable.dropindex;
+            if (ui.item.sortable.droptarget != undefined) {
+                // Task was moved
+                var dropTarget = ui.item.sortable.droptarget[0].id;
+                //console.log(item, fromIndex, toIndex, dropTarget);
+                console.log('test');
+                changeStatus(item, dropTarget);
+            }
+        }
+    };
 });

@@ -82,7 +82,7 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 
         // route for the individual project page
         .state('project', {
-            url: '/projects/:id/metrics',
+            url: '/projects/:id',
             parent: 'common',
             views: {
                 'navbar': {
@@ -92,22 +92,6 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
                 'content': {
                     templateUrl : 'views/singleProject.html',
                     controller  : 'SingleProjectController'
-                }
-            }
-        })
-
-        // route for the individual project tasks page
-        .state('projectTasks', {
-            url: '/projects/:id/tasks',
-            parent: 'common',
-            views: {
-                'navbar': {
-                    templateUrl : 'views/navbar.html',
-                    controller  : 'NavbarController',
-                },
-                'content': {
-                    templateUrl : 'views/projectTasks.html',
-                    controller  : 'ProjectTasksController'
                 }
             }
         })
