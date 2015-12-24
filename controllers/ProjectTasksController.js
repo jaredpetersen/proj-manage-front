@@ -87,7 +87,7 @@ angular.module('tangram').controller('ProjectTasksController', function($scope, 
         AuthService.redirect();
     }
     else {
-        $rootScope.pageTitle = 'project kanban'
+        $rootScope.pageTitle = 'project kanban';
         loadData();
     }
 

@@ -4,7 +4,7 @@ angular.module('tangram').factory('ApiService', function($http, $q) {
     var baseURL = 'http://api.tangr.am';
     var apiFactory = {};
 
-    // Get all projects
+    // Get all user tasks
     apiFactory.getTasks = function(token) {
         return $http.get(baseURL + '/tasks', {headers: {'x-access-token': token}});
     }
@@ -12,6 +12,11 @@ angular.module('tangram').factory('ApiService', function($http, $q) {
     // Get all tasks for a project
     apiFactory.getProjectTasks = function(token, id) {
         return $http.get(baseURL + '/projects/' + id + '/tasks', {headers: {'x-access-token': token}});
+    }
+
+    // Get single task
+    apiFactory.getSingleTask = function(token, id) {
+        return $http.get(baseURL + '/tasks/' + id, {headers: {'x-access-token': token}});
     }
 
     // Add new task
