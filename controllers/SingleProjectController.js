@@ -57,7 +57,7 @@ angular.module('tangram').controller('SingleProjectController', function($scope,
         .then(
             function success(projectResponse) {
                 $scope.project = projectResponse.data;
-                $rootScope.pageTitle = project.name;
+                $rootScope.pageTitle = projectResponse.data.name;
             },
             function error(response) {
                 console.log(response);
