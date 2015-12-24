@@ -244,3 +244,9 @@ a.blue:hover {
   /* Colour of your points */
   stroke: #4285F4;
 }
+.ct-grids line {
+  stroke: #333;
+}
+.ct-labels span {
+  color: #333;
+}
