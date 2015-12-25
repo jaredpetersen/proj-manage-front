@@ -7,10 +7,22 @@ angular.module('tangram').controller('TaskController', function($scope, $rootSco
     $scope.task = {}
 
     var loadData = function() {
+        // Grab the task information
         ApiService.getSingleTask(token, $stateParams.id).then (
             function success(response) {
+                // Send task information to the view
                 $scope.task = response.data;
-                console.log(response.data);
+
+                // Grab the owner name
+                ApiService.getUser(response.data.owner).then (
+                    function success(userResponse) {
+                        $scope.task.ownerName = userResponse.data.first_name + ' ' + userResponse.data.last_name
+                    },
+                    function error(userResponse) {
+                        console.log(userResponse);
+                    }
+                );
+
                 // Update page title
                 $rootScope.pageTitle = response.data.name;
             },

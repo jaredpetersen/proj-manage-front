@@ -2,39 +2,80 @@
     <div class="col-md-9 col-sm-12 col-xs-12">
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="column">
-                    <h2 class="column-heading">information</h2>
-                    <h4>{{task.description || 'no task description'}}</h4>
-                </div>
+                <h2 class="column-heading">subtasks</h2>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="col-md-6 col-sm-6 col-xs-12">
                 <div class="column">
-                    <h2 class="column-heading">subtasks</h2>
+                    <h2 class="column-heading-red">backlog</h2>
+                    <div id="backlog" class="kanban" ui-sortable="sortableOptions">
+                        <div class="card">
+                            <h3>
+                                <a class="red">test 1</a>
+                                <!--<a class="yellow pull-right" title="delete task" href="" ng-click="deleteTask(task._id)"><i class="fa fa-close"></i></a>-->
+                            </h3>
+                            <p>
+                                <i class="fa fa-calendar"></i> 01/20/15
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="column">
+                    <h2 class="column-heading-blue">complete</h2>
+                    <div id="backlog" class="kanban" ui-sortable="sortableOptions">
+                        <div class="card">
+                            <h3>
+                                <a class="blue">test 2</a>
+                                <!--<a class="yellow pull-right" title="delete task" href="" ng-click="deleteTask(task._id)"><i class="fa fa-close"></i></a>-->
+                            </h3>
+                            <p>
+                                <i class="fa fa-calendar"></i> 01/20/15
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="col-md-3 col-sm-12 col-xs-12">
         <div class="row">
-            <div class="col-md-12 col-sm-6 col-xs-12">
+            <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="column">
-                    <h2 class="column-heading">status</h2>
-                    <h4>{{task.status}}</h4>
+                    <h2 class="column-heading">description</h2>
+                    <!--<h4>{{task.description || 'no task description'}}</h4>-->
+                    <h4>UCS Richard Woodcock building technology setup. This is a sentence related to setting things up. This is another sentence.</h4>
                 </div>
             </div>
-            <div class="col-md-12 col-sm-6 col-xs-12">
-                <div class="column">
-                    <h2 class="column-heading">owner</h2>
-                    <h4>{{task.owner || 'unowned'}}</h4>
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="row">
+                    <div class="col-md-12 col-sm-6 col-xs-12">
+                        <div class="column">
+                            <h2 class="column-heading">status</h2>
+                            <h4>{{task.status}}</h4>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-6 col-xs-12">
+                        <div class="column">
+                            <h2 class="column-heading">owner</h2>
+                            <h4>{{task.ownerName || 'unowned'}}</h4>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="column">
+                    <h2 class="column-heading">attachments</h2>
+                    <h4>none</h4>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="column">
                     <h2 class="column-heading">actions</h2>
-                    <button type="button" ui-sref="projectTasks({id: projectId})" class="btn btn-default btn-lg btn-block">update</button>
-                    <button type="button" ui-sref="projectTasks({id: projectId})" class="btn btn-default btn-lg btn-block">re-assign task</button>
                     <button type="button" class="btn btn-default btn-lg btn-block btn-warn">delete task</button>
                 </div>
             </div>

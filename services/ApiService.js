@@ -55,7 +55,7 @@ angular.module('tangram').factory('ApiService', function($http, $q) {
     }
 
     // Get a single user
-    apiFactory.getUser = function(token, id) {
+    apiFactory.getUser = function(id) {
         return $http.get(baseURL + '/users/' + id);
     }
 
