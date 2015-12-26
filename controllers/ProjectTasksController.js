@@ -2,24 +2,28 @@
 
 angular.module('tangram').controller('ProjectTasksController', function($scope, $rootScope, $stateParams, ApiService, AuthService) {
 
+    // Indicates when the new task window is up
     $scope.newTaskState = false;
+
     // API JSONWebToken
     var token = AuthService.getToken();
 
+    // Loads data for the view
     var loadData = function() {
-        // Kanban Board
+        // Kanban tasks by column
         $scope.backlog = [];
         $scope.inprogress = [];
         $scope.complete = [];
 
-        // API JSONWebToken
-        var token = AuthService.getToken();
-        // Project ID
+        // Grab the project ID from the URL for API calls
         var id = $stateParams.id;
 
+        // Grab all the tasks for the project
         ApiService.getProjectTasks(token, id).then(function(taskResponse) {
+            // Grab all of the tasks for sorting
             var tasks = taskResponse.data;
 
+            // Add the tasks to the proper status columns
             angular.forEach(tasks, function(task, key) {
                 if (task.status == 'backlog') {
                     $scope.backlog.push(task);
@@ -34,6 +38,7 @@ angular.module('tangram').controller('ProjectTasksController', function($scope, 
         });
     }
 
+    // Update the task status - activated when the task is moved to a column
     var changeStatus = function(task, newStatus) {
         ApiService.updateTaskStatus(token, task._id, newStatus)
         .then (
@@ -44,21 +49,19 @@ angular.module('tangram').controller('ProjectTasksController', function($scope, 
         );
     }
 
+    // Switch the new task dialog box to visible/invisible
     $scope.switchNewTaskState = function(status) {
         if ($scope.newTaskState == true) $scope.newTaskState = false;
         else $scope.newTaskState = true;
     }
 
+    // Add a new task to backlog
     $scope.addTask = function(newTask) {
-        var token = AuthService.getToken();
-
         ApiService.createTask(token, newTask.name, newTask.description, $stateParams.id)
         .then(
             function success(response) {
-                console.log(response);
-                // Need the task ID in order to avoid entire data reload
+                // Reload all of the tasks
                 loadData();
-                $scope.switchNewTaskState();
             },
             function error(response) {
                 console.log(response);
@@ -66,17 +69,18 @@ angular.module('tangram').controller('ProjectTasksController', function($scope, 
         );
     }
 
-    // Run on page load
-    console.log(AuthService.getToken() == null);
+    // Grab the authentication token from the auth service
     if (AuthService.getToken() == null) {
+        // Not authenticated, kick them out
         AuthService.redirect();
     }
     else {
+        // The user is authenticated, proceed to load data
         $rootScope.pageTitle = 'project kanban';
         loadData();
     }
 
-    // Connect/enable the drag and drop lists
+    // Connect/enable the drag and drop kanban columns
     $scope.sortableOptions = {
         connectWith: '.kanban',
         stop: function(e, ui) {
