@@ -1,9 +1,11 @@
 'use strict';
 
 angular.module('tangram').controller('NavbarController', function($scope, $state, AuthService) {
-    // create a message to display in our view
+    // Log the user out
     $scope.logout = function() {
+        // Remove the token/cookie from the auth service
         AuthService.clearToken();
+        // Kick the user out
         AuthService.redirect();
     }
 });
