@@ -96,6 +96,22 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
             }
         })
 
+        // route for the individual project tasks page
+        .state('projectTasks', {
+            url: '/projects/:id/tasks',
+            parent: 'common',
+            views: {
+                'navbar': {
+                    templateUrl : 'views/navbar.html',
+                    controller  : 'NavbarController',
+                },
+                'content': {
+                    templateUrl : 'views/projectTasks.html',
+                    controller  : 'ProjectTasksController'
+                }
+            }
+        })
+
         // route for the individual task page
         .state('task', {
             url: '/tasks/:id',

@@ -6,9 +6,9 @@ angular.module('tangram').controller('SingleProjectController', function($scope,
     var token = AuthService.getToken();
 
     // Task Information
-    $scope.backlog = [];
-    $scope.inprogress = [];
-    $scope.complete = [];
+    $scope.backlogCount = 0;
+    $scope.inprogressCount = 0;
+    $scope.completeCount = 0;
 
     // Project Information
     $scope.project;
@@ -25,7 +25,7 @@ angular.module('tangram').controller('SingleProjectController', function($scope,
     };
     $scope.lineOptions = {
         fullWidth: true,
-        height: 275,
+        height: 380,
         chartPadding: {
             left: 0,
             right: 11
@@ -58,6 +58,31 @@ angular.module('tangram').controller('SingleProjectController', function($scope,
             function success(projectResponse) {
                 $scope.project = projectResponse.data;
                 $rootScope.pageTitle = projectResponse.data.name;
+
+                // Grab the project owner name
+                ApiService.getUser(projectResponse.data.owner).then (
+                    function success(ownerResponse) {
+                        $scope.project.ownerName = ownerResponse.data.first_name + ' ' + ownerResponse.data.last_name
+                    },
+                    function error(ownerResponse) {
+                        console.log(ownerResponse);
+                    }
+                );
+
+                // Grab the project member names
+                angular.forEach(projectResponse.data.members, function(member, key) {
+                    // Add the member name to the list
+                    $scope.project.memberNames = [];
+
+                    ApiService.getUser(projectResponse.data.owner).then (
+                        function success(memberResponse) {
+                            $scope.project.memberNames.push(memberResponse.data.first_name + ' ' + memberResponse.data.last_name);
+                        },
+                        function error(memberResponse) {
+                            console.log(memberResponse);
+                        }
+                    );
+                });
             },
             function error(response) {
                 console.log(response);
@@ -68,16 +93,16 @@ angular.module('tangram').controller('SingleProjectController', function($scope,
         ApiService.getProjectTasks(token,$scope.projectId)
         .then(
             function success(response) {
-                // Iterate over the tasks
+                // Count the number of tasks up
                 angular.forEach(response.data, function(task, key) {
                     if (task.status == 'backlog') {
-                        $scope.backlog.push(task);
+                        $scope.backlogCount++;
                     }
                     else if (task.status == 'in-progress') {
-                        $scope.inprogress.push(task);
+                        $scope.inprogressCount++;
                     }
                     else {
-                        $scope.complete.push(task);
+                        $scope.completeCount++;
                     }
                 });
             },

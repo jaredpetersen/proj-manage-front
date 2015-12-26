@@ -1,0 +1,73 @@
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="row">
+            <!--  Tasks -->
+            <!-- Backlog -->
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="column">
+                    <h2 class="column-heading-red">backlog<a class="pull-right" title="new task" style="color: white;" href="" ng-click="switchNewTaskState()"><i class="fa fa-plus"></i></a></h2>
+                    <div class="card" ng-show="newTaskState">
+                        <h3>New Task</h3>
+                        <form style="margin-top: 10px;">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="name" placeholder="Name" ng-model="newTask.name">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="description" placeholder="Description (Optional)" ng-model="newTask.description">
+                            </div>
+                            <button type="button" class="btn btn-default" ng-click="addTask(newTask);">Add Task</button>&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-default" ng-click="switchNewTaskState()">Cancel</button>
+                        </form>
+                    </div>
+                    <div id="backlog" class="kanban" ng-model='backlog' ui-sortable="sortableOptions">
+                        <div class="card" ng-repeat="task in backlog">
+                            <h3>
+                                <a class="red" ui-sref="task({id: task._id})">{{task.name}}</a>
+                                <!--<a class="red pull-right" title="delete task" href="" ng-click="deleteTask(task._id)"><i class="fa fa-close"></i></a>-->
+                            </h3>
+                            <p>
+                                <i class="fa fa-calendar"></i> {{task.created | date:'MM/dd/yy'}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- In-Progress -->
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="column">
+                    <h2 class="column-heading-yellow">in-progress</h2>
+                    <div id="in-progress" class="kanban" ng-model='inprogress' ui-sortable="sortableOptions">
+                        <div class="card" ng-repeat="task in inprogress">
+                            <h3>
+                                <a class="yellow" ui-sref="task({id: task._id})">{{task.name}}</a>
+                                <!--<a class="yellow pull-right" title="delete task" href="" ng-click="deleteTask(task._id)"><i class="fa fa-close"></i></a>-->
+                            </h3>
+                            <p>
+                                <i class="fa fa-calendar"></i> {{task.created | date:'MM/dd/yy'}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Complete -->
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="column">
+                    <h2 class="column-heading-blue">complete</h2>
+                    <div id="complete" class="kanban" ng-model='complete' ui-sortable="sortableOptions">
+                        <div class="card" ng-repeat="task in complete">
+                            <h3>
+                                <a class="blue" ui-sref="task({id: task._id})">{{task.name}}</a>
+                                <!--<a class="blue pull-right" title="delete task" href="" ng-click="deleteTask(task._id)"><i class="fa fa-close"></i></a>-->
+                            </h3>
+                            <p>
+                                <i class="fa fa-calendar"></i> {{task.created | date:'MM/dd/yy'}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
