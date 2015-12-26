@@ -5,21 +5,26 @@ angular.module('tangram').controller('LaunchPadController', function($scope, $ro
     // API JSONWebToken
     var token = AuthService.getToken();
 
+    // Loads data for the view
     var loadData = function() {
-        // Kanban Board
+        // Kanban tasks by column
         $scope.backlog = [];
         $scope.inprogress = [];
         $scope.complete = [];
 
+        // Grab all of the tasks the user owns
         ApiService.getTasks(token).then(function(taskResponse) {
+            // Grab all of the tasks for sorting
             var tasks = taskResponse.data;
 
-            // Perform an application-level join to get the name of the project
+            // Iterate over all of the tasks and grab the project information for each
             angular.forEach(tasks, function(task, key) {
+                // Grab the project information
                 ApiService.getSingleProject(token, task.project).then(function(projectResponse) {
+                    // Add the project name to the task and leave the rest alone
                     task.projectName = projectResponse.data.name;
 
-                    // TODO Better column filtering
+                    // Add the task to the proper status columns
                     if (task.status == 'backlog') {
                         $scope.backlog.push(task);
                     }
@@ -34,6 +39,7 @@ angular.module('tangram').controller('LaunchPadController', function($scope, $ro
         });
     }
 
+    // Update the task status - activated when the task is moved to a column
     var changeStatus = function(task, newStatus) {
         ApiService.updateTaskStatus(token, task._id, newStatus)
         .then (
@@ -44,27 +50,26 @@ angular.module('tangram').controller('LaunchPadController', function($scope, $ro
         );
     }
 
+    // Remove the task -- activated by delete button in view
     $scope.deleteTask = function(taskID) {
         ApiService.deleteTask(token, taskID)
         .then (
             function success(response) {
-                // TODO remove the task from the column instead of reloading
-                // all of the data all over again
                 loadData();
             },
             function error(response) {
                 console.log(response);
             }
         );
-
     }
 
-    // Run on page load
-    console.log(AuthService.getToken() == null);
+    // Grab the authentication token from the auth service
     if (AuthService.getToken() == null) {
+        // Not authenticated, kick them out
         AuthService.redirect();
     }
     else {
+        // The user is authenticated, proceed to load data
         $rootScope.pageTitle = 'personal kanban';
         loadData();
     }
