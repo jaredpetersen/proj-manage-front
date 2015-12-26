@@ -11,7 +11,7 @@ angular.module('tangram').controller('SingleProjectController', function($scope,
     $scope.project;
     $scope.projectId = $stateParams.id;
 
-    // Giant line chart
+    // Giant line chart data
     $scope.lineData = {
         labels: ['12/01', '12/02', '12/03', '12/04', '12/05', '12/06', '12/07'],
         series: [
@@ -20,6 +20,8 @@ angular.module('tangram').controller('SingleProjectController', function($scope,
             [0, 5, 6, 9, 11, 13, 15]
         ]
     };
+
+    // Giant line chart configuration
     $scope.lineOptions = {
         fullWidth: true,
         height: 380,
@@ -112,21 +114,6 @@ angular.module('tangram').controller('SingleProjectController', function($scope,
         );
     }
 
-    var changeStatus = function(task, newStatus) {
-        ApiService.updateTaskStatus(AuthService.getToken(), task._id, newStatus)
-        .then (
-            function success(response) {},
-            function error(response) {
-                console.log(response);
-            }
-        );
-    }
-
-    $scope.switchNewTaskState = function(status) {
-        if ($scope.newTaskState == true) $scope.newTaskState = false;
-        else $scope.newTaskState = true;
-    }
-
     // Verify that the user is authenticated on page load
     if (AuthService.getToken() == null) {
         // Not authenticated, kick them out
@@ -136,21 +123,4 @@ angular.module('tangram').controller('SingleProjectController', function($scope,
         // The user is authenticated, proceed to load data
         loadData();
     }
-
-    // Connect/enable the drag and drop lists
-    $scope.sortableOptions = {
-        connectWith: '.kanban',
-        stop: function(e, ui) {
-            var item = ui.item.sortable.model;
-            var fromIndex = ui.item.sortable.index;
-            var toIndex = ui.item.sortable.dropindex;
-            if (ui.item.sortable.droptarget != undefined) {
-                // Task was moved
-                var dropTarget = ui.item.sortable.droptarget[0].id;
-                //console.log(item, fromIndex, toIndex, dropTarget);
-                console.log('test');
-                changeStatus(item, dropTarget);
-            }
-        }
-    };
 });
