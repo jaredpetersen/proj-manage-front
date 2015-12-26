@@ -6,6 +6,7 @@ angular.module('tangram').controller('NewProjectController', function($scope, $s
         // API JSONWebToken
         var token = AuthService.getToken();
 
+        // Create the new project
         ApiService.createProject(token, project.name, project.description)
         .then(
             function success(response) {
