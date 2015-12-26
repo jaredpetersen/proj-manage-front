@@ -6,11 +6,8 @@ angular.module('tangram').controller('MultipleProjectController', function($scop
 
     // Loads data for the view
     var loadData = function() {
-        // API JSONWebToken
-        var token = AuthService.getToken();
-
         // Grab all of the projects the user belongs to
-        ApiService.getProjects(token)
+        ApiService.getProjects(AuthService.getToken())
         .then(
             function success(response) {
                 $scope.projects = response.data;

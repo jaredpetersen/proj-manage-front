@@ -5,11 +5,11 @@ angular.module('tangram').controller('ProjectTasksController', function($scope, 
     // Indicates when the new task window is up
     $scope.newTaskState = false;
 
-    // API JSONWebToken
-    var token = AuthService.getToken();
-
     // Loads data for the view
     var loadData = function() {
+        // API JSONWebToken
+        var token = AuthService.getToken();
+
         // Kanban tasks by column
         $scope.backlog = [];
         $scope.inprogress = [];
@@ -40,7 +40,7 @@ angular.module('tangram').controller('ProjectTasksController', function($scope, 
 
     // Update the task status - activated when the task is moved to a column
     var changeStatus = function(task, newStatus) {
-        ApiService.updateTaskStatus(token, task._id, newStatus)
+        ApiService.updateTaskStatus(AuthService.getToken(), task._id, newStatus)
         .then (
             function success(response) {},
             function error(response) {
@@ -57,7 +57,7 @@ angular.module('tangram').controller('ProjectTasksController', function($scope, 
 
     // Add a new task to backlog
     $scope.addTask = function(newTask) {
-        ApiService.createTask(token, newTask.name, newTask.description, $stateParams.id)
+        ApiService.createTask(AuthService.getToken(), newTask.name, newTask.description, $stateParams.id)
         .then(
             function success(response) {
                 // Reload all of the tasks
@@ -69,7 +69,7 @@ angular.module('tangram').controller('ProjectTasksController', function($scope, 
         );
     }
 
-    // Grab the authentication token from the auth service
+    // Verify that the user is authenticated on page load
     if (AuthService.getToken() == null) {
         // Not authenticated, kick them out
         AuthService.redirect();

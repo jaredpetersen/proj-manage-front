@@ -2,11 +2,12 @@
 
 angular.module('tangram').controller('TaskController', function($scope, $rootScope, $stateParams, ApiService, AuthService) {
 
-    // API JSONWebToken
-    var token = AuthService.getToken();
     $scope.task = {}
 
     var loadData = function() {
+        // API JSONWebToken
+        var token = AuthService.getToken();
+
         // Grab the task information
         ApiService.getSingleTask(token, $stateParams.id).then (
             function success(response) {
@@ -32,12 +33,13 @@ angular.module('tangram').controller('TaskController', function($scope, $rootSco
         );
     }
 
-    // Run on page load
-    console.log(AuthService.getToken() == null);
+    // Grab the authentication token from the auth service
     if (AuthService.getToken() == null) {
+        // Not authenticated, kick them out
         AuthService.redirect();
     }
     else {
+        // The user is authenticated, proceed to load data
         $rootScope.pageTitle = 'task';
         loadData();
     }

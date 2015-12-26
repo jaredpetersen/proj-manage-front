@@ -2,9 +2,6 @@
 
 angular.module('tangram').controller('SingleProjectController', function($scope, $rootScope, $stateParams, ApiService, AuthService) {
 
-    // Authorization token
-    var token = AuthService.getToken();
-
     // Task Information
     $scope.backlogCount = 0;
     $scope.inprogressCount = 0;
@@ -49,6 +46,9 @@ angular.module('tangram').controller('SingleProjectController', function($scope,
 
     // Grab data from the API to populate the view
     var loadData = function() {
+        // API JSONWebToken
+        var token = AuthService.getToken();
+
         // Project information
         $scope.project = {};
 
@@ -90,7 +90,7 @@ angular.module('tangram').controller('SingleProjectController', function($scope,
         );
 
         // Grab all the project tasks
-        ApiService.getProjectTasks(token,$scope.projectId)
+        ApiService.getProjectTasks(token, $scope.projectId)
         .then(
             function success(response) {
                 // Count the number of tasks up
@@ -113,7 +113,7 @@ angular.module('tangram').controller('SingleProjectController', function($scope,
     }
 
     var changeStatus = function(task, newStatus) {
-        ApiService.updateTaskStatus(token, task._id, newStatus)
+        ApiService.updateTaskStatus(AuthService.getToken(), task._id, newStatus)
         .then (
             function success(response) {},
             function error(response) {
@@ -127,12 +127,13 @@ angular.module('tangram').controller('SingleProjectController', function($scope,
         else $scope.newTaskState = true;
     }
 
-    // Run on page load
-    console.log(AuthService.getToken() == null);
+    // Verify that the user is authenticated on page load
     if (AuthService.getToken() == null) {
+        // Not authenticated, kick them out
         AuthService.redirect();
     }
     else {
+        // The user is authenticated, proceed to load data
         loadData();
     }
 

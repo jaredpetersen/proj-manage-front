@@ -3,11 +3,8 @@
 angular.module('tangram').controller('NewProjectController', function($scope, $state, ApiService, AuthService) {
 
     $scope.createProject = function(project) {
-        // API JSONWebToken
-        var token = AuthService.getToken();
-
         // Create the new project
-        ApiService.createProject(token, project.name, project.description)
+        ApiService.createProject(AuthService.getToken(), project.name, project.description)
         .then(
             function success(response) {
                 $state.go('projects');
@@ -18,8 +15,13 @@ angular.module('tangram').controller('NewProjectController', function($scope, $s
         );
     }
 
-    // Run on page load
+    // Verify that the user is authenticated on page load
     if (AuthService.getToken() == null) {
+        // Not authenticated, kick them out
         AuthService.redirect();
+    }
+    else {
+        // The user is authenticated, proceed to load data
+        loadData();
     }
 });

@@ -41,7 +41,7 @@ angular.module('tangram').controller('LaunchPadController', function($scope, $ro
 
     // Update the task status - activated when the task is moved to a column
     var changeStatus = function(task, newStatus) {
-        ApiService.updateTaskStatus(token, task._id, newStatus)
+        ApiService.updateTaskStatus(AuthService.getToken(), task._id, newStatus)
         .then (
             function success(response) {},
             function error(response) {
@@ -52,7 +52,7 @@ angular.module('tangram').controller('LaunchPadController', function($scope, $ro
 
     // Remove the task -- activated by delete button in view
     $scope.deleteTask = function(taskID) {
-        ApiService.deleteTask(token, taskID)
+        ApiService.deleteTask(AuthService.getToken(), taskID)
         .then (
             function success(response) {
                 loadData();
