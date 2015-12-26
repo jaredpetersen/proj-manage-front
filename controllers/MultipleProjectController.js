@@ -1,14 +1,15 @@
 'use strict';
 
 angular.module('tangram').controller('MultipleProjectController', function($scope, $rootScope, ApiService, AuthService) {
-    // create a message to display in our view
-    $scope.message = 'This is the project page. Controlled by the MultipleProjectController';
+    // Project Information
     $scope.projects = [];
 
+    // Loads data for the view
     var loadData = function() {
         // API JSONWebToken
         var token = AuthService.getToken();
 
+        // Grab all of the projects the user belongs to
         ApiService.getProjects(token)
         .then(
             function success(response) {
@@ -20,16 +21,13 @@ angular.module('tangram').controller('MultipleProjectController', function($scop
         );
     }
 
-    $scope.log = function() {
-        console.log('log');
-    }
-
-    // Run on page load
-    console.log(AuthService.getToken() == null);
+    // Grab the authentication token from the auth service
     if (AuthService.getToken() == null) {
+        // Not authenticated, kick them out
         AuthService.redirect();
     }
     else {
+        // The user is authenticated, proceed to load data
         $rootScope.pageTitle = 'projects';
         loadData();
     }
