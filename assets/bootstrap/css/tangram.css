@@ -2,7 +2,8 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
 body {
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #333;
+  color: #1B2224;
+  background-color: #F1F1F1;
 }
 h1 {
   font-size: 20px;
@@ -31,9 +32,16 @@ p {
 
 /* Restyles Buttons */
 .btn {
-    border: 1px solid #333;
-    color: #333;
+    border: none;
+    color: #1B2224;
     margin-bottom: 10px;
+    border: 1px solid #E5E5E5;
+}
+.btn:hover {
+    border: none;
+    background-color: #E5E5E5;
+    border: 1px solid #E5E5E5;
+    color: #1B2224;
 }
 .btn-lg {
     font-size: 16px;
@@ -44,6 +52,7 @@ p {
 .btn-warn:hover {
     color: #FFF;
     background-color: #EA4335;
+    border: none;
 }
 .btn-project {
     margin-bottom: 20px;
@@ -51,11 +60,11 @@ p {
 
 /* Restyles links */
 a {
-  color: #333;
+  color: #1B2224;
   text-decoration: none;
 }
 a.black-underline {
-  color: #333;
+  color: #1B2224;
   text-decoration: underline;
 }
 a.black-underline:hover {
@@ -63,7 +72,7 @@ a.black-underline:hover {
   text-decoration: underline;
 }
 a:hover {
-  color: #333;
+  color: #1B2224;
   text-decoration: none;
 }
 a.red:hover {
@@ -83,18 +92,18 @@ a.blue:hover {
 #square {
   width: 20px;
   height: 20px;
-  border: 1px solid #333;
+  border: 1px solid #FFF;
   float: left;
-  background-color: #333;
+  background-color: #FFF;
   display: inline;
 }
 
 #square-big {
   width: 30px;
   height: 30px;
-  border: 1px solid #333;
+  border: 1px solid #1B2224;
   float: left;
-  background-color: #333;
+  background-color: #1B2224;
 }
 
 /* Prevents Bootstrap Nav Collapse */
@@ -113,13 +122,12 @@ a.blue:hover {
 
 /* Kanban Cards */
 .card {
-  background-color: #FFF;
-  border: 1px solid #333;
-  padding: 7px;
-  margin-bottom: 10px;
-}
-.card-black {
-  border: 2px solid #333;
+    background-color: #FFF;
+    border: 1px solid #E5E5E5;
+    padding: 7px;
+    margin: 10px;
+    height: 100%;
+    cursor: move;
 }
 .card>h4 {
   margin: 0px;
@@ -131,43 +139,47 @@ a.blue:hover {
 
 /* Column Styling */
 .kanban {
-  min-height: 100px;
+  min-height: 60px;
 }
 .column {
-  margin-bottom: 25px;
+  margin-bottom: 15px;
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #fff;
 }
 .column-heading {
   margin-bottom: 10px;
   margin-top: 0px;
-  color: #333;
+  color: #1B2224;
 }
 .column-heading-red {
   background-color: #EA4335;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
   padding: 5px;
   color: white;
-  margin-top: 0px;
+  margin: 0px;
 }
 .column-heading-yellow {
   background-color: #FBBC05;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
   padding: 5px;
   color: white;
   margin-top: 0px;
 }
 .column-heading-blue {
   background-color: #4285F4;
-  margin-bottom: 10px;
-  padding: 5px 5px 5px 5px;
+  margin-bottom: 0px;
+  padding: 5px;
   color: white;
   margin-top: 0px;
 }
 .column-heading-black {
-  background-color: #333;
+  background-color: #FFF;
+  border-bottom: 1px solid #E5E5E5;
   margin-bottom: 10px;
   padding: 5px;
-  color: #000;
+  color: #1B2224;
   margin-top: 0px;
+  padding-left: 18px;
 }
 .big-number>h4 {
     font-size: 60px;
@@ -214,6 +226,9 @@ a.blue:hover {
 }
 
 /* Chart styling */
+.ct-chart {
+    height: 0px;
+}
 .ct-series-a .ct-line {
   /* Set the colour of this series line */
   stroke: #EA4335;
@@ -245,8 +260,8 @@ a.blue:hover {
   stroke: #4285F4;
 }
 .ct-grids line {
-  stroke: #333;
+  stroke: #1B2224;
 }
 .ct-labels span {
-  color: #333;
+  color: #1B2224;
 }

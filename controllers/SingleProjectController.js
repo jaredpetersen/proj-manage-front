@@ -24,7 +24,7 @@ angular.module('tangram').controller('SingleProjectController', function($scope,
     // Giant line chart configuration
     $scope.lineOptions = {
         fullWidth: true,
-        height: 380,
+        height: 350,
         chartPadding: {
             left: 0,
             right: 11
