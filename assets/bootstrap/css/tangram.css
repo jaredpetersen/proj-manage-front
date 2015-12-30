@@ -2,8 +2,8 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
 body {
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #1B2224;
-  background-color: #F1F1F1;
+  color: #333333;
+  background-color: #E7EBEE;
 }
 h1 {
   font-size: 20px;
@@ -33,7 +33,7 @@ p {
 /* Restyles Buttons */
 .btn {
     border: none;
-    color: #1B2224;
+    color: #333333;
     margin-bottom: 10px;
     border: 1px solid #E5E5E5;
 }
@@ -41,7 +41,7 @@ p {
     border: none;
     background-color: #E5E5E5;
     border: 1px solid #E5E5E5;
-    color: #1B2224;
+    color: #333333;
 }
 .btn-lg {
     font-size: 16px;
@@ -60,11 +60,11 @@ p {
 
 /* Restyles links */
 a {
-  color: #1B2224;
+  color: #333333;
   text-decoration: none;
 }
 a.black-underline {
-  color: #1B2224;
+  color: #333333;
   text-decoration: underline;
 }
 a.black-underline:hover {
@@ -72,7 +72,7 @@ a.black-underline:hover {
   text-decoration: underline;
 }
 a:hover {
-  color: #1B2224;
+  color: #333333;
   text-decoration: none;
 }
 a.red:hover {
@@ -101,9 +101,9 @@ a.blue:hover {
 #square-big {
   width: 30px;
   height: 30px;
-  border: 1px solid #1B2224;
+  border: 1px solid #333333;
   float: left;
-  background-color: #1B2224;
+  background-color: #333333;
 }
 
 /* Prevents Bootstrap Nav Collapse */
@@ -149,7 +149,7 @@ a.blue:hover {
 .column-heading {
   margin-bottom: 10px;
   margin-top: 0px;
-  color: #1B2224;
+  color: #333333;
 }
 .column-heading-red {
   background-color: #EA4335;
@@ -177,7 +177,7 @@ a.blue:hover {
   border-bottom: 1px solid #E5E5E5;
   margin-bottom: 10px;
   padding: 5px;
-  color: #1B2224;
+  color: #333333;
   margin-top: 0px;
   padding-left: 18px;
 }
@@ -260,8 +260,8 @@ a.blue:hover {
   stroke: #4285F4;
 }
 .ct-grids line {
-  stroke: #1B2224;
+  stroke: #333333;
 }
 .ct-labels span {
-  color: #1B2224;
+  color: #333333;
 }
