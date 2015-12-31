@@ -31,9 +31,9 @@ p {
 
 /* Restyles Buttons */
 .btn {
-    color: #4285F4;
+    color: #333;
     margin-bottom: 10px;
-    border: 1px solid #4285F4;
+    border: 1px solid #333;
 }
 .btn-lg {
     font-size: 16px;
@@ -44,7 +44,7 @@ p {
     border: 1px solid #4285F4;
 }
 .btn:active, .btn:focus, .btn:active:focus {
-    outline: 5px auto #4285F4;
+    outline: 5px auto #BABABA;
 }
 .btn-warn {
     color: #EA4335;
@@ -76,7 +76,7 @@ a.black-underline {
   text-decoration: underline;
 }
 a.black-underline:hover {
-  color: #EA4335;
+  color: #4285F4;
   text-decoration: underline;
 }
 a.red:hover {
