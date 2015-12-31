@@ -3,7 +3,7 @@
 body {
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #333333;
-  background-color: #E7EBEE;
+  background-color: #F0F0F0;
 }
 h1 {
   font-size: 20px;
@@ -144,7 +144,7 @@ a.blue:hover {
 .column {
   margin-bottom: 15px;
   background-color: #FFFFFF;
-  border-bottom: 1px solid #fff;
+  overflow: auto;
 }
 .column-heading {
   margin-bottom: 10px;
@@ -154,32 +154,31 @@ a.blue:hover {
 .column-heading-red {
   background-color: #EA4335;
   margin-bottom: 0px;
-  padding: 5px;
+  padding: 5px 5px 5px 10px;
   color: white;
   margin: 0px;
 }
 .column-heading-yellow {
   background-color: #FBBC05;
   margin-bottom: 0px;
-  padding: 5px;
+  padding: 5px 5px 5px 10px;
   color: white;
   margin-top: 0px;
 }
 .column-heading-blue {
   background-color: #4285F4;
   margin-bottom: 0px;
-  padding: 5px;
+  padding: 5px 5px 5px 10px;
   color: white;
   margin-top: 0px;
 }
 .column-heading-black {
-  background-color: #FFF;
-  border-bottom: 1px solid #E5E5E5;
-  margin-bottom: 10px;
-  padding: 5px;
-  color: #333333;
+  /*background-color: #666666;*/
+  margin-bottom: 0px;
+  padding: 10px 10px 0px 10px;
+  color: #333;
   margin-top: 0px;
-  padding-left: 18px;
+  text-decoration: underline;
 }
 .big-number>h4 {
     font-size: 60px;

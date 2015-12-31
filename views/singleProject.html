@@ -2,8 +2,8 @@
     <div class="col-md-9 col-sm-12 col-xs-12">
         <div class="row" style="margin-bottom: 15px;">
             <div class="col-md-12 col-sm-12 col-xs-12">
-                <div style="background-color: #FFF; padding: 10px;">
-                    <h2 class="column-heading">task metrics</h2>
+                <div style="background-color: #FFF;">
+                    <h2 class="column-heading-black">task metrics</h2>
                     <chartist class="ct-chart" chartist-data="lineData" chartist-chart-options="lineOptions" chartist-chart-type="Line"></chartist>
                 </div>
             </div>
@@ -32,28 +32,24 @@
     <div class="col-md-3 col-sm-12 col-xs-12">
         <div class="row" style="margin-bottom: 15px;">
             <div class="col-md-12 col-sm-6 col-xs-12">
-                <div class="column" style="margin-bottom: 15px; padding: 10px;">
-                    <h2 class="column-heading">description</h2>
-                    <p style="margin-bottom: 0px; font-size: 14px;">{{project.description || 'None'}}</p>
+                <div class="column" style="margin-bottom: 15px;">
+                    <h2 class="column-heading-black">description</h2>
+                    <p style="padding: 10px; margin-bottom: 0px; font-size: 14px;">{{project.description || 'None'}}</p>
                 </div>
             </div>
             <div class="col-md-12 col-sm-6 col-xs-12">
-                <div class="column" style="margin-bottom: 15px; padding: 10px;">
-                    <h2 class="column-heading">owner</h2>
-                    <p style="margin-bottom: 0px; font-size: 14px;">{{project.ownerName || 'None'}}</p>
+                <div class="column" style="margin-bottom: 15px;">
+                    <h2 class="column-heading-black">team</h2>
+                    <p style="padding: 10px; margin-bottom: 0px; font-size: 14px;" ng-repeat="member in project.memberNames">{{member || 'None'}}</p>
                 </div>
             </div>
             <div class="col-md-12 col-sm-6 col-xs-12">
-                <div class="column" style="margin-bottom: 15px; padding: 10px;">
-                    <h2 class="column-heading">members</h2>
-                    <p style="margin-bottom: 0px; font-size: 14px;" ng-repeat="member in project.memberNames">{{member}}</p>
-                </div>
-            </div>
-            <div class="col-md-12 col-sm-6 col-xs-12">
-                <div class="column" style="margin-bottom: 15px; padding: 10px;">
-                    <h2 class="column-heading">actions</h2>
-                    <button type="button" ui-sref="projectTasks({id: projectId})" class="btn btn-default btn-lg btn-block">tasks</button>
-                    <button type="button" class="btn btn-default btn-lg btn-block btn-warn" style="margin-bottom: 0px;">delete</button>
+                <div class="column" style="margin-bottom: 15px;">
+                    <h2 class="column-heading-black">actions</h2>
+                    <div style="padding: 10px;">
+                        <button type="button" ui-sref="projectTasks({id: projectId})" class="btn btn-default btn-lg btn-block">tasks</button>
+                        <button type="button" class="btn btn-default btn-lg btn-block btn-warn" style="margin-bottom: 0px;">delete</button>
+                    </div>
                 </div>
             </div>
         </div>

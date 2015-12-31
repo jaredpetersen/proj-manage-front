@@ -1,72 +1,45 @@
 <div class="row">
-    <div class="col-md-12 col-sm-12 col-xs-12">
-        <div class="column" style="background-color: #FFF; padding: 10px;">
-            <h2 class="column-heading">description</h2>
-            <!--<h4>{{task.description || 'no task description'}}</h4>-->
-            <h4>UCS Richard Woodcock building technology setup. This is a sentence related to setting things up. This is another sentence.</h4>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-9 col-sm-12 col-xs-12" style="margin-bottom: 15px;">
-        <div style="background-color: #FFF; padding: 10px;">
-            <div class="row" style="margin-bottom: 10px;">
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                    <h2 class="column-heading">subtasks</h2>
-                </div>
+    <div class="col-md-9 col-sm-12 col-xs-12" style="height: 100%;">
+        <div class="column">
+            <h2 class="column-heading-black">subtasks</h2>
+            <div class="card">
+                <h3>overview</h3>
+                <p><i class="fa fa-calendar"></i> 01/20/94</p>
             </div>
-            <div class="row" style="margin-bottom: 15px;">
-                <div class="col-md-6 col-sm-6 col-xs-12">
-                    <div class="column">
-                        <h2 class="column-heading-red">backlog</h2>
-                        <div id="backlog" class="kanban" ui-sortable="sortableOptions" style="border-left: 1px solid #E5E5E5; border-right: 1px solid #E5E5E5; border-bottom: 1px solid #E5E5E5; border-top: 1px solid #FFF;">
-                            <div class="card">
-                                <h3>test 1</h3>
-                                <p><i class="fa fa-calendar"></i> 01/20/15</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-6 col-xs-12">
-                    <div class="column" style="margin-bottom: 0px;">
-                        <h2 class="column-heading-blue">complete</h2>
-                        <div id="backlog" class="kanban" ui-sortable="sortableOptions" style="border-left: 1px solid #E5E5E5; border-right: 1px solid #E5E5E5; border-bottom: 1px solid #E5E5E5; border-top: 1px solid #FFF;">
-                            <div class="card">
-                                <h3>test 2</h3>
-                                <p><i class="fa fa-calendar"></i> 01/20/15</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="card">
+                <h3>user content</h3>
+                <p><i class="fa fa-calendar"></i> 01/20/94</p>
             </div>
         </div>
     </div>
     <div class="col-md-3 col-sm-12 col-xs-12">
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="row">
-                    <div class="col-md-12 col-sm-6 col-xs-12">
-                        <div class="column" style="background-color: #EA4335; margin-bottom: 15px; padding: 5px; text-align: center;">
-                            <h4 class="column-heading" style="color: #FFF; font-size: 40px; margin: 0px;">{{task.status}}</h4>
-                            <h3 style="font-size: 16px; color: #FFF; margin: 0px;">task status</h3>
-                        </div>
-                    </div>
-                    <div class="col-md-12 col-sm-6 col-xs-12">
-                        <div class="column" style="background-color: #FFF; padding: 10px;">
-                            <h2 class="column-heading">owner</h2>
-                            <p style="margin-bottom: 0px; font-size: 14px;">{{task.ownerName || 'unowned'}}</p>
-                        </div>
-                    </div>
+                <div class="column-heading-red big-number" style="background-color: #EA4335; padding-top: 10px; padding-bottom: 10px; margin-bottom: 15px;">
+                    <h4 style="font-size: 35px; padding-bottom: 5px;">{{task.status}}</h4>
+                    <h3>status</h3>
                 </div>
             </div>
-        </div>
-        <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="column" style="background-color: #FFF; padding: 10px;">
-                    <h2 class="column-heading">actions</h2>
-                    <button type="button" class="btn btn-default btn-lg btn-block btn-warn" style="margin-bottom: 0px;">delete task</button>
+                <div class="column" style="background-color: #FFF;">
+                    <h2 class="column-heading-black">details</h2>
+                    <p style="padding: 10px 10px 0px 10px; margin-bottom: 0px; font-size: 14px;"><i class="fa fa-briefcase"></i> project 1</p>
+                    <p style="padding: 10px; margin-bottom: 0px; font-size: 14px;"><i class="fa fa-user"></i>&nbsp;&nbsp;{{task.ownerName || 'currently unowned'}}</p>
                 </div>
             </div>
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="column">
+                    <h2 class="column-heading-black">description</h2>
+                    <!--<h4>{{task.description || 'no task description'}}</h4>-->
+                    <p style="padding: 10px; margin-bottom: 0px; font-size: 14px;">UCS Richard Woodcock building technology setup. This is a sentence related to setting things up. This is another sentence.</p>
+                </div>
+            </div>
+            <!--<div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="column" style="background-color: #FFF;">
+                    <h2 class="column-heading-black">owner</h2>
+                    <p style="padding: 10px; margin-bottom: 0px; font-size: 14px;">{{task.ownerName || 'unowned'}}</p>
+                </div>
+            </div>-->
         </div>
     </div>
 </div>

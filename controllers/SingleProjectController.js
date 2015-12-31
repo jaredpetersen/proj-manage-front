@@ -26,8 +26,8 @@ angular.module('tangram').controller('SingleProjectController', function($scope,
         fullWidth: true,
         height: 350,
         chartPadding: {
-            left: 0,
-            right: 11
+            left: 10,
+            right: 21
         },
         axisY: {
             onlyInteger: true,
