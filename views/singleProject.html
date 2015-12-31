@@ -3,27 +3,26 @@
         <div class="row" style="margin-bottom: 15px;">
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div style="background-color: #FFF;">
-                    <h2 class="column-heading-black">task metrics<a class="pull-right" style="margin-right:5px;" title="burndown chart" href="" ng-click=""><i class="fa fa-area-chart"></i></a>
-</h2>
+                    <h2 class="column-heading-black">task metrics<a class="pull-right" style="margin-right:5px;" title="burndown chart" href="" ng-click=""><i class="fa fa-area-chart"></i></a></h2>
                     <chartist class="ct-chart" chartist-data="lineData" chartist-chart-options="lineOptions" chartist-chart-type="Line"></chartist>
                 </div>
             </div>
         </div>
-        <div class="row" style="margin-bottom: 15px;">
+        <div class="row">
             <div class="col-md-4 col-sm-4 col-xs-12">
-                <div class="column-heading-red big-number">
+                <div class="column-heading-red big-number" style="margin-bottom: 15px;">
                     <h4>{{backlogCount}}</h4>
                     <h3>backlog</h3>
                 </div>
             </div>
             <div class="col-md-4 col-sm-4 col-xs-12">
-                <div class="column-heading-yellow big-number">
+                <div class="column-heading-yellow big-number" style="margin-bottom: 15px;">
                     <h4>{{inprogressCount}}</h4>
                     <h3>in-progress</h3>
                 </div>
             </div>
             <div class="col-md-4 col-sm-4 col-xs-12">
-                <div class="column-heading-blue big-number">
+                <div class="column-heading-blue big-number" style="margin-bottom: 15px;">
                     <h4>{{completeCount}}</h4>
                     <h3>complete</h3>
                 </div>
