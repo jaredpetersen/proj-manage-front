@@ -9,13 +9,13 @@
                 <!-- Task card -->
                 <div class="card draggable" ng-repeat="task in backlog">
                     <h3>
-                        <a ui-sref="task({id: task._id})">{{task.name}}</a>
+                        <a title="{{task.name}}" ui-sref="task({id: task._id})">{{task.name}}</a>
                         <a class="red pull-right" title="delete task" href="" ng-click="deleteTask(task._id)"><i class="fa fa-close"></i></a>
                     </h3>
                     <p>
                         <!-- Will need to fix overflow with CSS later with this:
                              http://stackoverflow.com/questions/22978990/bootstrap-3-table-overflow-out-of-panel -->
-                        <i class="fa fa-clone"></i> <a class="blue" ui-sref="project({id: task.project})">{{task.projectName}}</a>
+                        <i class="fa fa-clone"></i> <a title="{{task.projectName}}" ui-sref="project({id: task.project})">{{task.projectName}}</a>
                         &nbsp;&nbsp;
                         <i class="fa fa-calendar"></i> {{task.created | date:'MM/dd/yy'}}
                     </p>
@@ -33,11 +33,11 @@
                 <!-- Task card -->
                 <div class="card draggable" ng-repeat="task in inprogress">
                     <h3>
-                        <a ui-sref="task({id: task._id})">{{task.name}}</a>
+                        <a title="{{task.name}}" ui-sref="task({id: task._id})">{{task.name}}</a>
                         <a class="red pull-right" title="delete task" href="" ng-click="deleteTask(task._id)"><i class="fa fa-close"></i></a>
                     </h3>
                     <p>
-                        <i class="fa fa-clone"></i> <a ui-sref="project({id: task.project})">{{task.projectName}}</a>
+                        <i class="fa fa-clone"></i> <a title="{{task.projectName}}" ui-sref="project({id: task.project})">{{task.projectName}}</a>
                         &nbsp;&nbsp;
                         <i class="fa fa-calendar"></i> {{task.created | date:'MM/dd/yy'}}
                     </p>
@@ -55,11 +55,11 @@
                 <!-- Task card -->
                 <div class="card draggable" ng-repeat="task in complete">
                     <h3>
-                        <a ui-sref="task({id: task._id})">{{task.name}}</a>
+                        <a title="{{task.name}}" ui-sref="task({id: task._id})">{{task.name}}</a>
                         <a class="red pull-right" title="delete task" href="" ng-click="deleteTask(task._id)"><i class="fa fa-close"></i></a>
                     </h3>
                     <p>
-                        <i class="fa fa-clone"></i> <a class="blue" ui-sref="project({id: task.project})">{{task.projectName}}</a>
+                        <i class="fa fa-clone"></i> <a title="{{task.projectName}}" ui-sref="project({id: task.project})">{{task.projectName}}</a>
                         &nbsp;&nbsp;
                         <i class="fa fa-calendar"></i> {{task.created | date:'MM/dd/yy'}}
                     </p>

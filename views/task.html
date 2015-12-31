@@ -9,7 +9,7 @@
                 </div>
                 <div style="float: right;">
                     <p style="font-size: 18px; padding-top: 10px;">
-                        <a class="green" title="mark as done" ui-sref="task({id: task._id})"><i class="fa fa-check fa-fw"></i></a>&nbsp;&nbsp;
+                        <a class="green" title="done" ui-sref="task({id: task._id})"><i class="fa fa-check fa-fw"></i></a>&nbsp;&nbsp;
                         <a class="blue" title="edit" ui-sref="task({id: task._id})"><i class="fa fa-pencil fa-fw"></i></a>&nbsp;&nbsp;
                         <a class="red" title="delete" ui-sref="task({id: task._id})"><i class="fa fa-close fa-fw"></i></a>
                     </p>
@@ -28,7 +28,7 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="column" style="background-color: #FFF;">
                     <h2 class="column-heading-black">details</h2>
-                    <p style="padding: 10px 10px 0px 10px; margin-bottom: 0px; font-size: 14px;"><i class="fa fa-clone fa-fw"></i> {{task.projectName}}</p>
+                    <p style="padding: 10px 10px 0px 10px; margin-bottom: 0px; font-size: 14px;"><i class="fa fa-clone fa-fw"></i> <a title="{{task.projectName}}" ui-sref="project({id: task.project})">{{task.projectName}}</a></p>
                     <p style="padding: 10px 10px 0px 10px; margin-bottom: 0px; font-size: 14px;"><i class="fa fa-user fa-fw"></i> {{task.ownerName || 'currently unowned'}}</p>
                     <p style="padding: 10px; margin-bottom: 0px; font-size: 14px;"><i class="fa fa-calendar fa-fw"></i> {{task.created | date:'MM/dd/yy'}}</p>
                 </div>
