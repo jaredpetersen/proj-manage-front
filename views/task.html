@@ -7,11 +7,11 @@
                     <h3>overview</h3>
                     <p style="margin-bottom: 0px;"><i class="fa fa-calendar"></i> 01/20/94</p>
                 </div>
-                <div style="float: right; padding-right: 10px;">
+                <div style="float: right;">
                     <p style="font-size: 18px; padding-top: 10px;">
-                        <a><i class="fa fa-check fa-fw"></i></a>&nbsp;&nbsp;
-                        <a><i class="fa fa-pencil fa-fw"></i></a>&nbsp;&nbsp;
-                        <a><i class="fa fa-close fa-fw"></i></a>
+                        <a class="green" title="mark as done" ui-sref="task({id: task._id})"><i class="fa fa-check fa-fw"></i></a>&nbsp;&nbsp;
+                        <a class="blue" title="edit" ui-sref="task({id: task._id})"><i class="fa fa-pencil fa-fw"></i></a>&nbsp;&nbsp;
+                        <a class="red" title="delete" ui-sref="task({id: task._id})"><i class="fa fa-close fa-fw"></i></a>
                     </p>
                 </div>
             </div>

@@ -24,7 +24,7 @@
             <div id="backlog" class="kanban" ng-model='backlog' ui-sortable="sortableOptions">
                 <!-- Task card -->
                 <div class="card draggable" ng-repeat="task in backlog">
-                    <h3><a class="red" ui-sref="task({id: task._id})">{{task.name}}</a></h3>
+                    <h3><a ui-sref="task({id: task._id})">{{task.name}}</a></h3>
                     <p><i class="fa fa-calendar"></i> {{task.created | date:'MM/dd/yy'}}</p>
                 </div>
             </div>
@@ -40,7 +40,7 @@
             <div id="in-progress" class="kanban" ng-model='inprogress' ui-sortable="sortableOptions">
                 <!-- Task card -->
                 <div class="card draggable" ng-repeat="task in inprogress">
-                    <h3><a class="yellow" ui-sref="task({id: task._id})">{{task.name}}</a></h3>
+                    <h3><a ui-sref="task({id: task._id})">{{task.name}}</a></h3>
                     <p><i class="fa fa-calendar"></i> {{task.created | date:'MM/dd/yy'}}</p>
                 </div>
             </div>
@@ -55,7 +55,7 @@
             <div id="complete" class="kanban" ng-model='complete' ui-sortable="sortableOptions">
                 <!-- Task card -->
                 <div class="card draggable" ng-repeat="task in complete">
-                    <h3><a class="blue" ui-sref="task({id: task._id})">{{task.name}}</a></h3>
+                    <h3><a ui-sref="task({id: task._id})">{{task.name}}</a></h3>
                     <p><i class="fa fa-calendar"></i> {{task.created | date:'MM/dd/yy'}}</p>
                 </div>
             </div>

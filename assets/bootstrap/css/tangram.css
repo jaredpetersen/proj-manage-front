@@ -31,35 +31,44 @@ p {
 
 /* Restyles Buttons */
 .btn {
-    border: none;
-    color: #333333;
+    color: #4285F4;
     margin-bottom: 10px;
-    border: 1px solid #E5E5E5;
-}
-.btn:hover {
-    border: none;
-    background-color: #E5E5E5;
-    border: 1px solid #E5E5E5;
-    color: #333333;
+    border: 1px solid #4285F4;
 }
 .btn-lg {
     font-size: 16px;
 }
+.btn:hover, .btn:active, .btn:focus, .btn:active:focus {
+    color: #FFFFFF;
+    background-color: #4285F4;
+    border: 1px solid #4285F4;
+}
+.btn:active, .btn:focus, .btn:active:focus {
+    outline: 5px auto #4285F4;
+}
 .btn-warn {
     color: #EA4335;
+    border: 1px solid #EA4335;
 }
-.btn-warn:hover {
-    color: #FFF;
+.btn-warn:hover, .btn-warn:active, .btn-warn:focus, .btn-warn:active:focus {
+    color: #FFFFFF;
     background-color: #EA4335;
     border: none;
+}
+.btn-warn:active, .btn-warn:focus, .btn-warn:active:focus {
+    outline: 5px auto #EA4335;
 }
 .btn-project {
     margin-bottom: 20px;
 }
 
-/* Restyles links */
+/* Restyles regular links */
 a {
   color: #333333;
+  text-decoration: none;
+}
+a:hover {
+  color: #4285F4;
   text-decoration: none;
 }
 a.black-underline {
@@ -69,10 +78,6 @@ a.black-underline {
 a.black-underline:hover {
   color: #EA4335;
   text-decoration: underline;
-}
-a:hover {
-  color: #333333;
-  text-decoration: none;
 }
 a.red:hover {
   color: #EA4335;
@@ -85,6 +90,19 @@ a.yellow:hover {
 a.blue:hover {
   color: #4285F4;
   text-decoration: none;
+}
+a.green:hover {
+  color: #34A853;
+  text-decoration: none;
+}
+
+/* Nav links */
+.nav-links>a {
+    color: #FFF;
+}
+.nav-links>a:hover {
+    color: #4285F4;
+    text-decoration: none;
 }
 
 /* Temporary logo */
@@ -167,7 +185,7 @@ a.blue:hover {
   margin-top: 0px;
 }
 .column-heading-blue {
-  background-color: #4285F4;
+  background-color: #34A853;
   margin-bottom: 0px;
   padding: 5px 5px 5px 10px;
   color: white;
@@ -251,13 +269,13 @@ a.blue:hover {
 }
 .ct-series-c .ct-line {
   /* Set the colour of this series line */
-  stroke: #4285F4;
+  stroke: #34A853;
   /* Control the thikness of your lines */
   stroke-width: 5px;
 }
 .ct-series-c .ct-point {
   /* Colour of your points */
-  stroke: #4285F4;
+  stroke: #34A853;
 }
 .ct-grids line {
   stroke: #333333;
