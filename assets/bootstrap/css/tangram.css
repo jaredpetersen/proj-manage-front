@@ -1,7 +1,6 @@
 /* Font Restyling */
-@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
 body {
-  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #333333;
   background-color: #F0F0F0;
 }
@@ -127,7 +126,6 @@ a.blue:hover {
     padding: 7px;
     margin: 10px;
     height: 100%;
-    cursor: move;
 }
 .card>h4 {
   margin: 0px;
@@ -135,6 +133,9 @@ a.blue:hover {
 .card>p {
   margin-top: 5px;
   margin-bottom: 0px;
+}
+.draggable {
+    cursor: move;
 }
 
 /* Column Styling */

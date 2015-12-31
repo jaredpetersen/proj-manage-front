@@ -7,7 +7,7 @@
             <!-- All of the backlog tasks (with drag and drop) -->
             <div id="backlog" class="kanban" ng-model='backlog' ui-sortable="sortableOptions">
                 <!-- Task card -->
-                <div class="card" ng-repeat="task in backlog">
+                <div class="card draggable" ng-repeat="task in backlog">
                     <h3>
                         <a class="red" ui-sref="task({id: task._id})">{{task.name}}</a>
                         <a class="red pull-right" title="delete task" href="" ng-click="deleteTask(task._id)"><i class="fa fa-close"></i></a>
@@ -31,7 +31,7 @@
             <!-- All of the in-progress tasks (with drag and drop) -->
             <div id="in-progress" class="kanban" ng-model='inprogress' ui-sortable="sortableOptions">
                 <!-- Task card -->
-                <div class="card" ng-repeat="task in inprogress">
+                <div class="card draggable" ng-repeat="task in inprogress">
                     <h3>
                         <a class="yellow" ui-sref="task({id: task._id})">{{task.name}}</a>
                         <a class="yellow pull-right" title="delete task" href="" ng-click="deleteTask(task._id)"><i class="fa fa-close"></i></a>
@@ -53,7 +53,7 @@
             <!-- All of the backlog tasks (with drag and drop) -->
             <div id="complete" class="kanban" ng-model='complete' ui-sortable="sortableOptions">
                 <!-- Task card -->
-                <div class="card" ng-repeat="task in complete">
+                <div class="card draggable" ng-repeat="task in complete">
                     <h3>
                         <a class="blue" ui-sref="task({id: task._id})">{{task.name}}</a>
                         <a class="blue pull-right" title="delete task" href="" ng-click="deleteTask(task._id)"><i class="fa fa-close"></i></a>

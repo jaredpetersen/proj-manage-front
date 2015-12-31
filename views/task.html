@@ -2,13 +2,18 @@
     <div class="col-md-9 col-sm-12 col-xs-12" style="height: 100%;">
         <div class="column">
             <h2 class="column-heading-black">subtasks</h2>
-            <div class="card">
-                <h3>overview</h3>
-                <p><i class="fa fa-calendar"></i> 01/20/94</p>
-            </div>
-            <div class="card">
-                <h3>user content</h3>
-                <p><i class="fa fa-calendar"></i> 01/20/94</p>
+            <div class="card" style="overflow: auto;">
+                <div style="float: left;">
+                    <h3>overview</h3>
+                    <p style="margin-bottom: 0px;"><i class="fa fa-calendar"></i> 01/20/94</p>
+                </div>
+                <div style="float: right; padding-right: 10px;">
+                    <p style="font-size: 18px; padding-top: 10px;">
+                        <a><i class="fa fa-check fa-fw"></i></a>&nbsp;&nbsp;
+                        <a><i class="fa fa-pencil fa-fw"></i></a>&nbsp;&nbsp;
+                        <a><i class="fa fa-close fa-fw"></i></a>
+                    </p>
+                </div>
             </div>
         </div>
     </div>
@@ -23,23 +28,17 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="column" style="background-color: #FFF;">
                     <h2 class="column-heading-black">details</h2>
-                    <p style="padding: 10px 10px 0px 10px; margin-bottom: 0px; font-size: 14px;"><i class="fa fa-briefcase"></i> project 1</p>
-                    <p style="padding: 10px; margin-bottom: 0px; font-size: 14px;"><i class="fa fa-user"></i>&nbsp;&nbsp;{{task.ownerName || 'currently unowned'}}</p>
+                    <p style="padding: 10px 10px 0px 10px; margin-bottom: 0px; font-size: 14px;"><i class="fa fa-clone fa-fw"></i> {{task.projectName}}</p>
+                    <p style="padding: 10px 10px 0px 10px; margin-bottom: 0px; font-size: 14px;"><i class="fa fa-user fa-fw"></i> {{task.ownerName || 'currently unowned'}}</p>
+                    <p style="padding: 10px; margin-bottom: 0px; font-size: 14px;"><i class="fa fa-calendar fa-fw"></i> {{task.created | date:'MM/dd/yy'}}</p>
                 </div>
             </div>
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="column">
                     <h2 class="column-heading-black">description</h2>
-                    <!--<h4>{{task.description || 'no task description'}}</h4>-->
-                    <p style="padding: 10px; margin-bottom: 0px; font-size: 14px;">UCS Richard Woodcock building technology setup. This is a sentence related to setting things up. This is another sentence.</p>
+                    <p style="padding: 10px; margin-bottom: 0px; font-size: 14px;">{{task.description || 'no task description'}}</p>
                 </div>
             </div>
-            <!--<div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="column" style="background-color: #FFF;">
-                    <h2 class="column-heading-black">owner</h2>
-                    <p style="padding: 10px; margin-bottom: 0px; font-size: 14px;">{{task.ownerName || 'unowned'}}</p>
-                </div>
-            </div>-->
         </div>
     </div>
 </div>

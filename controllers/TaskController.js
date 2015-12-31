@@ -24,6 +24,16 @@ angular.module('tangram').controller('TaskController', function($scope, $rootSco
                     }
                 );
 
+                // Grab the project name
+                ApiService.getSingleProject(token, response.data.project).then (
+                    function success(projectResponse) {
+                        $scope.task.projectName = projectResponse.data.name;
+                    },
+                    function error(projectResponse) {
+                        console.log(projectResponse);
+                    }
+                );
+
                 // Update page title
                 $rootScope.pageTitle = response.data.name;
             },
