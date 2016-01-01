@@ -1,23 +1,24 @@
 <div class="row">
-    <div class="col-md-9 col-sm-12 col-xs-12" style="height: 100%;">
+    <div class="col-md-9 col-sm-8 col-xs-12" style="height: 100%;">
         <div class="column">
-            <h2 class="column-heading-black">subtasks<a class="black-gray pull-right" style="margin-right:5px;" title="new subtask" href="" ng-click=""><i class="fa fa-plus"></i></a></h2>
+            <h2 class="column-heading-black" style="display: inline-block;">subtasks</h2>
+            <a title="edit details" style="text-decoration: none; margin: 10px;" class="pull-right" href="" ng-click=""><i class="fa fa-plus"></i></a>
             <div class="card" style="overflow: auto;">
                 <div style="float: left;">
                     <h3>overview</h3>
                     <p style="margin-bottom: 0px;"><i class="fa fa-calendar"></i> 01/20/94</p>
                 </div>
                 <div style="float: right;">
-                    <p style="font-size: 18px; padding-top: 10px;">
-                        <a class="green" title="done" ui-sref="task({id: task._id})"><i class="fa fa-check fa-fw"></i></a>&nbsp;&nbsp;
-                        <a class="blue" title="edit" ui-sref="task({id: task._id})"><i class="fa fa-pencil fa-fw"></i></a>&nbsp;&nbsp;
-                        <a class="red" title="delete" ui-sref="task({id: task._id})"><i class="fa fa-close fa-fw"></i></a>
+                    <p style="font-size: 14px; padding-top: 10px;">
+                        <a class="green" title="mark as complete" ui-sref="task({id: task._id})"><i class="fa fa-check fa-fw"></i></a>&nbsp;&nbsp;&nbsp;
+                        <a class="blue" title="edit subtask" ui-sref="task({id: task._id})"><i class="fa fa-pencil fa-fw"></i></a>&nbsp;&nbsp;&nbsp;
+                        <a class="red" title="delete subtask" ui-sref="task({id: task._id})"><i class="fa fa-close fa-fw"></i></a>
                     </p>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-md-3 col-sm-12 col-xs-12">
+    <div class="col-md-3 col-sm-4 col-xs-12">
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="column-heading-red big-number" style="background-color: #EA4335; padding-top: 10px; padding-bottom: 10px; margin-bottom: 15px;">
@@ -27,15 +28,17 @@
             </div>
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="column" style="background-color: #FFF;">
-                    <h2 class="column-heading-black">details</h2>
+                    <h2 class="column-heading-black" style="display: inline-block;">details</h2>
+                    <a title="edit details" style="text-decoration: none; margin: 10px;" class="pull-right" href="" ng-click=""><i class="fa fa-pencil"></i></a>
                     <p style="padding: 10px 10px 0px 10px; margin-bottom: 0px; font-size: 14px;"><i class="fa fa-clone fa-fw"></i> <a title="{{task.projectName}}" ui-sref="project({id: task.project})">{{task.projectName}}</a></p>
-                    <p style="padding: 10px 10px 0px 10px; margin-bottom: 0px; font-size: 14px;"><i class="fa fa-user fa-fw"></i> {{task.ownerName || 'currently unowned'}}</p>
+                    <p style="padding: 10px 10px 0px 10px; margin-bottom: 0px; font-size: 14px;"><i class="fa fa-user fa-fw"></i> {{task.ownerName || 'unowned'}}</p>
                     <p style="padding: 10px; margin-bottom: 0px; font-size: 14px;"><i class="fa fa-calendar fa-fw"></i> {{task.created | date:'MM/dd/yy'}}</p>
                 </div>
             </div>
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="column">
-                    <h2 class="column-heading-black">description</h2>
+                    <h2 class="column-heading-black" style="display: inline-block;">description</h2>
+                    <a title="edit description" style="text-decoration: none; margin: 10px;" class="pull-right" href="" ng-click=""><i class="fa fa-pencil"></i></a>
                     <p style="padding: 10px; margin-bottom: 0px; font-size: 14px;">{{task.description || 'no task description'}}</p>
                 </div>
             </div>
