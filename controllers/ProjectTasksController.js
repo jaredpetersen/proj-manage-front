@@ -62,6 +62,7 @@ angular.module('tangram').controller('ProjectTasksController', function($scope, 
             function success(response) {
                 // Reload all of the tasks
                 loadData();
+                $scope.newTask = null;
             },
             function error(response) {
                 console.log(response);
