@@ -64,7 +64,7 @@ angular.module('tangram').controller('SingleProjectController', function($scope,
                 // Grab the project owner name
                 ApiService.getUser(projectResponse.data.owner).then (
                     function success(ownerResponse) {
-                        $scope.project.ownerName = ownerResponse.data.first_name + ' ' + ownerResponse.data.last_name
+                        $scope.project.ownerName = ownerResponse.data.first_name + ' ' + ownerResponse.data.last_name;
                     },
                     function error(ownerResponse) {
                         console.log(ownerResponse);

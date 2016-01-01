@@ -30,8 +30,24 @@ angular.module('tangram').controller('ProjectTasksController', function($scope, 
                     // Grab all of the tasks for sorting
                     var tasks = taskResponse.data;
 
-                    // Add the tasks to the proper status columns
+                    // Iterate over each of the tasks
                     angular.forEach(tasks, function(task, key) {
+
+                        console.log(task);
+
+                        // Grab the task owner name if it has one
+                        if (task.owner) {
+                            ApiService.getUser(task.owner).then (
+                                function success(ownerResponse) {
+                                    task.ownerName = ownerResponse.data.first_name + ' ' + ownerResponse.data.last_name;
+                                },
+                                function error(ownerResponse) {
+                                    console.log(ownerResponse);
+                                }
+                            );
+                        }
+
+                        // Add the tasks to the proper status columns
                         if (task.status == 'backlog') {
                             $scope.backlog.push(task);
                         }
@@ -41,6 +57,7 @@ angular.module('tangram').controller('ProjectTasksController', function($scope, 
                         else {
                             $scope.complete.push(task);
                         }
+
                     });
                 });
             },

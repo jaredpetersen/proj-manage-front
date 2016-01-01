@@ -30,7 +30,10 @@
                         <a ui-sref="task({id: task._id})">{{task.name}}</a>
                         <a class="red pull-right" title="delete task" href="" ng-click="deleteTask(task._id)"><i class="fa fa-close"></i></a>
                     </h3>
-                    <p><i class="fa fa-calendar"></i> {{task.created | date:'MM/dd/yy'}}</p>
+                    <p>
+                        <i class="fa fa-calendar fa-fw"></i> {{task.created | date:'MM/dd/yy'}}&nbsp;&nbsp;
+                        <i class="fa fa-user fa-fw"></i> {{task.ownerName || 'unowned'}}
+                    </p>
                 </div>
             </div>
         </div>
@@ -48,7 +51,10 @@
                         <a ui-sref="task({id: task._id})">{{task.name}}</a>
                         <a class="red pull-right" title="delete task" href="" ng-click="deleteTask(task._id)"><i class="fa fa-close"></i></a>
                     </h3>
-                    <p><i class="fa fa-calendar"></i> {{task.created | date:'MM/dd/yy'}}</p>
+                    <p>
+                        <i class="fa fa-calendar fa-fw"></i> {{task.created | date:'MM/dd/yy'}}&nbsp;&nbsp;
+                        <i class="fa fa-user fa-fw"></i> {{task.ownerName || 'unowned'}}
+                    </p>
                 </div>
             </div>
         </div>
@@ -66,7 +72,10 @@
                         <a ui-sref="task({id: task._id})">{{task.name}}</a>
                         <a class="red pull-right" title="delete task" href="" ng-click="deleteTask(task._id)"><i class="fa fa-close"></i></a>
                     </h3>
-                    <p><i class="fa fa-calendar"></i> {{task.created | date:'MM/dd/yy'}}</p>
+                    <p>
+                        <i class="fa fa-calendar fa-fw"></i> {{task.created | date:'MM/dd/yy'}}&nbsp;&nbsp;
+                        <i class="fa fa-user fa-fw"></i> {{task.ownerName || 'unowned'}}
+                    </p>
                 </div>
             </div>
         </div>
