@@ -18,24 +18,36 @@ angular.module('tangram').controller('ProjectTasksController', function($scope, 
         // Grab the project ID from the URL for API calls
         var id = $stateParams.id;
 
-        // Grab all the tasks for the project
-        ApiService.getProjectTasks(token, id).then(function(taskResponse) {
-            // Grab all of the tasks for sorting
-            var tasks = taskResponse.data;
+        // Grab the project name
+        ApiService.getSingleProject(token, id)
+        .then(
+            function success(projectResponse) {
+                // Set up the page title
+                $rootScope.pageTitle = projectResponse.data.name.toLowerCase() + ' - kanban';
 
-            // Add the tasks to the proper status columns
-            angular.forEach(tasks, function(task, key) {
-                if (task.status == 'backlog') {
-                    $scope.backlog.push(task);
-                }
-                else if (task.status == 'in-progress') {
-                    $scope.inprogress.push(task);
-                }
-                else {
-                    $scope.complete.push(task);
-                }
-            });
-        });
+                // Grab all the tasks for the project
+                ApiService.getProjectTasks(token, id).then(function(taskResponse) {
+                    // Grab all of the tasks for sorting
+                    var tasks = taskResponse.data;
+
+                    // Add the tasks to the proper status columns
+                    angular.forEach(tasks, function(task, key) {
+                        if (task.status == 'backlog') {
+                            $scope.backlog.push(task);
+                        }
+                        else if (task.status == 'in-progress') {
+                            $scope.inprogress.push(task);
+                        }
+                        else {
+                            $scope.complete.push(task);
+                        }
+                    });
+                });
+            },
+            function error(projectResponse) {
+                console.log(projectResponse);
+            }
+        );
     }
 
     // Update the task status - activated when the task is moved to a column
@@ -77,8 +89,7 @@ angular.module('tangram').controller('ProjectTasksController', function($scope, 
         AuthService.redirect();
     }
     else {
-        // The user is authenticated, proceed to load data
-        $rootScope.pageTitle = 'project kanban';
+        // The user is authenticated, proceed to load data and clear out the page title
         loadData();
     }
 
