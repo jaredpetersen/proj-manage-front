@@ -205,6 +205,8 @@ a.black-gray:hover {
 .column {
   margin-bottom: 15px;
   background-color: #FFFFFF;
+}
+.margin-fix {
   overflow: auto;
 }
 .column-heading {
