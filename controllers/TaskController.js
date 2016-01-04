@@ -2,7 +2,11 @@
 
 angular.module('tangram').controller('TaskController', function($scope, $rootScope, $stateParams, ApiService, AuthService) {
 
+    // Contains information on the task
     $scope.task = {}
+
+    // Indicates when the edit window is up
+    $scope.editTaskState = false;
 
     var loadData = function() {
         // API JSONWebToken
@@ -14,15 +18,17 @@ angular.module('tangram').controller('TaskController', function($scope, $rootSco
                 // Send task information to the view
                 $scope.task = response.data;
 
-                // Grab the owner name
-                ApiService.getUser(response.data.owner).then (
-                    function success(userResponse) {
-                        $scope.task.ownerName = userResponse.data.first_name + ' ' + userResponse.data.last_name
-                    },
-                    function error(userResponse) {
-                        console.log(userResponse);
-                    }
-                );
+                // Grab the owner name if it has one
+                if (response.data.owner) {
+                    ApiService.getUser(response.data.owner).then (
+                        function success(userResponse) {
+                            $scope.task.ownerName = userResponse.data.first_name + ' ' + userResponse.data.last_name
+                        },
+                        function error(userResponse) {
+                            console.log(userResponse);
+                        }
+                    );
+                }
 
                 // Grab the project name
                 ApiService.getSingleProject(token, response.data.project).then (
@@ -41,6 +47,12 @@ angular.module('tangram').controller('TaskController', function($scope, $rootSco
                 console.log(response);
             }
         );
+    }
+
+    // Switch the edit task dialog box to visible/invisible
+    $scope.switchEditTaskState = function(status) {
+        if ($scope.editTaskState == true) $scope.editTaskState = false;
+        else $scope.editTaskState = true;
     }
 
     // Grab the authentication token from the auth service

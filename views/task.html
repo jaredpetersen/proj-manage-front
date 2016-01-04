@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-9 col-sm-8 col-xs-12" style="height: 100%;">
-        <div class="column">
+        <div class="column margin-fix">
             <h2 class="column-heading-black" style="display: inline-block;">subtasks</h2>
             <a title="edit details" style="text-decoration: none; margin: 10px;" class="pull-right" href="" ng-click=""><i class="fa fa-plus"></i></a>
             <div class="card" style="overflow: auto;">
@@ -29,10 +29,27 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="column" style="background-color: #FFF;">
                     <h2 class="column-heading-black" style="display: inline-block;">details</h2>
-                    <a title="edit details" style="text-decoration: none; margin: 10px;" class="pull-right" href="" ng-click=""><i class="fa fa-pencil"></i></a>
-                    <p style="padding: 10px 10px 0px 10px; margin-bottom: 0px; font-size: 14px;"><i class="fa fa-clone fa-fw"></i> <a title="{{task.projectName}}" ui-sref="project({id: task.project})">{{task.projectName}}</a></p>
-                    <p style="padding: 10px 10px 0px 10px; margin-bottom: 0px; font-size: 14px;"><i class="fa fa-user fa-fw"></i> {{task.ownerName || 'unowned'}}</p>
-                    <p style="padding: 10px; margin-bottom: 0px; font-size: 14px;"><i class="fa fa-calendar fa-fw"></i> {{task.created | date:'MM/dd/yy'}}</p>
+                    <a title="edit details" style="text-decoration: none; margin: 10px;" class="pull-right" href="" ng-click="switchEditTaskState();">
+                        <i class="fa fa-pencil" ng-hide="editTaskState"></i>
+                        <i class="fa fa-floppy-o" ng-show="editTaskState"></i>
+                    </a>
+                    <div ng-hide="editTaskState">
+                        <p style="padding: 10px 10px 0px 10px; margin-bottom: 0px; font-size: 14px;"><i class="fa fa-clone fa-fw"></i> <a title="{{task.projectName}}" ui-sref="project({id: task.project})">{{task.projectName}}</a></p>
+                        <p style="padding: 10px 10px 0px 10px; margin-bottom: 0px; font-size: 14px;"><i class="fa fa-user fa-fw"></i> {{task.ownerName || 'unowned'}}</p>
+                        <p style="padding: 10px; margin-bottom: 0px; font-size: 14px;"><i class="fa fa-calendar fa-fw"></i> {{task.created | date:'MM/dd/yy'}}</p>
+                    </div>
+                    <div ng-show="editTaskState">
+                        <p style="padding: 10px 10px 0px 10px; margin-bottom: 0px; font-size: 14px;"><i class="fa fa-clone fa-fw"></i> <a title="{{task.projectName}}" ui-sref="project({id: task.project})">{{task.projectName}}</a></p>
+                        <form class="form-inline" style="margin: 0px 10px;">
+                            <div>
+                                <i class="fa fa-user fa-fw" style="margin-top: 13px;"></i>
+                                <select class="form-control" style="margin-bottom: 3px; color: #333;">
+                                    <option value="unowned">unowned</option>
+                                </select>
+                            </div>
+                        </form>
+                        <p style="padding: 0px 10px 10px 10px; margin-bottom: 0px; font-size: 14px;"><i class="fa fa-calendar fa-fw"></i> {{task.created | date:'MM/dd/yy'}}</p>
+                    </div>
                 </div>
             </div>
             <div class="col-md-12 col-sm-12 col-xs-12">
