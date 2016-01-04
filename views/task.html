@@ -35,7 +35,7 @@
                     </a>
                     <div ng-hide="editTaskState">
                         <p style="padding: 10px 10px 0px 10px; margin-bottom: 0px; font-size: 14px;"><i class="fa fa-clone fa-fw"></i> <a title="{{task.projectName}}" ui-sref="project({id: task.project})">{{task.projectName}}</a></p>
-                        <p style="padding: 10px 10px 0px 10px; margin-bottom: 0px; font-size: 14px;"><i class="fa fa-user fa-fw"></i> {{task.ownerName || 'unowned'}}</p>
+                        <p style="padding: 10px 10px 0px 10px; margin-bottom: 0px; font-size: 14px;"><i class="fa fa-user fa-fw"></i> {{task.ownerName || 'Unowned'}}</p>
                         <p style="padding: 10px; margin-bottom: 0px; font-size: 14px;"><i class="fa fa-calendar fa-fw"></i> {{task.created | date:'MM/dd/yy'}}</p>
                     </div>
                     <div ng-show="editTaskState">
@@ -44,7 +44,7 @@
                             <div>
                                 <i class="fa fa-user fa-fw" style="margin-top: 13px;"></i>
                                 <select ng-model="editTask.owner" class="form-control" style="margin-bottom: 3px; color: #333;">
-                                    <option value="">unowned</option>
+                                    <option value="">Unowned</option>
                                     <option value="{{member._id}}" ng-repeat="member in members">{{member.full_name}}</option>
                                 </select>
                             </div>

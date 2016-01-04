@@ -10,6 +10,8 @@ angular.module('tangram').controller('TaskController', function($scope, $rootSco
 
     // Indicates when the edit window is up
     $scope.editTaskState = false;
+    // Edit task data
+    $scope.editTask = {};
 
     // The CSS class for the status banner
     $scope.statusCSS;
@@ -80,16 +82,22 @@ angular.module('tangram').controller('TaskController', function($scope, $rootSco
             // API JSONWebToken
             var token = AuthService.getToken();
 
+            // Small fix since you can't have null value in select tags
+            var owner = $scope.editTask.owner;
+            if (owner == undefined) {
+                owner = null;
+            }
+
             // Switching back to view mode, save the data
-            ApiService.updateTask(token, $stateParams.id, $scope.task.name, $scope.task.description, $scope.editTask.owner, $scope.task.project).then (
-                function success(response) {
+            ApiService.updateTask(token, $stateParams.id, $scope.task.name, $scope.task.description, owner, $scope.task.project).then (
+                function success(updateResponse) {
                     // Update complete, switch the edit state and reload data
                     $scope.editTaskState = false;
                     loadData();
                     console.log("update logged");
                 },
-                function error(response) {
-                    console.log(response);
+                function error(updateResponse) {
+                    console.log(updateResponse);
                 }
             );
         }
