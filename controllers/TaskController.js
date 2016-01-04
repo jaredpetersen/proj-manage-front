@@ -8,8 +8,10 @@ angular.module('tangram').controller('TaskController', function($scope, $rootSco
     // List of all of the members associated with the project's task
     $scope.members = [];
 
-    // Indicates when the edit window is up
-    $scope.editTaskState = false;
+    // Indicates when the edit details window is up
+    $scope.editTaskDetailsState = false;
+    // Indicates when the edit description window is up
+    $scope.editTaskDescriptionState = false;
     // Edit task data
     $scope.editTask = {};
 
@@ -77,8 +79,8 @@ angular.module('tangram').controller('TaskController', function($scope, $rootSco
     }
 
     // Switch the edit task dialog box to visible/invisible
-    $scope.switchEditTaskState = function(status) {
-        if ($scope.editTaskState == true) {
+    $scope.editTaskDetails = function(status) {
+        if ($scope.editTaskDetailsState == true) {
             // API JSONWebToken
             var token = AuthService.getToken();
 
@@ -92,7 +94,7 @@ angular.module('tangram').controller('TaskController', function($scope, $rootSco
             ApiService.updateTask(token, $stateParams.id, $scope.task.name, $scope.task.description, owner, $scope.task.project).then (
                 function success(updateResponse) {
                     // Update complete, switch the edit state and reload data
-                    $scope.editTaskState = false;
+                    $scope.editTaskDetailsState = false;
                     loadData();
                     console.log("update logged");
                 },
@@ -103,7 +105,7 @@ angular.module('tangram').controller('TaskController', function($scope, $rootSco
         }
         else {
             // Switching to edit mode
-            $scope.editTaskState = true;
+            $scope.editTaskDetailsState = true;
         }
     }
 
