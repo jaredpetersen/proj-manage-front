@@ -51,8 +51,27 @@ angular.module('tangram').controller('TaskController', function($scope, $rootSco
 
     // Switch the edit task dialog box to visible/invisible
     $scope.switchEditTaskState = function(status) {
-        if ($scope.editTaskState == true) $scope.editTaskState = false;
-        else $scope.editTaskState = true;
+        if ($scope.editTaskState == true) {
+            // API JSONWebToken
+            var token = AuthService.getToken();
+
+            // Switching back to view mode, save the data
+            ApiService.updateTask(token, $stateParams.id, $scope.task.name, $scope.task.description, $scope.task.owner, $scope.task.project).then (
+                function success(response) {
+                    // Update complete, switch the edit state and reload data
+                    $scope.editTaskState = false;
+                    loadData();
+                    console.log("update logged");
+                },
+                function error(response) {
+                    console.log(response);
+                }
+            );
+        }
+        else {
+            // Switching to edit mode
+            $scope.editTaskState = true;
+        }
     }
 
     // Grab the authentication token from the auth service
