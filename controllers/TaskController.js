@@ -11,6 +11,9 @@ angular.module('tangram').controller('TaskController', function($scope, $rootSco
     // Indicates when the edit window is up
     $scope.editTaskState = false;
 
+    // The CSS class for the status banner
+    $scope.statusCSS;
+
     var loadData = function() {
         // API JSONWebToken
         var token = AuthService.getToken();
@@ -20,6 +23,11 @@ angular.module('tangram').controller('TaskController', function($scope, $rootSco
             function success(response) {
                 // Send task information to the view
                 $scope.task = response.data;
+
+                // Update the status banner color
+                if ($scope.task.status == 'backlog') $scope.statusCSS = 'column-heading-red';
+                else if ($scope.task.status == 'in-progress') $scope.statusCSS = 'column-heading-yellow';
+                else $scope.statusCSS = 'column-heading-blue';
 
                 // Update page title
                 $rootScope.pageTitle = response.data.name;
