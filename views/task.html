@@ -45,6 +45,7 @@
                                 <i class="fa fa-user fa-fw" style="margin-top: 13px;"></i>
                                 <select ng-model="editTask.owner" class="form-control" style="margin-bottom: 3px; color: #333;">
                                     <option value="">unowned</option>
+                                    <option value="{{member._id}}" ng-repeat="member in members">{{member.full_name}}</option>
                                 </select>
                             </div>
                         </form>

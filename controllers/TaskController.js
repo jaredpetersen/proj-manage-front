@@ -3,7 +3,10 @@
 angular.module('tangram').controller('TaskController', function($scope, $rootScope, $stateParams, ApiService, AuthService) {
 
     // Contains information on the task
-    $scope.task = {}
+    $scope.task = {};
+
+    // List of all of the members associated with the project's task
+    $scope.members = [];
 
     // Indicates when the edit window is up
     $scope.editTaskState = false;
@@ -18,6 +21,9 @@ angular.module('tangram').controller('TaskController', function($scope, $rootSco
                 // Send task information to the view
                 $scope.task = response.data;
 
+                // Update page title
+                $rootScope.pageTitle = response.data.name;
+
                 // Grab the owner name if it has one
                 if (response.data.owner) {
                     ApiService.getUser(response.data.owner).then (
@@ -30,18 +36,29 @@ angular.module('tangram').controller('TaskController', function($scope, $rootSco
                     );
                 }
 
-                // Grab the project name
+                // Grab the project name and members
                 ApiService.getSingleProject(token, response.data.project).then (
                     function success(projectResponse) {
                         $scope.task.projectName = projectResponse.data.name;
+
+                        // Grab the project members for the edit dialog
+                        angular.forEach(projectResponse.data.members, function(member, key) {
+                            ApiService.getUser(member).then (
+                                function success(memberResponse) {
+                                    $scope.members.push(
+                                        {'full_name': memberResponse.data.first_name + ' ' + memberResponse.data.last_name,
+                                         '_id': memberResponse.data._id});
+                                },
+                                function error(memberResponse) {
+                                    console.log(memberResponse);
+                                }
+                            );
+                        });
                     },
                     function error(projectResponse) {
                         console.log(projectResponse);
                     }
                 );
-
-                // Update page title
-                $rootScope.pageTitle = response.data.name;
             },
             function error(response) {
                 console.log(response);
@@ -56,7 +73,7 @@ angular.module('tangram').controller('TaskController', function($scope, $rootSco
             var token = AuthService.getToken();
 
             // Switching back to view mode, save the data
-            ApiService.updateTask(token, $stateParams.id, $scope.task.name, $scope.task.description, $scope.task.owner, $scope.task.project).then (
+            ApiService.updateTask(token, $stateParams.id, $scope.task.name, $scope.task.description, $scope.editTask.owner, $scope.task.project).then (
                 function success(response) {
                     // Update complete, switch the edit state and reload data
                     $scope.editTaskState = false;
