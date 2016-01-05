@@ -9,21 +9,21 @@
                 </p>
             </div>
             <div>
-                <h3 style="margin-bottom: 0px;"><a title="project details" ui-sref="project({id: project._id})">{{project.name | lowercase}}</a></h3>
+                <h3 style="margin-bottom: 0px;"><a title="project details" ui-sref="project({id: project._id})">{{project.name}}</a></h3>
             </div>
         </div>
     </div>
     <div class="col-md-4 col-sm-6 col-xs-12">
-        <button type="button" ng-hide="newProjectState" class="btn btn-default btn-lg btn-block btn-project" ng-click="switchNewProjectState();"><i class="fa fa-plus fa-fw"></i> new project</button>
+        <button type="button" ng-hide="newProjectState" class="btn btn-default btn-lg btn-block btn-project" ng-click="switchNewProjectState();"><i class="fa fa-plus fa-fw"></i> New Project</button>
         <div class="column" style="padding: 10px 10px 0px 10px;" ng-show="newProjectState">
-            <h3><i class="fa fa-plus fa-fw"></i> new project</h3>
+            <h3><i class="fa fa-plus fa-fw"></i> New Project</h3>
             <div class="form-group">
-                <input type="text" class="form-control" id="name" placeholder="project name" ng-model="newProject.name">
+                <input type="text" class="form-control" id="name" placeholder="Project Name" ng-model="newProject.name">
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" id="description" placeholder="project description" ng-model="newProject.description">
+                <input type="text" class="form-control" id="description" placeholder="Project Description" ng-model="newProject.description">
             </div>
-            <button type="submit" class="btn btn-default" ng-click="createProject(newProject);">create project</button>&nbsp;&nbsp;&nbsp;<button type="submit" class="btn btn-default" ng-click="switchNewProjectState();">cancel</button>
+            <button type="submit" class="btn btn-default" ng-click="createProject(newProject);">Create Project</button>&nbsp;&nbsp;&nbsp;<button type="submit" class="btn btn-default" ng-click="switchNewProjectState();">Cancel</button>
         </div>
     </div>
 </div>
