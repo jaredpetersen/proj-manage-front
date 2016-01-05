@@ -3,13 +3,13 @@
         <div class="column" style="padding: 20px 10px;">
             <div style="float: right;">
                 <p style="font-size: 14px; margin: 0px;">
-                    <a class="blue" title="project details" ui-sref="project({id: project._id})"><i class="fa fa-area-chart fa-fw"></i></a>&nbsp;&nbsp;&nbsp;
                     <a class="blue" title="project tasks" ui-sref="projectTasks({id: project._id})"><i class="fa fa-bars fa-fw fa-rotate-90"></i></a>&nbsp;&nbsp;&nbsp;
+                    <a class="blue" title="metrics &amp; data" ui-sref="project({id: project._id})"><i class="fa fa-area-chart fa-fw"></i></a>&nbsp;&nbsp;&nbsp;
                     <a class="red" title="delete project" href="" ng-click=""><i class="fa fa-close fa-fw"></i></a>
                 </p>
             </div>
             <div>
-                <h3 style="margin-bottom: 0px;"><a title="project details" ui-sref="project({id: project._id})">{{project.name | lowercase}}</a></h3>
+                <h3 style="margin-bottom: 0px;"><a title="metrics &amp; data" ui-sref="project({id: project._id})">{{project.name | lowercase}}</a></h3>
             </div>
         </div>
     </div>
