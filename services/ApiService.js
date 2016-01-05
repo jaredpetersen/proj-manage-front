@@ -54,6 +54,11 @@ angular.module('tangram').factory('ApiService', function($http, $q) {
         return $http.post(baseURL + '/projects', {'name': name, 'description': description}, {headers: {'x-access-token': token}});
     }
 
+    // Delete project
+    apiFactory.deleteProject = function(token, id) {
+        return $http.delete(baseURL + '/projects/' + id, {headers: {'x-access-token': token}});
+    }
+
     // Get a single user
     apiFactory.getUser = function(id) {
         return $http.get(baseURL + '/users/' + id);

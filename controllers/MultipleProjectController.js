@@ -34,9 +34,22 @@ angular.module('tangram').controller('MultipleProjectController', function($scop
         }
     }
 
+    // Create a new project
     $scope.createProject = function(newProject) {
-        // Create the new project
         ApiService.createProject(AuthService.getToken(), newProject.name, newProject.description)
+        .then(
+            function success(response) {
+                loadData();
+            },
+            function error(response) {
+                console.log(response);
+            }
+        );
+    }
+
+    // Delete the specified project
+    $scope.deleteProject = function(projectID) {
+        ApiService.deleteProject(AuthService.getToken(), projectID)
         .then(
             function success(response) {
                 loadData();

@@ -4,27 +4,26 @@
             <div style="float: right;">
                 <p style="font-size: 14px; margin: 0px;">
                     <a class="blue" title="project tasks" ui-sref="projectTasks({id: project._id})"><i class="fa fa-bars fa-fw fa-rotate-90"></i></a>&nbsp;&nbsp;&nbsp;
-                    <a class="blue" title="metrics &amp; data" ui-sref="project({id: project._id})"><i class="fa fa-area-chart fa-fw"></i></a>&nbsp;&nbsp;&nbsp;
-                    <a class="red" title="delete project" href="" ng-click=""><i class="fa fa-close fa-fw"></i></a>
+                    <a class="blue" title="project details" ui-sref="project({id: project._id})"><i class="fa fa-area-chart fa-fw"></i></a>&nbsp;&nbsp;&nbsp;
+                    <a class="red" title="delete project" href="" ng-click="deleteProject(project._id)"><i class="fa fa-close fa-fw"></i></a>
                 </p>
             </div>
             <div>
-                <h3 style="margin-bottom: 0px;"><a title="metrics &amp; data" ui-sref="project({id: project._id})">{{project.name | lowercase}}</a></h3>
+                <h3 style="margin-bottom: 0px;"><a title="project details" ui-sref="project({id: project._id})">{{project.name | lowercase}}</a></h3>
             </div>
         </div>
     </div>
     <div class="col-md-4 col-sm-6 col-xs-12">
         <button type="button" ng-hide="newProjectState" class="btn btn-default btn-lg btn-block btn-project" ng-click="switchNewProjectState();"><i class="fa fa-plus fa-fw"></i> new project</button>
         <div class="column" style="padding: 10px 10px 0px 10px;" ng-show="newProjectState">
-            <!--<h2 class="column-heading-black" style="display: inline-block;">start a new project</h2>-->
             <h3><i class="fa fa-plus fa-fw"></i> new project</h3>
             <div class="form-group">
-                <input type="text" class="form-control" id="name" placeholder="new project name" ng-model="newProject.name">
+                <input type="text" class="form-control" id="name" placeholder="project name" ng-model="newProject.name">
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" id="description" placeholder="new project description" ng-model="newProject.description">
+                <input type="text" class="form-control" id="description" placeholder="project description" ng-model="newProject.description">
             </div>
-            <button type="submit" class="btn btn-default" ng-click="createProject(newProject);">Create Project</button>&nbsp;&nbsp;&nbsp;<button type="submit" class="btn btn-default" ng-click="switchNewProjectState();">Cancel</button>
+            <button type="submit" class="btn btn-default" ng-click="createProject(newProject);">create project</button>&nbsp;&nbsp;&nbsp;<button type="submit" class="btn btn-default" ng-click="switchNewProjectState();">cancel</button>
         </div>
     </div>
 </div>

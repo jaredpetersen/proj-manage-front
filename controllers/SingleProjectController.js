@@ -59,7 +59,9 @@ angular.module('tangram').controller('SingleProjectController', function($scope,
         .then(
             function success(projectResponse) {
                 $scope.project = projectResponse.data;
-                $rootScope.pageTitle = projectResponse.data.name;
+
+                // Set the page title
+                $rootScope.pageTitle = projectResponse.data.name + ' - details';
 
                 // Grab the project owner name
                 ApiService.getUser(projectResponse.data.owner).then (
