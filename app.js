@@ -33,8 +33,8 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
         })
 
         // route for the home/commandcenter
-        .state('home', {
-            url: '/launchpad',
+        .state('overview', {
+            url: '/overview',
             parent: 'common',
             views: {
                 'navbar': {
@@ -42,8 +42,8 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
                     controller  : 'NavbarController',
                 },
                 'content': {
-                    templateUrl : 'views/launchpad.html',
-                    controller  : 'LaunchPadController'
+                    templateUrl : 'views/overview.html',
+                    controller  : 'OverviewController'
                 }
             }
         })
@@ -144,5 +144,5 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
             }
         });
 
-    $urlRouterProvider.otherwise('/launchpad');
+    $urlRouterProvider.otherwise('/projects');
 });

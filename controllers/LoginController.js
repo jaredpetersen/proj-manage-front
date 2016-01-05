@@ -13,7 +13,7 @@ angular.module('tangram').controller('LoginController', function($scope, $state,
                 AuthService.addToken(response.data.token);
                 console.log(response.data.token);
                 // Send the user to the launchpad
-                $state.go('home', {}, {reload: true});
+                $state.go('projects', {}, {reload: true});
             },
             function error(response) {
                 console.log("Not allowed");
