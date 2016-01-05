@@ -3,11 +3,8 @@
     <!-- Backlog -->
     <div class="col-md-4 col-sm-4 col-xs-12">
         <div class="column margin-fix">
-            <h2 class="column-heading-red">backlog</h2>
+            <h2 class="column-heading-red">backlog<a class="pull-right column-button" style="" href="" ng-click="switchNewTaskState();"><i class="fa fa-plus"></i></a></h2>
             <!-- New task dialog (no drag and drop) -->
-            <div class="btn-task-wrapper">
-                <button type="button" class="btn btn-default btn-block btn-task" ng-hide="newTaskState" ng-click="switchNewTaskState()"><i class="fa fa-plus"></i> New Task</button>
-            </div>
             <div class="card" ng-show="newTaskState">
                 <h3><i class="fa fa-plus"></i> New Task</h3>
                 <form style="margin-top: 10px;">

@@ -5,15 +5,15 @@ angular.module('tangram').controller('ProjectTasksController', function($scope, 
     // Indicates when the new task window is up
     $scope.newTaskState = false;
 
+    // Kanban tasks by column
+    $scope.backlog = [];
+    $scope.inprogress = [];
+    $scope.complete = [];
+
     // Loads data for the view
     var loadData = function() {
         // API JSONWebToken
         var token = AuthService.getToken();
-
-        // Kanban tasks by column
-        $scope.backlog = [];
-        $scope.inprogress = [];
-        $scope.complete = [];
 
         // Grab the project ID from the URL for API calls
         var id = $stateParams.id;
@@ -64,8 +64,14 @@ angular.module('tangram').controller('ProjectTasksController', function($scope, 
 
     // Switch the new task dialog box to visible/invisible
     $scope.switchNewTaskState = function(status) {
-        if ($scope.newTaskState == true) $scope.newTaskState = false;
-        else $scope.newTaskState = true;
+        if ($scope.newTaskState == true) {
+            $scope.newTaskState = false;
+            angular.element('#backlog').css('min-height', '60px');
+        }
+        else {
+            $scope.newTaskState = true;
+            angular.element('#backlog').css('min-height', '0px');
+        }
     }
 
     // Add a new task to backlog

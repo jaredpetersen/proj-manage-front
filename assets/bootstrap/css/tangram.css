@@ -125,33 +125,17 @@ a.red:hover {
   color: #EA4335;
   text-decoration: none;
 }
-a.yellow:hover {
-  color: #FBBC05;
-  text-decoration: none;
-}
-a.blue:hover {
-  color: #4285F4;
-  text-decoration: none;
-}
-a.green:hover {
-  color: #34A853;
-  text-decoration: none;
-}
-a.white-gray {
+a.column-button {
   color: #FFF;
   text-decoration: none;
+  font-size: 14px;
+  padding-top: 2px;
 }
-a.white-gray:hover {
-  color: #4285F4;
-  text-decoration: none;
-}
-a.black-gray {
+a.column-button:hover {
   color: #333;
   text-decoration: none;
-}
-a.black-gray:hover {
-  color: #BABABA;
-  text-decoration: none;
+  font-size: 14px;
+  padding-top: 2px;
 }
 
 /* Nav links */
@@ -233,7 +217,7 @@ a.black-gray:hover {
 .column-heading-red {
   background-color: #EA4335;
   margin-bottom: 0px;
-  padding: 5px 5px 5px 10px;
+  padding: 5px 17px 5px 10px;
   color: white;
   margin: 0px;
 }
