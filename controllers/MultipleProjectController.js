@@ -40,6 +40,9 @@ angular.module('tangram').controller('MultipleProjectController', function($scop
         .then(
             function success(response) {
                 loadData();
+                // Reset new project dialog
+                $scope.newProject = null;
+                $scope.newProjectState = false;
             },
             function error(response) {
                 console.log(response);

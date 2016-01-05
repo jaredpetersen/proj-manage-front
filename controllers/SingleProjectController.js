@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('tangram').controller('SingleProjectController', function($scope, $rootScope, $stateParams, ApiService, AuthService) {
+angular.module('tangram').controller('SingleProjectController', function($scope, $rootScope, $state, $stateParams, ApiService, AuthService) {
 
     // Task Information
     $scope.backlogCount = 0;
@@ -109,6 +109,19 @@ angular.module('tangram').controller('SingleProjectController', function($scope,
                         $scope.completeCount++;
                     }
                 });
+            },
+            function error(response) {
+                console.log(response);
+            }
+        );
+    }
+
+    // Delete the specified project
+    $scope.deleteProject = function(projectID) {
+        ApiService.deleteProject(AuthService.getToken(), projectID)
+        .then(
+            function success(response) {
+                $state.go('projects', {}, {reload: true});
             },
             function error(response) {
                 console.log(response);
