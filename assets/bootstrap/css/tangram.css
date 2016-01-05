@@ -71,6 +71,13 @@ select:not([multiple]) {
 }
 .btn-project {
     margin-bottom: 20px;
+    padding: 19px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.1;
+    /*text-align: left;
+    border: 1px solid #4285F4;
+    color: #4285F4;*/
 }
 .btn-task {
     color: #333;

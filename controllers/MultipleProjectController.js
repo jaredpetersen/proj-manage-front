@@ -4,6 +4,11 @@ angular.module('tangram').controller('MultipleProjectController', function($scop
     // Project Information
     $scope.projects = [];
 
+    // Indicates when the new project window is up
+    $scope.newProjectState = false;
+    // New project data
+    $scope.newProject = {};
+
     // Loads data for the view
     var loadData = function() {
         // Grab all of the projects the user belongs to
@@ -11,6 +16,30 @@ angular.module('tangram').controller('MultipleProjectController', function($scop
         .then(
             function success(response) {
                 $scope.projects = response.data;
+            },
+            function error(response) {
+                console.log(response);
+            }
+        );
+    }
+
+    $scope.switchNewProjectState = function() {
+        if ($scope.newProjectState == true) {
+            // Hide new project window
+            $scope.newProjectState = false;
+        }
+        else {
+            // Display new project window
+            $scope.newProjectState = true;
+        }
+    }
+
+    $scope.createProject = function(newProject) {
+        // Create the new project
+        ApiService.createProject(AuthService.getToken(), newProject.name, newProject.description)
+        .then(
+            function success(response) {
+                loadData();
             },
             function error(response) {
                 console.log(response);
