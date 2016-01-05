@@ -78,7 +78,7 @@ angular.module('tangram').controller('TaskController', function($scope, $rootSco
         );
     }
 
-    // Switch the edit task dialog box to visible/invisible
+    // Edit task details
     $scope.editTaskDetails = function(status) {
         if ($scope.editTaskDetailsState == true) {
             // API JSONWebToken
@@ -93,10 +93,9 @@ angular.module('tangram').controller('TaskController', function($scope, $rootSco
             // Switching back to view mode, save the data
             ApiService.updateTask(token, $stateParams.id, $scope.task.name, $scope.task.description, owner, $scope.task.project).then (
                 function success(updateResponse) {
-                    // Update complete, switch the edit state and reload data
+                    // Update complete, switch the edit details state and reload data
                     $scope.editTaskDetailsState = false;
                     loadData();
-                    console.log("update logged");
                 },
                 function error(updateResponse) {
                     console.log(updateResponse);
@@ -106,6 +105,36 @@ angular.module('tangram').controller('TaskController', function($scope, $rootSco
         else {
             // Switching to edit mode
             $scope.editTaskDetailsState = true;
+        }
+    }
+
+    // Edit task description
+    $scope.editTaskDescription = function(status) {
+        if ($scope.editTaskDescriptionState == true) {
+            // API JSONWebToken
+            var token = AuthService.getToken();
+
+            // Small fix since you can't have null value in select tags
+            var description = $scope.editTask.description;
+            if (description == undefined) {
+                description = null;
+            }
+
+            // Switching back to view mode, save the data
+            ApiService.updateTask(token, $stateParams.id, $scope.task.name, description, $scope.task.owner, $scope.task.project).then (
+                function success(updateResponse) {
+                    // Update complete, switch the edit description state and reload data
+                    $scope.editTaskDescriptionState = false;
+                    loadData();
+                },
+                function error(updateResponse) {
+                    console.log(updateResponse);
+                }
+            );
+        }
+        else {
+            // Switching to edit mode
+            $scope.editTaskDescriptionState = true;
         }
     }
 
