@@ -125,6 +125,10 @@ a.red:hover {
   color: #EA4335;
   text-decoration: none;
 }
+a.green:hover {
+  color: #34A853;
+  text-decoration: none;
+}
 a.column-button {
   color: #FFF;
   text-decoration: none;
