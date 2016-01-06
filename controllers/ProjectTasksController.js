@@ -15,6 +15,11 @@ angular.module('tangram').controller('ProjectTasksController', function($scope, 
         // API JSONWebToken
         var token = AuthService.getToken();
 
+        // Clear out the tasks
+        $scope.backlog = [];
+        $scope.inprogress = [];
+        $scope.complete = [];
+
         // Grab the project ID from the URL for API calls
         var id = $stateParams.id;
 
@@ -82,6 +87,7 @@ angular.module('tangram').controller('ProjectTasksController', function($scope, 
                 // Reload all of the tasks
                 loadData();
                 // Clear out the new task text boxes
+                $scope.newTaskState = false;
                 $scope.newTask = null;
             },
             function error(response) {
