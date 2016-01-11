@@ -15,6 +15,9 @@ angular.module('tangram').controller('TaskController', function($scope, $rootSco
     // Edit task data
     $scope.editTask = {};
 
+    // Indicates when the new subtask window is up
+    $scope.newSubtaskState = false;
+
     // The CSS class for the status banner
     $scope.statusCSS;
 
@@ -151,6 +154,27 @@ angular.module('tangram').controller('TaskController', function($scope, $rootSco
             // Switching to edit mode
             $scope.editTaskDescriptionState = true;
         }
+    }
+
+    // Switch the new subtask dialog box to visible/invisible
+    $scope.switchNewSubtaskState = function() {
+        if ($scope.newSubtaskState == true) $scope.newSubtaskState = false;
+        else $scope.newSubtaskState = true;
+    }
+
+    // Edit task details
+    $scope.addSubtask = function(newSubtask) {
+        ApiService.createSubtask(AuthService.getToken(), $scope.task.project, $scope.task._id, newSubtask.name, newSubtask.due)
+        .then (
+            function success(response) {
+                loadData();
+                $scope.newSubtaskState = false;
+                $scope.newSubtask = null;
+            },
+            function error(response) {
+                console.log(response);
+            }
+        );
     }
 
     // Edit task details

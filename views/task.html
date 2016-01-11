@@ -2,18 +2,27 @@
     <div class="col-md-9 col-sm-8 col-xs-12" style="height: 100%;">
         <div class="column margin-fix">
             <h2 class="column-heading-black" style="display: inline-block;">subtasks</h2>
-            <a title="edit details" style="text-decoration: none; margin: 10px;" class="pull-right" href="" ng-click=""><i class="fa fa-plus"></i></a>
-            <div class="card" style="overflow: auto;" ng-repeat="subtask in task.subtasks">
-                <div style="float: right; padding-top: 10px;">
-                    <p style="font-size: 14px;">
-                        <a class="green" title="mark as complete" ui-sref="task({id: task._id})"><i class="fa fa-check fa-fw"></i></a>&nbsp;&nbsp;&nbsp;
-                        <a class="blue" title="edit subtask" ui-sref="task({id: task._id})"><i class="fa fa-pencil fa-fw"></i></a>&nbsp;&nbsp;&nbsp;
-                        <a class="red" title="delete subtask" ui-sref="task({id: task._id})" ng-click="deleteSubtask(task.project, task._id, subtask._id)"><i class="fa fa-close fa-fw"></i></a>
-                    </p>
-                </div>
-                <div>
-                    <h3>{{subtask.name}}</h3>
-                    <p style="margin-bottom: 0px;"><i class="fa fa-calendar"></i> {{(subtask.due | date:'MM/dd/yy') || 'No Due Date'}}</p>
+            <a title="edit details" style="text-decoration: none; margin: 10px;" class="pull-right" href="" ng-click="switchNewSubtaskState()"><i class="fa fa-plus"></i></a>
+            <div class="card" style="overflow: auto;" ng-show="newSubtaskState">
+                <form class="form-group">
+                    <input type="text" ng-model="newSubtask.name" class="form-control" style="margin-bottom: 3px; color: #333;" placeholder="Subtask Name">
+                </form>
+                <p style="margin-bottom: 10px;"><i class="fa fa-calendar"></i> {{(subtask.due | date:'MM/dd/yy') || 'No Due Date'}}</p>
+                <button type="button" class="btn btn-default" style="margin-bottom: 0px;" ng-click="addSubtask(newSubtask);">Add Subtask</button>&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-default" style="margin-bottom: 0px;" ng-click="switchNewSubtaskState()">Cancel</button>
+            </div>
+            <div ui-sortable="sortableOptions">
+                <div class="card draggable" style="overflow: auto;" ng-repeat="subtask in task.subtasks">
+                    <div style="float: right; padding-top: 10px;">
+                        <p style="font-size: 14px;">
+                            <a class="green" title="mark as complete" ui-sref="task({id: task._id})"><i class="fa fa-check fa-fw"></i></a>&nbsp;&nbsp;&nbsp;
+                            <a class="blue" title="edit subtask" ui-sref="task({id: task._id})"><i class="fa fa-pencil fa-fw"></i></a>&nbsp;&nbsp;&nbsp;
+                            <a class="red" title="delete subtask" ui-sref="task({id: task._id})" ng-click="deleteSubtask(task.project, task._id, subtask._id)"><i class="fa fa-close fa-fw"></i></a>
+                        </p>
+                    </div>
+                    <div>
+                        <h3>{{subtask.name}}</h3>
+                        <p style="margin-bottom: 0px;"><i class="fa fa-calendar"></i> {{(subtask.due | date:'MM/dd/yy') || 'No Due Date'}}</p>
+                    </div>
                 </div>
             </div>
         </div>
