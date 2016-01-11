@@ -44,6 +44,11 @@ angular.module('tangram').factory('ApiService', function($http, $q) {
         return $http.get(baseURL + '/projects/' + pid + '/tasks/' + tid + '/subtasks', {headers: {'x-access-token': token}});
     }
 
+    // Delete subtask
+    apiFactory.deleteSubtask = function(token, pid, tid, id) {
+        return $http.delete(baseURL + '/projects/' + pid + '/tasks/' + tid + '/subtasks/' + id, {headers: {'x-access-token': token}});
+    }
+
     // Get all projects
     apiFactory.getProjects = function(token) {
         return $http.get(baseURL + '/projects', {headers: {'x-access-token': token}});

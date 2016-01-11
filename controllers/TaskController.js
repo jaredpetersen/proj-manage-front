@@ -153,6 +153,19 @@ angular.module('tangram').controller('TaskController', function($scope, $rootSco
         }
     }
 
+    // Edit task details
+    $scope.deleteSubtask = function(projectID, taskID, subtaskID) {
+        ApiService.deleteSubtask(AuthService.getToken(), projectID, taskID, subtaskID)
+        .then (
+            function success(response) {
+                loadData();
+            },
+            function error(response) {
+                console.log(response);
+            }
+        );
+    }
+
     // Grab the authentication token from the auth service
     if (AuthService.getToken() == null) {
         // Not authenticated, kick them out
