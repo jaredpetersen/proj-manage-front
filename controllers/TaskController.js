@@ -36,6 +36,19 @@ angular.module('tangram').controller('TaskController', function($scope, $rootSco
                 // Update page title
                 $rootScope.pageTitle = response.data.name;
 
+                // Grab all the subtasks for the task
+                console.log(response.data.project);
+                console.log($scope.task._id);
+                ApiService.getTaskSubtasks(token, response.data.project, $scope.task._id).then (
+                    function success(subtaskResponse) {
+                        $scope.task.subtasks = subtaskResponse.data;
+                        console.log($scope.task.subtasks);
+                    },
+                    function error(subtaskResponse) {
+                        console.log(subtaskResponse);
+                    }
+                );
+
                 // Grab the owner name if it has one
                 if (response.data.owner) {
                     ApiService.getUser(response.data.owner).then (
@@ -71,6 +84,8 @@ angular.module('tangram').controller('TaskController', function($scope, $rootSco
                         console.log(projectResponse);
                     }
                 );
+
+
             },
             function error(response) {
                 console.log(response);
