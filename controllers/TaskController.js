@@ -190,7 +190,6 @@ angular.module('tangram').controller('TaskController', function($scope, $rootSco
     }
     else {
         // The user is authenticated, proceed to load data
-        $rootScope.pageTitle = 'task';
         loadData();
     }
 

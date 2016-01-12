@@ -70,7 +70,7 @@ angular.module('tangram').controller('OverviewController', function($scope, $roo
     }
     else {
         // The user is authenticated, proceed to load data
-        $rootScope.pageTitle = 'overview';
+        $rootScope.pageTitle = 'Overview';
         loadData();
     }
 

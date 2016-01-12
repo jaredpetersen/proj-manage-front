@@ -28,7 +28,7 @@ angular.module('tangram').controller('ProjectTasksController', function($scope, 
         .then(
             function success(projectResponse) {
                 // Set up the page title
-                $rootScope.pageTitle = projectResponse.data.name.toLowerCase() + ' - tasks';
+                $rootScope.pageTitle = projectResponse.data.name + ' - Tasks';
 
                 // Grab all the tasks for the project
                 ApiService.getProjectTasks(token, id).then(function(taskResponse) {
