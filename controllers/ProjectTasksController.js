@@ -89,6 +89,8 @@ angular.module('tangram').controller('ProjectTasksController', function($scope, 
                 // Clear out the new task text boxes
                 $scope.newTaskState = false;
                 $scope.newTask = null;
+                angular.element('#backlog').css('min-height', '60px');
+
             },
             function error(response) {
                 console.log(response);
