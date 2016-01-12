@@ -257,6 +257,12 @@ a.column-button:hover {
     text-align: center;
 }
 
+/* Subtasks */
+.subtask-complete {
+    text-decoration: line-through;
+    color: #34A853;
+}
+
 /* Navbar */
 .nav-links {
   float: left;

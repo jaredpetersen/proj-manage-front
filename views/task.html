@@ -11,16 +11,16 @@
                 <button type="button" class="btn btn-default" style="margin-bottom: 0px;" ng-click="addSubtask(newSubtask);">Add Subtask</button>&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-default" style="margin-bottom: 0px;" ng-click="switchNewSubtaskState()">Cancel</button>
             </div>
             <div ui-sortable="sortableOptions">
-                <div class="card draggable" style="overflow: auto;" ng-repeat="subtask in task.subtasks">
+                <div class="card draggable" style="overflow: auto;" ng-repeat="subtask in task.subtasks" ng-class="{'subtask-complete': subtask.status == 'complete'}">
                     <div style="float: right; padding-top: 10px;">
                         <p style="font-size: 14px;">
-                            <a class="green" title="mark as complete" ui-sref="task({id: task._id})"><i class="fa fa-check fa-fw"></i></a>&nbsp;&nbsp;&nbsp;
+                            <a class="green" title="mark as complete" href="" ng-click="completeStyle={'text-decoration': 'line-through'}"><i class="fa fa-check fa-fw"></i></a>&nbsp;&nbsp;&nbsp;
                             <a class="blue" title="edit subtask" ui-sref="task({id: task._id})"><i class="fa fa-pencil fa-fw"></i></a>&nbsp;&nbsp;&nbsp;
                             <a class="red" title="delete subtask" ui-sref="task({id: task._id})" ng-click="deleteSubtask(task.project, task._id, subtask._id)"><i class="fa fa-close fa-fw"></i></a>
                         </p>
                     </div>
                     <div>
-                        <h3>{{subtask.name}}</h3>
+                        <h3 ng-style="completeStyle">{{subtask.name}}</h3>
                         <p style="margin-bottom: 0px;"><i class="fa fa-calendar"></i> {{(subtask.due | date:'MM/dd/yy') || 'No Due Date'}}</p>
                     </div>
                 </div>
