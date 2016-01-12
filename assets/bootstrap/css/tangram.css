@@ -260,7 +260,6 @@ a.column-button:hover {
 /* Subtasks */
 .subtask-complete {
     text-decoration: line-through;
-    color: #34A853;
 }
 
 /* Navbar */
