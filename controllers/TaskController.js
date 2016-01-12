@@ -5,9 +5,6 @@ angular.module('tangram').controller('TaskController', function($scope, $rootSco
     // Contains information on the task
     $scope.task = {};
 
-    // List of all of the members associated with the project's task
-    $scope.members = [];
-
     // Indicates when the edit details window is up
     $scope.editTaskDetailsState = false;
     // Indicates when the edit description window is up
@@ -59,6 +56,9 @@ angular.module('tangram').controller('TaskController', function($scope, $rootSco
                 ApiService.getSingleProject(token, response.data.project).then (
                     function success(projectResponse) {
                         $scope.task.projectName = projectResponse.data.name;
+
+                        // Clear out the existing members
+                        $scope.members = []
 
                         // Grab the project members for the edit dialog
                         angular.forEach(projectResponse.data.members, function(member, key) {
