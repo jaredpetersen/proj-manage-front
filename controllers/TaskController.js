@@ -18,9 +18,7 @@ angular.module('tangram').controller('TaskController', function($scope, $rootSco
     // Indicates when the new subtask window is up
     $scope.newSubtaskState = false;
 
-    // The CSS class for the status banner
-    $scope.statusCSS;
-
+    // Loads all of the data from the API
     var loadData = function() {
         // API JSONWebToken
         var token = AuthService.getToken();
