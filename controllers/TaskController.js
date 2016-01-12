@@ -169,6 +169,20 @@ angular.module('tangram').controller('TaskController', function($scope, $rootSco
     }
 
     // Edit task details
+    $scope.updateSubtaskStatus = function(subtask) {
+        if (subtask.status == 'incomplete') subtask.status = 'complete';
+        else subtask.status = 'incomplete';
+        ApiService.updateSubtaskStatus(AuthService.getToken(), $scope.task.project, $scope.task._id, subtask._id, subtask.status)
+        .then (
+            function success(response) {
+            },
+            function error(response) {
+                console.log(response);
+            }
+        );
+    }
+
+    // Edit task details
     $scope.deleteSubtask = function(projectID, taskID, subtaskID) {
         ApiService.deleteSubtask(AuthService.getToken(), projectID, taskID, subtaskID)
         .then (

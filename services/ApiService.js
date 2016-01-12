@@ -49,6 +49,11 @@ angular.module('tangram').factory('ApiService', function($http, $q) {
         return $http.post(baseURL + '/projects/' + pid + '/tasks/' + tid + '/subtasks/', {'name': name, 'due': due}, {headers: {'x-access-token': token}});
     }
 
+    // Update subtask (just status)
+    apiFactory.updateSubtaskStatus = function(token, pid, tid, sid, status) {
+        return $http.put(baseURL + '/projects/' + pid + '/tasks/' + tid + '/subtasks/' + sid, {'status': status}, {headers: {'x-access-token': token}});
+    }
+
     // Delete subtask
     apiFactory.deleteSubtask = function(token, pid, tid, id) {
         return $http.delete(baseURL + '/projects/' + pid + '/tasks/' + tid + '/subtasks/' + id, {headers: {'x-access-token': token}});
