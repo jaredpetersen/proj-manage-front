@@ -31,17 +31,10 @@ angular.module('tangram').controller('TaskController', function($scope, $rootSco
                 // Send task information to the view
                 $scope.task = response.data;
 
-                // Update the status banner color
-                if ($scope.task.status == 'backlog') $scope.statusCSS = 'column-heading-red';
-                else if ($scope.task.status == 'in-progress') $scope.statusCSS = 'column-heading-yellow';
-                else $scope.statusCSS = 'column-heading-blue';
-
                 // Update page title
                 $rootScope.pageTitle = response.data.name;
 
                 // Grab all the subtasks for the task
-                console.log(response.data.project);
-                console.log($scope.task._id);
                 ApiService.getTaskSubtasks(token, response.data.project, $scope.task._id).then (
                     function success(subtaskResponse) {
                         $scope.task.subtasks = subtaskResponse.data;
