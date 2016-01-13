@@ -1,17 +1,6 @@
 <div class="row">
     <div class="col-md-4 col-sm-6 col-xs-12" ng-repeat="project in projects">
-        <div class="column" style="padding: 20px 10px;">
-            <div style="float: right;">
-                <p style="font-size: 14px; margin: 0px;">
-                    <a class="blue" title="project tasks" ui-sref="projectTasks({id: project._id})"><i class="fa fa-bars fa-fw fa-rotate-90"></i></a>&nbsp;&nbsp;&nbsp;
-                    <a class="blue" title="project details" ui-sref="project({id: project._id})"><i class="fa fa-area-chart fa-fw"></i></a>&nbsp;&nbsp;&nbsp;
-                    <a class="red" title="delete project" href="" ng-click="deleteProject(project._id)"><i class="fa fa-close fa-fw"></i></a>
-                </p>
-            </div>
-            <div>
-                <h3 style="margin-bottom: 0px;"><a title="project details" ui-sref="projectTasks({id: project._id})">{{project.name}}</a></h3>
-            </div>
-        </div>
+        <button type="button" class="btn btn-default btn-lg btn-block btn-project" ui-sref="project({id: project._id})"><i class="fa fa-clone fa-fw"></i> {{project.name}}</button>
     </div>
     <div class="col-md-4 col-sm-6 col-xs-12">
         <button type="button" ng-hide="newProjectState" class="btn btn-default btn-lg btn-block btn-project" ng-click="switchNewProjectState();"><i class="fa fa-plus fa-fw"></i> New Project</button>
