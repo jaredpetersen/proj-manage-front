@@ -10,7 +10,7 @@ angular.module('tangram').controller('TaskController', function($scope, $rootSco
     // Indicates when the edit description window is up
     $scope.editTaskDescriptionState = false;
     // Edit task data
-    $scope.editTask = {};
+    $scope.editTask = {'description': null};
 
     // Indicates when the new subtask window is up
     $scope.newSubtaskState = false;
@@ -124,14 +124,8 @@ angular.module('tangram').controller('TaskController', function($scope, $rootSco
             // API JSONWebToken
             var token = AuthService.getToken();
 
-            // Small fix since you can't have null value in select tags
-            var description = $scope.editTask.description;
-            if (description == undefined) {
-                description = null;
-            }
-
             // Switching back to view mode, save the data
-            ApiService.updateTask(token, $stateParams.id, $scope.task.name, description, $scope.task.owner, $scope.task.project).then (
+            ApiService.updateTask(token, $stateParams.id, $scope.task.name, $scope.editTask.description, $scope.task.owner, $scope.task.project).then (
                 function success(updateResponse) {
                     // Update complete, switch the edit description state and reload data
                     $scope.editTaskDescriptionState = false;
