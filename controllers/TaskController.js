@@ -25,6 +25,7 @@ angular.module('tangram').controller('TaskController', function($scope, $rootSco
             function success(response) {
                 // Send task information to the view
                 $scope.task = response.data;
+                $scope.editTask.description = response.data.description;
 
                 // Update page title
                 $rootScope.pageTitle = response.data.name;
