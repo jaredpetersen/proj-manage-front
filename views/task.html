@@ -12,20 +12,21 @@
             </div>
             <div ng-model='task.subtasks' ui-sortable="sortableOptions">
                 <div class="card draggable" style="overflow: auto;" ng-repeat="subtask in task.subtasks" ng-class="{'subtask-complete': subtask.status == 'complete'}">
-                    <div style="float: right; padding-top: 10px;">
-                        <p style="font-size: 14px;">
-                            <span ng-switch on="subtask.status">
-                                <a class="green" title="mark as complete" href="" style="text-decoration: line-through;" ng-click="updateSubtaskStatus(subtask);" ng-switch-when="incomplete"><i class="fa fa-square-o fa-fw"></i></a>
-                                <a class="green" title="mark as incomplete" href="" ng-click="updateSubtaskStatus(subtask);" style="text-decoration: line-through;" ng-switch-when="complete"><i class="fa fa-check-square fa-fw"></i></a>
-                            </span>
-                            &nbsp;&nbsp;&nbsp;
+                    <div style="float: right;">
+                        <p style="font-size: 14px; margin-bottom: 0px;">
+                            <i class="fa fa-calendar" ng-show="subtask.due"></i> {{(subtask.due | date:'MM/dd/yy')}}&nbsp;&nbsp;&nbsp;
                             <a class="blue" title="edit subtask" ui-sref="task({id: task._id})"><i class="fa fa-pencil fa-fw"></i></a>&nbsp;&nbsp;&nbsp;
                             <a class="red" title="delete subtask" ui-sref="task({id: task._id})" ng-click="deleteSubtask(task.project, task._id, subtask._id)"><i class="fa fa-close fa-fw"></i></a>
                         </p>
                     </div>
                     <div>
-                        <h3>{{subtask.name}}</h3>
-                        <p style="margin-bottom: 0px;"><i class="fa fa-calendar"></i> {{(subtask.due | date:'MM/dd/yy') || 'No Due Date'}}</p>
+                        <h3 style="margin-bottom: 0px;">
+                            <span ng-switch on="subtask.status">
+                                <a class="green" title="mark as complete" href="" style="text-decoration: line-through;" ng-click="updateSubtaskStatus(subtask);" ng-switch-when="incomplete"><i class="fa fa-square-o fa-fw"></i></a>
+                                <a class="green" title="mark as incomplete" href="" ng-click="updateSubtaskStatus(subtask);" style="text-decoration: line-through;" ng-switch-when="complete"><i class="fa fa-check-square fa-fw"></i></a>
+                            </span>
+                            {{subtask.name}}
+                        </h3>
                     </div>
                 </div>
             </div>
