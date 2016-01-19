@@ -12,9 +12,6 @@ angular.module('tangram').controller('ProjectTasksController', function($scope, 
 
     // Loads data for the view
     var loadData = function() {
-        // API JSONWebToken
-        var token = AuthService.getToken();
-
         // Clear out the tasks
         $scope.backlog = [];
         $scope.inprogress = [];
@@ -24,14 +21,14 @@ angular.module('tangram').controller('ProjectTasksController', function($scope, 
         var id = $stateParams.id;
 
         // Grab the project name
-        ApiService.getSingleProject(token, id)
+        ApiService.getSingleProject(AuthService.getToken(), id)
         .then(
             function success(projectResponse) {
                 // Set up the page title
                 $rootScope.pageTitle = projectResponse.data.name + ' - Tasks';
 
                 // Grab all the tasks for the project
-                ApiService.getProjectTasks(token, id).then(function(taskResponse) {
+                ApiService.getProjectTasks(AuthService.getToken(), id).then(function(taskResponse) {
                     // Grab all of the tasks for sorting
                     var tasks = taskResponse.data;
 
@@ -50,9 +47,7 @@ angular.module('tangram').controller('ProjectTasksController', function($scope, 
                     });
                 });
             },
-            function error(projectResponse) {
-                console.log(projectResponse);
-            }
+            function error(projectResponse) { console.log(projectResponse); }
         );
     }
 
@@ -61,9 +56,7 @@ angular.module('tangram').controller('ProjectTasksController', function($scope, 
         ApiService.updateTaskStatus(AuthService.getToken(), task._id, newStatus)
         .then (
             function success(response) {},
-            function error(response) {
-                console.log(response);
-            }
+            function error(response) { console.log(response); }
         );
     }
 
@@ -92,9 +85,7 @@ angular.module('tangram').controller('ProjectTasksController', function($scope, 
                 angular.element('#backlog').css('min-height', '60px');
 
             },
-            function error(response) {
-                console.log(response);
-            }
+            function error(response) { console.log(response); }
         );
     }
 
@@ -102,12 +93,8 @@ angular.module('tangram').controller('ProjectTasksController', function($scope, 
     $scope.deleteTask = function(taskID) {
         ApiService.deleteTask(AuthService.getToken(), taskID)
         .then (
-            function success(response) {
-                loadData();
-            },
-            function error(response) {
-                console.log(response);
-            }
+            function success(response) { loadData(); },
+            function error(response) { console.log(response); }
         );
     }
 
@@ -117,7 +104,7 @@ angular.module('tangram').controller('ProjectTasksController', function($scope, 
         AuthService.redirect();
     }
     else {
-        // The user is authenticated, proceed to load data and clear out the page title
+        // The user is authenticated, proceed to load data
         loadData();
     }
 

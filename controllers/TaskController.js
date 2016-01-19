@@ -17,11 +17,8 @@ angular.module('tangram').controller('TaskController', function($scope, $rootSco
 
     // Loads all of the data from the API
     var loadData = function() {
-        // API JSONWebToken
-        var token = AuthService.getToken();
-
         // Grab the task information
-        ApiService.getSingleTask(token, $stateParams.id).then (
+        ApiService.getSingleTask(AuthService.getToken(), $stateParams.id).then (
             function success(response) {
                 // Send task information to the view
                 $scope.task = response.data;
@@ -31,7 +28,7 @@ angular.module('tangram').controller('TaskController', function($scope, $rootSco
                 $rootScope.pageTitle = response.data.name;
 
                 // Grab all the subtasks for the task
-                ApiService.getTaskSubtasks(token, response.data.project, $scope.task._id).then (
+                ApiService.getTaskSubtasks(AuthService.getToken(), response.data.project, $scope.task._id).then (
                     function success(subtaskResponse) {
                         $scope.task.subtasks = subtaskResponse.data;
                         console.log($scope.task.subtasks);
@@ -54,7 +51,7 @@ angular.module('tangram').controller('TaskController', function($scope, $rootSco
                 }
 
                 // Grab the project name and members
-                ApiService.getSingleProject(token, response.data.project).then (
+                ApiService.getSingleProject(AuthService.getToken(), response.data.project).then (
                     function success(projectResponse) {
                         $scope.task.projectName = projectResponse.data.name;
 
@@ -79,8 +76,6 @@ angular.module('tangram').controller('TaskController', function($scope, $rootSco
                         console.log(projectResponse);
                     }
                 );
-
-
             },
             function error(response) {
                 console.log(response);
@@ -91,17 +86,12 @@ angular.module('tangram').controller('TaskController', function($scope, $rootSco
     // Edit task details
     $scope.editTaskDetails = function(status) {
         if ($scope.editTaskDetailsState == true) {
-            // API JSONWebToken
-            var token = AuthService.getToken();
-
             // Small fix since you can't have null value in select tags
             var owner = $scope.editTask.owner;
-            if (owner == undefined) {
-                owner = null;
-            }
+            if (owner == undefined) owner = null;
 
             // Switching back to view mode, save the data
-            ApiService.updateTask(token, $stateParams.id, $scope.task.name, $scope.task.description, owner, $scope.task.project).then (
+            ApiService.updateTask(AuthService.getToken(), $stateParams.id, $scope.task.name, $scope.task.description, owner, $scope.task.project).then (
                 function success(updateResponse) {
                     // Update complete, switch the edit details state and reload data
                     $scope.editTaskDetailsState = false;
@@ -121,11 +111,8 @@ angular.module('tangram').controller('TaskController', function($scope, $rootSco
     // Edit task description
     $scope.editTaskDescription = function(status) {
         if ($scope.editTaskDescriptionState == true) {
-            // API JSONWebToken
-            var token = AuthService.getToken();
-
             // Switching back to view mode, save the data
-            ApiService.updateTask(token, $stateParams.id, $scope.task.name, $scope.editTask.description, $scope.task.owner, $scope.task.project).then (
+            ApiService.updateTask(AuthService.getToken(), $stateParams.id, $scope.task.name, $scope.editTask.description, $scope.task.owner, $scope.task.project).then (
                 function success(updateResponse) {
                     // Update complete, switch the edit description state and reload data
                     $scope.editTaskDescriptionState = false;
@@ -157,23 +144,21 @@ angular.module('tangram').controller('TaskController', function($scope, $rootSco
                 $scope.newSubtaskState = false;
                 $scope.newSubtask = null;
             },
-            function error(response) {
-                console.log(response);
-            }
+            function error(response) { console.log(response); }
         );
     }
 
-    // Edit task details
+    // Edit task details -- Not in use
     $scope.updateSubtaskStatus = function(subtask) {
+        // Switch the subtask view state
         if (subtask.status == 'incomplete') subtask.status = 'complete';
         else subtask.status = 'incomplete';
+
+        // Update the subtask
         ApiService.updateSubtaskStatus(AuthService.getToken(), $scope.task.project, $scope.task._id, subtask._id, subtask.status)
         .then (
-            function success(response) {
-            },
-            function error(response) {
-                console.log(response);
-            }
+            function success(response) {},
+            function error(response) { console.log(response); }
         );
     }
 
@@ -181,12 +166,8 @@ angular.module('tangram').controller('TaskController', function($scope, $rootSco
     $scope.deleteSubtask = function(projectID, taskID, subtaskID) {
         ApiService.deleteSubtask(AuthService.getToken(), projectID, taskID, subtaskID)
         .then (
-            function success(response) {
-                loadData();
-            },
-            function error(response) {
-                console.log(response);
-            }
+            function success(response) { loadData(); },
+            function error(response) { console.log(response); }
         );
     }
 

@@ -13,15 +13,11 @@ angular.module('tangram').controller('RegisterController', function($scope, $sta
                     // Send the user to the launchpad
                     $state.go('login', {}, {reload: true});
                 },
-                function error(response) {
-                    console.log("Account not created");
-                }
+                function error(response) { console.log("Account not created"); }
             );
         }
         // Bro, your passwords don't match.
-        else {
-            console.log("Passwords do not match");
-        }
+        else { console.log("Passwords do not match"); }
     }
 
 });

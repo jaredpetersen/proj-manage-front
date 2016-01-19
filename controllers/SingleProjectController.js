@@ -8,7 +8,7 @@ angular.module('tangram').controller('SingleProjectController', function($scope,
     $scope.completeCount = 0;
 
     // Project Information
-    $scope.project;
+    $scope.project = {};
     $scope.projectId = $stateParams.id;
 
     // Giant line chart data
@@ -48,14 +48,8 @@ angular.module('tangram').controller('SingleProjectController', function($scope,
 
     // Grab data from the API to populate the view
     var loadData = function() {
-        // API JSONWebToken
-        var token = AuthService.getToken();
-
-        // Project information
-        $scope.project = {};
-
         // Grab information about the project
-        ApiService.getSingleProject(token, $scope.projectId)
+        ApiService.getSingleProject(AuthService.getToken(), $scope.projectId)
         .then(
             function success(projectResponse) {
                 $scope.project = projectResponse.data;
@@ -88,13 +82,11 @@ angular.module('tangram').controller('SingleProjectController', function($scope,
                     );
                 });
             },
-            function error(response) {
-                console.log(response);
-            }
+            function error(response) { console.log(response); }
         );
 
         // Grab all the project tasks
-        ApiService.getProjectTasks(token, $scope.projectId)
+        ApiService.getProjectTasks(AuthService.getToken(), $scope.projectId)
         .then(
             function success(response) {
                 // Count the number of tasks up
@@ -110,9 +102,7 @@ angular.module('tangram').controller('SingleProjectController', function($scope,
                     }
                 });
             },
-            function error(response) {
-                console.log(response);
-            }
+            function error(response) { console.log(response); }
         );
     }
 
@@ -123,9 +113,7 @@ angular.module('tangram').controller('SingleProjectController', function($scope,
             function success(response) {
                 $state.go('projects', {}, {reload: true});
             },
-            function error(response) {
-                console.log(response);
-            }
+            function error(response) { console.log(response); }
         );
     }
 
