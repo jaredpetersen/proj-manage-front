@@ -31,7 +31,6 @@ angular.module('tangram').controller('TaskController', function($scope, $rootSco
                 ApiService.getTaskSubtasks(AuthService.getToken(), response.data.project, $scope.task._id).then (
                     function success(subtaskResponse) {
                         $scope.task.subtasks = subtaskResponse.data;
-                        console.log($scope.task.subtasks);
                     },
                     function error(subtaskResponse) {
                         console.log(subtaskResponse);
@@ -84,7 +83,7 @@ angular.module('tangram').controller('TaskController', function($scope, $rootSco
     }
 
     // Edit task details
-    $scope.editTaskDetails = function(status) {
+    $scope.editTaskDetails = function() {
         if ($scope.editTaskDetailsState == true) {
             // Small fix since you can't have null value in select tags
             var owner = $scope.editTask.owner;
@@ -106,6 +105,12 @@ angular.module('tangram').controller('TaskController', function($scope, $rootSco
             // Switching to edit mode
             $scope.editTaskDetailsState = true;
         }
+    }
+
+    // Switch edit task details back to view
+    $scope.hideEditTaskDetails = function() {
+        // Switching to view mode
+        $scope.editTaskDetailsState = false;
     }
 
     // Edit task description
@@ -162,7 +167,21 @@ angular.module('tangram').controller('TaskController', function($scope, $rootSco
         );
     }
 
-    // Edit task details
+    // Edit subtask details -- Not in use
+    $scope.updateSubtaskStatus = function(subtask) {
+        // Switch the subtask view state
+        if (subtask.status == 'incomplete') subtask.status = 'complete';
+        else subtask.status = 'incomplete';
+
+        // Update the subtask
+        ApiService.updateSubtaskStatus(AuthService.getToken(), $scope.task.project, $scope.task._id, subtask._id, subtask.status)
+        .then (
+            function success(response) {},
+            function error(response) { console.log(response); }
+        );
+    }
+
+    // Delete subtask
     $scope.deleteSubtask = function(projectID, taskID, subtaskID) {
         ApiService.deleteSubtask(AuthService.getToken(), projectID, taskID, subtaskID)
         .then (
