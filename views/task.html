@@ -1,21 +1,23 @@
 <div class="row">
-    <div class="col-md-9 col-sm-8 col-xs-12" style="height: 100%;">
+    <div class="col-md-9 col-sm-8 col-xs-12">
         <div class="column margin-fix">
             <h2 class="column-heading-black" style="display: inline-block;">subtasks</h2>
-            <a title="edit details" style="text-decoration: none; margin: 10px;" class="pull-right" href="" ng-click="switchNewSubtaskState()"><i class="fa fa-plus"></i></a>
+            <a title="add subtask" style="text-decoration: none; margin: 10px 20px 10px 10px;" class="pull-right" href="" ng-click="switchNewSubtaskState()"><i class="fa fa-plus"></i></a>
             <div class="card" style="overflow: auto;" ng-show="newSubtaskState">
-                <h3><i class="fa fa-plus"></i> New Subtask</h3>
-                <form class="form-group">
-                    <input type="text" ng-model="newSubtask.name" class="form-control" style="margin-bottom: 3px; color: #333;" placeholder="Name">
-                </form>
-                <button type="button" class="btn btn-default" style="margin-bottom: 0px;" ng-click="addSubtask(newSubtask);">Add Subtask</button>&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-default" style="margin-bottom: 0px;" ng-click="switchNewSubtaskState()">Cancel</button>
+                <div style="float: right;">
+                    <button type="button" class="btn btn-default" style="margin-left: 8px; margin-bottom: 0px;" ng-click="addSubtask(newSubtask);">Add</button>
+                    <button type="button" class="btn btn-default" style="margin-left: 5px; margin-bottom: 0px;" ng-click="switchNewSubtaskState()">Cancel</button>
+                </div>
+                <div style="overflow: auto;">
+                    <form class="form-group" style="margin: 0px;">
+                        <input type="text" ng-model="newSubtask.name" class="form-control" style="margin-bottom: 3px; color: #333;" placeholder="Subtask Name">
+                    </form>
+                </div>
             </div>
             <div ng-model='task.subtasks' ui-sortable="sortableOptions">
                 <div class="card draggable" style="overflow: auto;" ng-repeat="subtask in task.subtasks" ng-class="{'subtask-complete': subtask.status == 'complete'}">
                     <div style="float: right;">
                         <p style="font-size: 14px; margin-bottom: 0px;">
-                            <i class="fa fa-calendar" ng-show="subtask.due"></i> {{(subtask.due | date:'MM/dd/yy')}}&nbsp;&nbsp;&nbsp;
-                            <a class="blue" title="edit subtask" ui-sref="task({id: task._id})"><i class="fa fa-pencil fa-fw"></i></a>&nbsp;&nbsp;&nbsp;
                             <a class="red" title="delete subtask" ui-sref="task({id: task._id})" ng-click="deleteSubtask(task.project, task._id, subtask._id)"><i class="fa fa-close fa-fw"></i></a>
                         </p>
                     </div>
