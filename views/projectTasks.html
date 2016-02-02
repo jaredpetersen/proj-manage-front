@@ -30,7 +30,7 @@
                     </div>
                     <div>
                         <h3><a ui-sref="task({id: task._id})">{{task.name}}</a></h3>
-                        <p style="margin-bottom: 0px;"><i class="fa fa-calendar"></i> {{task.created | date:'MM/dd/yy'}}</p>
+                        <p style="margin-bottom: 0px;"><i class="fa fa-calendar"></i> {{(task.due | date:'MM/dd/yy') || 'No Due Date'}}</p>
                     </div>
                 </div>
             </div>
@@ -52,7 +52,7 @@
                     </div>
                     <div>
                         <h3><a ui-sref="task({id: task._id})">{{task.name}}</a></h3>
-                        <p style="margin-bottom: 0px;"><i class="fa fa-calendar"></i> {{task.created | date:'MM/dd/yy'}}</p>
+                        <p style="margin-bottom: 0px;"><i class="fa fa-calendar"></i> {{(task.due | date:'MM/dd/yy') || 'No Due Date'}}</p>
                     </div>
                 </div>
             </div>
@@ -74,7 +74,7 @@
                     </div>
                     <div>
                         <h3><a ui-sref="task({id: task._id})">{{task.name}}</a></h3>
-                        <p style="margin-bottom: 0px;"><i class="fa fa-calendar"></i> {{task.created | date:'MM/dd/yy'}}</p>
+                        <p style="margin-bottom: 0px;"><i class="fa fa-calendar"></i> {{(task.due | date:'MM/dd/yy') || 'No Due Date'}}</p>
                     </div>
                 </div>
             </div>

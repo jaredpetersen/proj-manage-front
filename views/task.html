@@ -57,20 +57,23 @@
                     <div ng-hide="editTaskDetailsState">
                         <p style="padding: 10px 10px 0px 10px; margin-bottom: 0px; font-size: 14px;"><i class="fa fa-clone fa-fw"></i> <a title="{{task.projectName}}" ui-sref="project({id: task.project})">{{task.projectName}}</a></p>
                         <p style="padding: 10px 10px 0px 10px; margin-bottom: 0px; font-size: 14px;"><i class="fa fa-user fa-fw"></i> {{task.ownerName || 'Unowned'}}</p>
-                        <p style="padding: 10px; margin-bottom: 0px; font-size: 14px;"><i class="fa fa-calendar fa-fw"></i> {{(task.due | date:'MM/dd/yy') || 'No Due Date'}}</p>
+                        <p style="padding: 10px; margin-bottom: 0px; font-size: 14px;"><i class="fa fa-calendar fa-fw"></i> {{(task.due | date:'MM/dd/yy' : 'UTC') || 'No Due Date'}}</p>
                     </div>
                     <div ng-show="editTaskDetailsState">
                         <p style="padding: 10px 10px 0px 10px; margin-bottom: 0px; font-size: 14px;"><i class="fa fa-clone fa-fw"></i> <a title="{{task.projectName}}" ui-sref="project({id: task.project})">{{task.projectName}}</a></p>
                         <form class="form-inline" style="margin: 0px 10px;">
                             <div>
                                 <i class="fa fa-user fa-fw" style="margin-top: 13px;"></i>
-                                <select ng-model="editTask.owner" class="form-control" style="margin-bottom: 3px; color: #333;">
+                                <select ng-model="editTask.owner" class="form-control" style="margin-bottom: 3px; color: #333; padding-left: 5px;">
                                     <option value="">Unowned</option>
                                     <option value="{{member._id}}" ng-repeat="member in members">{{member.full_name}}</option>
                                 </select>
                             </div>
+                            <div style="padding-bottom: 10px;">
+                                <i class="fa fa-calendar fa-fw" style="margin-top: 13px;"></i>
+                                <input type='text' class="form-control" style="color: #333; padding: 5px;" datetimepicker-options="{{datepicker.options}}" datetimepicker ng-model="editTask.due"/>
+                            </div>
                         </form>
-                        <p style="padding: 0px 10px 10px 10px; margin-bottom: 0px; font-size: 14px;"><i class="fa fa-calendar fa-fw"></i> {{(task.due | date:'MM/dd/yy') || 'No Due Date'}}</p>
                     </div>
                 </div>
             </div>

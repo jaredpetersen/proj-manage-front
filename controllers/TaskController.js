@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('tangram').controller('TaskController', function($scope, $rootScope, $stateParams, ApiService, AuthService) {
+angular.module('tangram').controller('TaskController', function($scope, $rootScope, $stateParams, $timeout, $filter, ApiService, AuthService) {
 
     // Contains information on the task
     $scope.task = {};
@@ -10,10 +10,13 @@ angular.module('tangram').controller('TaskController', function($scope, $rootSco
     // Indicates when the edit description window is up
     $scope.editTaskDescriptionState = false;
     // Edit task data
-    $scope.editTask = {'description': null};
+    $scope.editTask = {'description': null, 'owner': null, 'due': null};
 
     // Indicates when the new subtask window is up
     $scope.newSubtaskState = false;
+
+    // Set up options for the datepicker
+    $scope.datepicker = {options: {defaultDate: null, format: 'MM/DD/YYYY'}};
 
     // Loads all of the data from the API
     var loadData = function() {
@@ -23,6 +26,7 @@ angular.module('tangram').controller('TaskController', function($scope, $rootSco
                 // Send task information to the view
                 $scope.task = response.data;
                 $scope.editTask.description = response.data.description;
+                $scope.datepicker.options.defaultDate = response.data.created;
 
                 // Update page title
                 $rootScope.pageTitle = response.data.name;
@@ -85,12 +89,20 @@ angular.module('tangram').controller('TaskController', function($scope, $rootSco
     // Edit task details
     $scope.editTaskDetails = function() {
         if ($scope.editTaskDetailsState == true) {
-            // Small fix since you can't have null value in select tags
+            // Small fix since you can't have null value in input
             var owner = $scope.editTask.owner;
             if (owner == undefined) owner = null;
 
+            // Convert the date to something the API likes -- have to make time = 0 because of a bug in the form
+            if ($scope.editTask.due === null) {
+                var due = null;
+            }
+            else {
+                var due = $filter('date')($scope.editTask.due._d, "yyyy-MM-dd'T'00:00:00.000'Z'");
+            }
+
             // Switching back to view mode, save the data
-            ApiService.updateTask(AuthService.getToken(), $stateParams.id, $scope.task.name, $scope.task.description, owner, $scope.task.project).then (
+            ApiService.updateTask(AuthService.getToken(), $stateParams.id, $scope.task.name, $scope.task.description, due, owner, $scope.task.project, $scope.task.status).then (
                 function success(updateResponse) {
                     // Update complete, switch the edit details state and reload data
                     $scope.editTaskDetailsState = false;
@@ -154,20 +166,6 @@ angular.module('tangram').controller('TaskController', function($scope, $rootSco
     }
 
     // Edit task details -- Not in use
-    $scope.updateSubtaskStatus = function(subtask) {
-        // Switch the subtask view state
-        if (subtask.status == 'incomplete') subtask.status = 'complete';
-        else subtask.status = 'incomplete';
-
-        // Update the subtask
-        ApiService.updateSubtaskStatus(AuthService.getToken(), $scope.task.project, $scope.task._id, subtask._id, subtask.status)
-        .then (
-            function success(response) {},
-            function error(response) { console.log(response); }
-        );
-    }
-
-    // Edit subtask details -- Not in use
     $scope.updateSubtaskStatus = function(subtask) {
         // Switch the subtask view state
         if (subtask.status == 'incomplete') subtask.status = 'complete';
