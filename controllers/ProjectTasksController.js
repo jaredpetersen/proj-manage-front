@@ -92,7 +92,7 @@ angular.module('tangram').controller('ProjectTasksController', function($scope, 
     $scope.addTask = function(newTask) {
         // Convert the date to something the API likes -- have to make time = 0 because of a bug in the form
         console.log(newTask.due);
-        if (newTask.due === undefined) {
+        if (newTask.due === undefined || newTask.due === null) {
             var due = null;
         }
         else {
