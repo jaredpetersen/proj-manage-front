@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('tangram').controller('ProjectTasksController', function($scope, $rootScope, $stateParams, ApiService, AuthService) {
+angular.module('tangram').controller('ProjectTasksController', function($scope, $rootScope, $stateParams, $filter, ApiService, AuthService) {
 
     // Indicates when the new task window is up
     $scope.newTaskState = false;
@@ -9,6 +9,9 @@ angular.module('tangram').controller('ProjectTasksController', function($scope, 
     $scope.backlog = [];
     $scope.inprogress = [];
     $scope.complete = [];
+
+    // Set up options for the datepicker
+    $scope.datepicker = {options: {defaultDate: null, format: 'MM/DD/YYYY'}};
 
     // Loads data for the view
     var loadData = function() {
@@ -46,6 +49,19 @@ angular.module('tangram').controller('ProjectTasksController', function($scope, 
                         }
                     });
                 });
+
+                // Grab the project members for the edit dialog
+                $scope.members = []
+                angular.forEach(projectResponse.data.members, function(member, key) {
+                    ApiService.getUser(member).then (
+                        function success(memberResponse) {
+                            $scope.members.push(
+                                {'full_name': memberResponse.data.first_name + ' ' + memberResponse.data.last_name,
+                                 '_id': memberResponse.data._id});
+                        },
+                        function error(memberResponse) { console.log(memberResponse); }
+                    );
+                });
             },
             function error(projectResponse) { console.log(projectResponse); }
         );
@@ -74,7 +90,16 @@ angular.module('tangram').controller('ProjectTasksController', function($scope, 
 
     // Add a new task to backlog
     $scope.addTask = function(newTask) {
-        ApiService.createTask(AuthService.getToken(), newTask.name, newTask.description, $stateParams.id)
+        // Convert the date to something the API likes -- have to make time = 0 because of a bug in the form
+        console.log(newTask.due);
+        if (newTask.due === undefined) {
+            var due = null;
+        }
+        else {
+            var due = $filter('date')(newTask.due._d, "yyyy-MM-dd'T'00:00:00.000'Z'");
+        }
+
+        ApiService.createTask(AuthService.getToken(), newTask.name, newTask.description, due, newTask.owner, $stateParams.id)
         .then(
             function success(response) {
                 // Reload all of the tasks

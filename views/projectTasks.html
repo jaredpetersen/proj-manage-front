@@ -16,6 +16,17 @@
                     <div class="form-group">
                         <input type="text" class="form-control" id="description" placeholder="Description (Optional)" ng-model="newTask.description">
                     </div>
+                    <!-- Task owner -->
+                    <div class="form-group">
+                        <select ng-model="newTask.owner" class="form-control" id="owner" style="margin-bottom: 3px; color: #333; padding-left: 5px;">
+                            <option value="">Unowned</option>
+                            <option value="{{member._id}}" ng-repeat="member in members">{{member.full_name}}</option>
+                        </select>
+                    </div>
+                    <!-- Task due -->
+                    <div class="form-group">
+                        <input type='text' class="form-control" id="due" style="color: #333; padding: 5px;" placeholder="Due Date (Optional)" datetimepicker-options="{{datepicker.options}}" datetimepicker ng-model="newTask.due"/>
+                    </div>
                     <button type="button" class="btn btn-default" style="margin-bottom: 0px;" ng-click="addTask(newTask);">Add Task</button>&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-default" style="margin-bottom: 0px;" ng-click="switchNewTaskState()">Cancel</button>
                 </form>
             </div>
@@ -30,7 +41,7 @@
                     </div>
                     <div>
                         <h3><a ui-sref="task({id: task._id})">{{task.name}}</a></h3>
-                        <p style="margin-bottom: 0px;"><i class="fa fa-calendar"></i> {{(task.due | date:'MM/dd/yy') || 'No Due Date'}}</p>
+                        <p style="margin-bottom: 0px;"><i class="fa fa-calendar"></i> {{(task.due | date:'MM/dd/yy' : 'UTC') || 'No Due Date'}}</p>
                     </div>
                 </div>
             </div>

@@ -20,8 +20,8 @@ angular.module('tangram').factory('ApiService', function($http, $q) {
     }
 
     // Add new task
-    apiFactory.createTask = function(token, name, description, project) {
-        return $http.post(baseURL + '/tasks', {'name': name, 'description': description, 'project': project}, {headers: {'x-access-token': token}});
+    apiFactory.createTask = function(token, name, description, due, owner, project) {
+        return $http.post(baseURL + '/tasks', {'name': name, 'description': description, 'due': due, 'owner': owner, 'project': project}, {headers: {'x-access-token': token}});
     }
 
     // Update task -- has to pass all of the data
