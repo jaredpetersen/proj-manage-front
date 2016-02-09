@@ -36,11 +36,11 @@
                 <div class="card draggable" ng-repeat="task in backlog" style="overflow: auto;">
                     <div style="float: right; padding-left: 10px;">
                         <p style="font-size: 14px;">
-                            <a class="red" title="delete task" href="" ng-click="deleteTask(task._id)"><i class="fa fa-close"></i></a>
+                            <a class="red" title="delete task" href="" ng-click="deleteTask(task.project, task._id)"><i class="fa fa-close"></i></a>
                         </p>
                     </div>
                     <div>
-                        <h3><a ui-sref="task({id: task._id})">{{task.name}}</a></h3>
+                        <h3><a ui-sref="task({pid: task.project, tid: task._id})">{{task.name}}</a></h3>
                         <p style="margin-bottom: 0px;"><i class="fa fa-calendar"></i> {{(task.due | date:'MM/dd/yy' : 'UTC') || 'No Due Date'}}</p>
                     </div>
                 </div>
@@ -58,11 +58,11 @@
                 <div class="card draggable" ng-repeat="task in inprogress" style="overflow: auto;">
                     <div style="float: right; padding-left: 10px;">
                         <p style="font-size: 14px;">
-                            <a class="red" title="delete task" href="" ng-click="deleteTask(task._id)"><i class="fa fa-close"></i></a>
+                            <a class="red" title="delete task" href="" ng-click="deleteTask(task.project, task._id)"><i class="fa fa-close"></i></a>
                         </p>
                     </div>
                     <div>
-                        <h3><a ui-sref="task({id: task._id})">{{task.name}}</a></h3>
+                        <h3><a ui-sref="task({pid: task.project, tid: task._id})">{{task.name}}</a></h3>
                         <p style="margin-bottom: 0px;"><i class="fa fa-calendar"></i> {{(task.due | date:'MM/dd/yy') || 'No Due Date'}}</p>
                     </div>
                 </div>
@@ -80,11 +80,11 @@
                 <div class="card draggable" ng-repeat="task in complete" style="overflow: auto;">
                     <div style="float: right; padding-left: 10px;">
                         <p style="font-size: 14px;">
-                            <a class="red" title="delete task" href="" ng-click="deleteTask(task._id)"><i class="fa fa-close"></i></a>
+                            <a class="red" title="delete task" href="" ng-click="deleteTask(task.project, task._id)"><i class="fa fa-close"></i></a>
                         </p>
                     </div>
                     <div>
-                        <h3><a ui-sref="task({id: task._id})">{{task.name}}</a></h3>
+                        <h3><a ui-sref="task({pid: task.project, tid: task._id})">{{task.name}}</a></h3>
                         <p style="margin-bottom: 0px;"><i class="fa fa-calendar"></i> {{(task.due | date:'MM/dd/yy') || 'No Due Date'}}</p>
                     </div>
                 </div>

@@ -21,7 +21,7 @@ angular.module('tangram').controller('TaskController', function($scope, $rootSco
     // Loads all of the data from the API
     var loadData = function() {
         // Grab the task information
-        ApiService.getSingleTask(AuthService.getToken(), $stateParams.id).then (
+        ApiService.getSingleTask(AuthService.getToken(), $stateParams.pid, $stateParams.tid).then (
             function success(response) {
                 // Send task information to the view
                 $scope.task = response.data;

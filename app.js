@@ -114,7 +114,7 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 
         // route for the individual task page
         .state('task', {
-            url: '/tasks/:id',
+            url: '/projects/:pid/tasks/:tid',
             parent: 'common',
             views: {
                 'navbar': {

@@ -4,9 +4,9 @@ angular.module('tangram').factory('ApiService', function($http, $q) {
     var baseURL = 'http://api.tangr.am';
     var apiFactory = {};
 
-    // Get all user tasks
+    // Get all tasks the user owns
     apiFactory.getTasks = function(token) {
-        return $http.get(baseURL + '/tasks', {headers: {'x-access-token': token}});
+        return $http.get(baseURL + '/projects/all/tasks', {headers: {'x-access-token': token}});
     }
 
     // Get all tasks for a project
@@ -15,30 +15,28 @@ angular.module('tangram').factory('ApiService', function($http, $q) {
     }
 
     // Get single task
-    apiFactory.getSingleTask = function(token, id) {
-        return $http.get(baseURL + '/tasks/' + id, {headers: {'x-access-token': token}});
+    apiFactory.getSingleTask = function(token, pid, tid) {
+        return $http.get(baseURL + '/projects/' + pid + '/tasks/' + tid, {headers: {'x-access-token': token}});
     }
 
     // Add new task
     apiFactory.createTask = function(token, name, description, due, owner, project) {
-        return $http.post(baseURL + '/tasks', {'name': name, 'description': description, 'due': due, 'owner': owner, 'project': project}, {headers: {'x-access-token': token}});
+        return $http.post(baseURL + '/projects/' + project + '/tasks', {'name': name, 'description': description, 'due': due, 'owner': owner}, {headers: {'x-access-token': token}});
     }
 
     // Update task -- has to pass all of the data
     apiFactory.updateTask = function(token, id, name, description, due, owner, project, status) {
-        console.log(token);
-        console.log({'name': name, 'description': description, 'due': due, 'owner': owner, 'project': project, 'status': status});
-        return $http.put(baseURL + '/tasks/' + id, {'name': name, 'description': description, 'due': due, 'owner': owner, 'project': project, 'status': status}, {headers: {'x-access-token': token}});
+        return $http.put(baseURL + '/projects/' + project + '/tasks/' + id, {'name': name, 'description': description, 'due': due, 'owner': owner, 'status': status}, {headers: {'x-access-token': token}});
     }
 
     // Update task (just status)
-    apiFactory.updateTaskStatus = function(token, id, status) {
-        return $http.put(baseURL + '/tasks/' + id, {'status': status}, {headers: {'x-access-token': token}});
+    apiFactory.updateTaskStatus = function(token, pid, tid, status) {
+        return $http.put(baseURL + '/projects/' + pid + '/tasks/' + tid, {'status': status}, {headers: {'x-access-token': token}});
     }
 
     // Delete task
-    apiFactory.deleteTask = function(token, id, status) {
-        return $http.delete(baseURL + '/tasks/' + id, {headers: {'x-access-token': token}});
+    apiFactory.deleteTask = function(token, pid, tid, status) {
+        return $http.delete(baseURL + '/projects/' + pid + '/tasks/' + tid, {headers: {'x-access-token': token}});
     }
 
     // Get all subtasks for a task

@@ -69,7 +69,7 @@ angular.module('tangram').controller('ProjectTasksController', function($scope, 
 
     // Update the task status - activated when the task is moved to a column
     var changeStatus = function(task, newStatus) {
-        ApiService.updateTaskStatus(AuthService.getToken(), task._id, newStatus)
+        ApiService.updateTaskStatus(AuthService.getToken(), task.project, task._id, newStatus)
         .then (
             function success(response) {},
             function error(response) { console.log(response); }
@@ -115,8 +115,8 @@ angular.module('tangram').controller('ProjectTasksController', function($scope, 
     }
 
     // Remove the task -- activated by delete button in view
-    $scope.deleteTask = function(taskID) {
-        ApiService.deleteTask(AuthService.getToken(), taskID)
+    $scope.deleteTask = function(projectID, taskID) {
+        ApiService.deleteTask(AuthService.getToken(), projectID, taskID)
         .then (
             function success(response) { loadData(); },
             function error(response) { console.log(response); }
