@@ -15,9 +15,9 @@ angular.module('tangram').controller('SingleProjectController', function($scope,
     $scope.lineData = {
         labels: ['12/01', '12/02', '12/03', '12/04', '12/05', '12/06', '12/07'],
         series: [
-            [7, 4, 10, 6, 10, 5, 12],
-            [10, 1, 4, 3, 5, 0, 1],
-            [0, 5, 6, 9, 11, 13, 15]
+            [19, 18, 16, 16, 15, 14, 11],
+            [5, 1, 2, 0, 1, 1, 3],
+            [0, 5, 6, 8, 8, 9, 10]
         ]
     };
 
