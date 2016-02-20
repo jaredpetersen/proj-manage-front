@@ -37,8 +37,8 @@
     <div class="col-md-3 col-sm-4 col-xs-12">
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
-                <div ng-model="task" ng-class="{'big-number column-heading-red': task.status == 'backlog', 'big-number column-heading-yellow': task.status == 'in-progress', 'big-number column-heading-blue': task.status == 'complete'}" style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 15px;">
-                    <h4 style="font-size: 35px; padding-bottom: 5px;">{{task.status}}</h4>
+                <div ng-model="task" ng-class="{'big-number column-heading-red': task.status[task.status.length - 1].status == 'backlog', 'big-number column-heading-yellow': task.status[task.status.length - 1].status == 'in-progress', 'big-number column-heading-blue': task.status[task.status.length - 1].status == 'complete'}" style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 15px;">
+                    <h4 style="font-size: 35px; padding-bottom: 5px;">{{task.status[task.status.length - 1].status}}</h4>
                     <h3>status</h3>
                 </div>
             </div>

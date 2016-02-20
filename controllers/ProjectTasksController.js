@@ -38,10 +38,10 @@ angular.module('tangram').controller('ProjectTasksController', function($scope, 
                     // Iterate over each of the tasks
                     angular.forEach(tasks, function(task, key) {
                         // Add the tasks to the proper status columns
-                        if (task.status == 'backlog') {
+                        if (task.status[task.status.length - 1].status == 'backlog') {
                             $scope.backlog.push(task);
                         }
-                        else if (task.status == 'in-progress') {
+                        else if (task.status[task.status.length - 1].status == 'in-progress') {
                             $scope.inprogress.push(task);
                         }
                         else {

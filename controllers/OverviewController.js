@@ -22,10 +22,10 @@ angular.module('tangram').controller('OverviewController', function($scope, $roo
                     task.projectName = projectResponse.data.name;
 
                     // Add the task to the proper status columns
-                    if (task.status == 'backlog') {
+                    if (task.status[task.status.length - 1].status == 'backlog') {
                         $scope.backlog.push(task);
                     }
-                    else if (task.status == 'in-progress') {
+                    else if (task.status[task.status.length - 1].status == 'in-progress') {
                         $scope.inprogress.push(task);
                     }
                     else {
