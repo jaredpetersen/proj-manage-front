@@ -37,8 +37,8 @@ angular.module('tangram').controller('OverviewController', function($scope, $roo
     }
 
     // Remove the task -- activated by delete button in view
-    $scope.deleteTask = function(taskID) {
-        ApiService.deleteTask(AuthService.getToken(), taskID)
+    $scope.deleteTask = function(projectID, taskID) {
+        ApiService.deleteTask(AuthService.getToken(), projectID, taskID)
         .then (
             function success(response) { loadData(); },
             function error(response) { console.log(response); }

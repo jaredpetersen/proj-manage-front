@@ -10,7 +10,7 @@
                 <div class="card draggable" ng-repeat="task in backlog">
                     <h3>
                         <a title="{{task.name}}" ui-sref="task({pid: task.project, tid: task._id})">{{task.name}}</a>
-                        <a class="red pull-right" title="delete task" href="" ng-click="deleteTask(task._id)"><i class="fa fa-close"></i></a>
+                        <a class="red pull-right" title="delete task" href="" ng-click="deleteTask(task.project, task._id)"><i class="fa fa-close"></i></a>
                     </h3>
                     <p>
                         <!-- Will need to fix overflow with CSS later with this:
