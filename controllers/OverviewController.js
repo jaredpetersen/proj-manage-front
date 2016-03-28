@@ -47,7 +47,7 @@ angular.module('tangram').controller('OverviewController', function($scope, $roo
 
     // Update the task status - activated when the task is moved to a column
     var changeStatus = function(task, newStatus) {
-        ApiService.updateTaskStatus(AuthService.getToken(), task._id, newStatus)
+        ApiService.updateTaskStatus(AuthService.getToken(), task.project, task._id, newStatus)
         .then (
             function success(response) {},
             function error(response) { console.log(response); }
