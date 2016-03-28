@@ -69,6 +69,11 @@ angular.module('tangram').factory('ApiService', function($http, $q) {
         return $http.get(baseURL + '/projects/' + id, {headers: {'x-access-token': token}});
     }
 
+    // Get the historical data for the single project charts
+    apiFactory.getSingleProjectCharts = function(token, id) {
+        return $http.get(baseURL + '/projects/' + id + '/charts/', {headers: {'x-access-token': token}});
+    }
+
     // Add new project
     apiFactory.createProject = function(token, name, description) {
         return $http.post(baseURL + '/projects', {'name': name, 'description': description}, {headers: {'x-access-token': token}});

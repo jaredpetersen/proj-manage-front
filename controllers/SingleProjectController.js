@@ -13,7 +13,7 @@ angular.module('tangram').controller('SingleProjectController', function($scope,
 
     // Giant line chart data
     $scope.lineData = {
-        labels: ['12/01', '12/02', '12/03', '12/04', '12/05', '12/06', '12/07'],
+        labels: ['1', '2', '3', '4', '5', '6', '7'],
         series: [
             [19, 18, 16, 16, 15, 14, 11],
             [5, 1, 2, 0, 1, 1, 3],
@@ -49,13 +49,45 @@ angular.module('tangram').controller('SingleProjectController', function($scope,
     // Grab data from the API to populate the view
     var loadData = function() {
         // Grab information about the project
-        ApiService.getSingleProject(AuthService.getToken(), $scope.projectId)
-        .then(
+        ApiService.getSingleProject(AuthService.getToken(), $scope.projectId).then(
             function success(projectResponse) {
                 $scope.project = projectResponse.data;
 
                 // Set the page title
                 $rootScope.pageTitle = projectResponse.data.name + ' - Metrics';
+
+                // Grab the project data for the charts
+                ApiService.getSingleProjectCharts(AuthService.getToken(), $scope.projectId).then(
+                    function success(chartResponse) {
+                        // Going to do a seven day chart
+
+                        // Set up the labels
+                        // Clear out the existing labels
+                        $scope.lineData.labels = [];
+                        var today = new Date(); // Get today's date for the loop
+                        var i; // Iterator for the seven days
+                        for (i = 6; i >= 0; i--) {
+                            var dayBefore = new Date();
+                            dayBefore.setDate(today.getDate() - i);
+
+                            // Format the date as a nice string
+                            var month = '' + (dayBefore.getMonth() + 1);
+                            var day = '' + dayBefore.getDate();
+                            if (month.length < 2) {
+                                month = '0' + month;
+                            }
+                            if (day.length < 2) {
+                                day = '0' + day;
+                            }
+                            $scope.lineData.labels.push([month, day].join('/'));
+                        }
+
+                        // TODO Set up the chart data
+                    },
+                    function error(chartResponse) {
+                        console.log(chartResponse);
+                    }
+                );
 
                 // Grab the project owner name
                 ApiService.getUser(projectResponse.data.owner).then (
