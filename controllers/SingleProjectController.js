@@ -82,7 +82,15 @@ angular.module('tangram').controller('SingleProjectController', function($scope,
                             $scope.lineData.labels.push([month, day].join('/'));
                         }
 
-                        // TODO Set up the chart data
+                        // Set up backlog chart data
+                        var backlogDayCount;
+                        for (backlogDayCount = 6; backlogDayCount >= 0; backlogDayCount--) {
+                            // Check if the most recent date matches up with today
+                            //if (new Date() = chartResponse.historical_status.backlog)
+                            console.log(new Date(chartResponse.data.historical_status.backlog[0]._id));
+                            var taskTotalTimeStamp = new Date(chartResponse.data.historical_status.backlog[0]._id);
+                            // If most recent timestamp and today's date are the same,
+                        }
                     },
                     function error(chartResponse) {
                         console.log(chartResponse);
