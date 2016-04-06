@@ -15,9 +15,9 @@ angular.module('tangram').controller('SingleProjectController', function($scope,
     $scope.lineData = {
         labels: ['1', '2', '3', '4', '5', '6', '7'],
         series: [
-            [19, 18, 16, 16, 15, 14, 11],
-            [5, 1, 2, 0, 1, 1, 3],
-            [0, 5, 6, 8, 8, 9, 10]
+            [],
+            [],
+            []
         ]
     };
 
@@ -59,38 +59,71 @@ angular.module('tangram').controller('SingleProjectController', function($scope,
                 // Grab the project data for the charts
                 ApiService.getSingleProjectCharts(AuthService.getToken(), $scope.projectId).then(
                     function success(chartResponse) {
+                        console.log(chartResponse.data.historical_status);
+
                         // Going to do a seven day chart
+
+                        // Set up the actual date values
+                        var weekdays = [];
 
                         // Set up the labels
                         // Clear out the existing labels
                         $scope.lineData.labels = [];
-                        var today = new Date(); // Get today's date for the loop
-                        var i; // Iterator for the seven days
+                        var i; // Iterator for the seven day period
                         for (i = 6; i >= 0; i--) {
-                            var dayBefore = new Date();
-                            dayBefore.setDate(today.getDate() - i);
-
-                            // Format the date as a nice string
-                            var month = '' + (dayBefore.getMonth() + 1);
-                            var day = '' + dayBefore.getDate();
-                            if (month.length < 2) {
-                                month = '0' + month;
-                            }
-                            if (day.length < 2) {
-                                day = '0' + day;
-                            }
-                            $scope.lineData.labels.push([month, day].join('/'));
+                            // Get the day
+                            var dayBefore = moment().utc().subtract(i, 'days').startOf('day');
+                            // Add it to our date range
+                            weekdays.push(dayBefore);
+                            // Format the date as a nice string and add it to the labels
+                            $scope.lineData.labels.push(dayBefore.format("MM/DD"));
                         }
 
-                        // Set up backlog chart data
-                        var backlogDayCount;
-                        for (backlogDayCount = 6; backlogDayCount >= 0; backlogDayCount--) {
-                            // Check if the most recent date matches up with today
-                            //if (new Date() = chartResponse.historical_status.backlog)
-                            console.log(new Date(chartResponse.data.historical_status.backlog[0]._id));
-                            var taskTotalTimeStamp = new Date(chartResponse.data.historical_status.backlog[0]._id);
-                            // If most recent timestamp and today's date are the same,
+                        // Chart data
+                        var seriesIter;
+                        for (seriesIter = 0; seriesIter < 3; seriesIter++) {
+                            // Get the proper data for the series
+                            var chartResponseSeries;
+                            if (seriesIter == 0) chartResponseSeries = chartResponse.data.historical_status.backlog;
+                            else if (seriesIter == 1) chartResponseSeries = chartResponse.data.historical_status['in-progress'];
+                            else chartResponseSeries = chartResponse.data.historical_status.complete;
+
+                            // Loop over the days of the week
+                            $scope.lineData.series[seriesIter] = [];
+                            var backlogDayCount;
+                            for (backlogDayCount = 0; backlogDayCount <= 6; backlogDayCount++) {
+
+                                var taskDayIter;
+                                var chartTaskHistoryLength = chartResponseSeries.length;
+                                for (taskDayIter = 0; taskDayIter < chartTaskHistoryLength; taskDayIter++) {
+                                    var taskDay = moment(chartResponseSeries[taskDayIter]._id).utc();
+                                    if (taskDay.isSame(weekdays[backlogDayCount])) {
+                                        $scope.lineData.series[seriesIter].push(chartResponseSeries[taskDayIter].total);
+                                        break;
+                                    }
+                                    else if (taskDay > weekdays[backlogDayCount]) {
+                                        // Too far, use the total from the previous
+                                        if (taskDayIter == 0) {
+                                            $scope.lineData.series[seriesIter].push(chartResponseSeries[taskDayIter].total);
+                                        }
+                                        else {
+                                            $scope.lineData.series[seriesIter].push(chartResponseSeries[taskDayIter - 1].total);
+                                        }
+                                        break;
+                                    }
+                                    else {
+                                        if (taskDayIter == chartTaskHistoryLength - 1) {
+                                            $scope.lineData.series[seriesIter].push(chartResponseSeries[taskDayIter].total);
+                                        }
+                                    }
+                                }
+                            }
                         }
+
+                        // Make sure the task counts are accurate
+                        $scope.backlogCount = $scope.lineData.series[0][$scope.lineData.series[0].length - 1];
+                        $scope.inprogressCount = $scope.lineData.series[1][$scope.lineData.series[1].length - 1];
+                        $scope.completeCount = $scope.lineData.series[2][$scope.lineData.series[2].length - 1];
                     },
                     function error(chartResponse) {
                         console.log(chartResponse);
@@ -120,26 +153,6 @@ angular.module('tangram').controller('SingleProjectController', function($scope,
                             console.log(memberResponse);
                         }
                     );
-                });
-            },
-            function error(response) { console.log(response); }
-        );
-
-        // Grab all the project tasks
-        ApiService.getProjectTasks(AuthService.getToken(), $scope.projectId)
-        .then(
-            function success(response) {
-                // Count the number of tasks up
-                angular.forEach(response.data, function(task, key) {
-                    if (task.status == 'backlog') {
-                        $scope.backlogCount++;
-                    }
-                    else if (task.status == 'in-progress') {
-                        $scope.inprogressCount++;
-                    }
-                    else {
-                        $scope.completeCount++;
-                    }
                 });
             },
             function error(response) { console.log(response); }
