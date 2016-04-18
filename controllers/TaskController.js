@@ -102,7 +102,7 @@ angular.module('tangram').controller('TaskController', function($scope, $rootSco
             }
 
             // Switching back to view mode, save the data
-            ApiService.updateTask(AuthService.getToken(), $scope.task._id, $scope.task.name, $scope.task.description, due, owner, $scope.task.project, $scope.task.status[$scope.task.status.length - 1].status).then (
+            ApiService.updateTask(AuthService.getToken(), $scope.task._id, $scope.task.name, $scope.task.description, due, owner, $scope.task.project).then (
                 function success(updateResponse) {
                     // Update complete, switch the edit details state and reload data
                     $scope.editTaskDetailsState = false;
