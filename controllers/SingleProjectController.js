@@ -3,21 +3,32 @@
 angular.module('tangram').controller('SingleProjectController', function($scope, $rootScope, $state, $stateParams, ApiService, AuthService) {
 
     // Task Information
-    $scope.backlogCount = 0;
-    $scope.inprogressCount = 0;
-    $scope.completeCount = 0;
+    // Temporarily set to something so that the chart isn't broken
+    $scope.backlogCount = 11;
+    $scope.inprogressCount = 3;
+    $scope.completeCount = 10;
 
     // Project Information
     $scope.project = {};
     $scope.projectId = $stateParams.id;
 
     // Giant line chart data
-    $scope.lineData = {
+    /*$scope.lineData = {
         labels: ['1', '2', '3', '4', '5', '6', '7'],
         series: [
             [],
             [],
             []
+        ]
+    };*/
+
+    // Temporarily set to something so that the chart isn't broken
+    $scope.lineData = {
+        labels: ['12/01', '12/02', '12/03', '12/04', '12/05', '12/06', '12/07'],
+        series: [
+            [19, 18, 16, 16, 15, 14, 11],
+            [5, 1, 2, 0, 1, 1, 3],
+            [0, 5, 6, 8, 8, 9, 10]
         ]
     };
 
@@ -57,7 +68,8 @@ angular.module('tangram').controller('SingleProjectController', function($scope,
                 $rootScope.pageTitle = projectResponse.data.name + ' - Metrics';
 
                 // Grab the project data for the charts
-                ApiService.getSingleProjectCharts(AuthService.getToken(), $scope.projectId).then(
+                // Work in progress, use the temporary data so that the chart isn't broken
+                /*ApiService.getSingleProjectCharts(AuthService.getToken(), $scope.projectId).then(
                     function success(chartResponse) {
                         console.log(chartResponse.data.historical_status);
 
@@ -128,7 +140,7 @@ angular.module('tangram').controller('SingleProjectController', function($scope,
                     function error(chartResponse) {
                         console.log(chartResponse);
                     }
-                );
+                );*/
 
                 // Grab the project owner name
                 ApiService.getUser(projectResponse.data.owner).then (
